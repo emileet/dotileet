@@ -3,11 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
-
-    impermanence = {
-      url = "github:nix-community/impermanence";
-      flake = false;
-    };
+    impermanence.url = "github:nix-community/impermanence";
 
     font-sf-mono = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
