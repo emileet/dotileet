@@ -1,8 +1,14 @@
 { pkgs, ... }:
 {
+  services.gnome.gnome-keyring.enable = true;
+
   services.xserver = {
     desktopManager.xterm.enable = false;
     windowManager.i3 = {
+      extraSessionCommands = ''
+        eval $(gnome-keyring-daemon --daemonize)
+        export SSH_AUTH_SOCK
+      '';
       package = pkgs.i3-gaps;
       enable = true;
     };
