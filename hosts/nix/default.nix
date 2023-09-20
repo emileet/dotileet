@@ -51,7 +51,6 @@
   };
 
   virtualisation = {
-    docker.enable = true;
     libvirtd = {
       qemu = {
         verbatimConfig = ''
@@ -67,6 +66,7 @@
       };
       enable = true;
     };
+    docker.enable = true;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

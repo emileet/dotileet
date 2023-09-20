@@ -14,4 +14,3 @@ pkgs: with pkgs; [
   wget
   vim
 ]
-

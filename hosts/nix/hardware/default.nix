@@ -30,6 +30,11 @@
       systemd-boot.enable = true;
     };
 
+    swraid = {
+      mdadmConf = "MAILADDR hi@emi.gay";
+      enable = true;
+    };
+
     kernelPackages = pkgs.linuxPackages_zen;
     kernelPatches = [{
       name = "virtual machine introspection";
@@ -68,10 +73,6 @@
     extraModulePackages = [ ];
 
     tmp.cleanOnBoot = true;
-    swraid = {
-      mdadmConf = "MAILADDR hi@emi.gay";
-      enable = true;
-    };
   };
 
   fileSystems."/" = {
