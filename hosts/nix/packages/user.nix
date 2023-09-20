@@ -15,5 +15,6 @@ pkgs: with pkgs; [
   tldr
   rofi
   feh
+  dex
   git
 ]
