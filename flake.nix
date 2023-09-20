@@ -13,7 +13,6 @@
 
   outputs = { self, nixpkgs, impermanence, font-sf-mono }: {
     nixosConfigurations = (import ./hosts {
-      inherit (nixpkgs) lib;
       inherit nixpkgs impermanence font-sf-mono;
     });
   };
