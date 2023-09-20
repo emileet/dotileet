@@ -13,6 +13,7 @@
         "/etc/NetworkManager"
         "/etc/nixos"
         "/etc/ssh"
+        "/var/lib/flatpak"
         "/var/log"
         "/var/tmp"
         "/tmp"
