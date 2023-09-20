@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./display.nix
@@ -83,31 +83,31 @@
     tmp.cleanOnBoot = true;
   };
 
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = [ "size=3G" "mode=755" ];
-  };
+  fileSystems = {
+    "/" = {
+      device = "none";
+      fsType = "tmpfs";
+      options = [ "size=3G" "mode=755" ];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/NIXBOOT";
-    fsType = "vfat";
-  };
+    "/boot" = {
+      device = "/dev/disk/by-label/NIXBOOT";
+      fsType = "vfat";
+    };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-label/NIX";
-    fsType = "btrfs";
-  };
+    "/nix" = {
+      device = "/dev/disk/by-label/NIX";
+      fsType = "btrfs";
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-label/HOME";
-    fsType = "btrfs";
-  };
+    "/home" = {
+      device = "/dev/disk/by-label/HOME";
+      fsType = "btrfs";
+    };
 
-  fileSystems."/storage" = {
-    device = "/dev/disk/by-label/RAID0";
-    fsType = "ext4";
+    "/storage" = {
+      device = "/dev/disk/by-label/RAID0";
+      fsType = "ext4";
+    };
   };
-
-  swapDevices = [ ];
 }
