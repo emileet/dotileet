@@ -7,7 +7,7 @@
     autotiling
     lm_sensors
     rnix-lsp
-    neofetch
+    hyfetch
     discord
     wezterm
     barrier
