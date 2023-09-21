@@ -6,6 +6,7 @@
     pavucontrol
     autotiling
     lm_sensors
+    libnotify
     rnix-lsp
     hyfetch
     discord
@@ -14,6 +15,7 @@
     bottom
     vscode
     slack
+    dunst
     tldr
     rofi
     feh
