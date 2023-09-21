@@ -1,61 +1,13 @@
 { pkgs, ... }:
 {
   imports = [
+    ./packages.nix
+    ./persist.nix
     ./users.nix
     ./hardware
-    ./packages
   ];
 
-  environment.persistence = {
-    "/nix/persist/system" = {
-      hideMounts = true;
-      directories = [
-        "/etc/NetworkManager"
-        "/etc/nixos"
-        "/etc/ssh"
-        "/var/lib/flatpak"
-        "/var/log"
-        "/var/tmp"
-        "/tmp"
-      ];
-      files = [
-        "/etc/barrier.conf"
-      ];
-    };
-    "/nix/persist/virt" = {
-      hideMounts = true;
-      directories = [
-        "/var/lib/libvirt/qemu/networks"
-        "/etc/libvirt/hooks/qemu.d"
-      ];
-      files = [
-        "/var/lib/libvirt/qemu/Windows11.xml"
-      ];
-    };
-  };
-
-  services.openssh = {
-    settings = {
-      KbdInteractiveAuthentication = false;
-      PasswordAuthentication = false;
-    };
-    ports = [ 2269 ];
-    enable = true;
-  };
-
-  services.persistent-evdev = {
-    devices = {
-      persist-mouse0 = "usb-Glorious_Model_O_Wireless_000000000000-event-mouse";
-      persist-keyboard0 = "usb-Qwertykeys_QK65_Hotswap-if02-event-kbd";
-    };
-    enable = true;
-  };
-
   virtualisation = {
-    kvmfr = {
-      shm.enable = true;
-      enable = true;
-    };
     libvirtd = {
       qemu = {
         verbatimConfig = ''
@@ -71,7 +23,36 @@
       };
       enable = true;
     };
+
+    kvmfr = {
+      shm.enable = true;
+      enable = true;
+    };
+
     docker.enable = true;
+  };
+
+  services = {
+    persistent-evdev = {
+      devices = {
+        persist-mouse0 = "usb-Glorious_Model_O_Wireless_000000000000-event-mouse";
+        persist-keyboard0 = "usb-Qwertykeys_QK65_Hotswap-if02-event-kbd";
+      };
+      enable = true;
+    };
+
+    openssh = {
+      settings = {
+        KbdInteractiveAuthentication = false;
+        PasswordAuthentication = false;
+      };
+      ports = [ 2269 ];
+      enable = true;
+    };
+
+    flatpak.enable = true;
+    tumbler.enable = true;
+    gvfs.enable = true;
   };
 
   systemd = {
@@ -88,6 +69,11 @@
         RestartSec = 1;
       };
     };
+  };
+
+  xdg.portal = {
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    enable = true;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

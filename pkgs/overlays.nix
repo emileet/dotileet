@@ -25,5 +25,27 @@
         };
       };
     })
+    (final: prev: {
+      qemu = (prev.qemu.overrideAttrs {
+        patches = [ /nix/patches/qemu/qemu-vmi.8.1.0.patch ];
+      }).override {
+        enableDocs = false;
+      };
+    })
+    (final: prev: {
+      catppuccin-gtk = prev.catppuccin-gtk.override {
+        accents = [ "pink" "lavender" ];
+        tweaks = [ "rimless" ];
+        variant = "mocha";
+        size = "compact";
+      };
+    })
+    (final: prev: {
+      polybar = prev.polybar.override {
+        githubSupport = true;
+        pulseSupport = true;
+        i3Support = true;
+      };
+    })
   ];
 }
