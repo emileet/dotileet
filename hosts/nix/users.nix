@@ -3,9 +3,14 @@
   users = {
     users.emileet = {
       hashedPasswordFile = "/nix/secrets/passwd/emileet";
-      extraGroups = [ "wheel" "libvirtd" "audio" "realtime" ];
       isNormalUser = true;
       shell = pkgs.zsh;
+      extraGroups = [
+        "libvirtd"
+        "realtime"
+        "audio"
+        "wheel"
+      ];
     };
     mutableUsers = false;
   };

@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, kernel, kmod, looking-glass-client, ... }:
+{ stdenv, lib, kernel, looking-glass-client, ... }:
 stdenv.mkDerivation rec {
   pname = "kvmfr-${version}-${kernel.version}";
   version = looking-glass-client.version;

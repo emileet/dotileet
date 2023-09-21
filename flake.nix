@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
+
     impermanence.url = "github:nix-community/impermanence";
 
     font-sf-mono = {
