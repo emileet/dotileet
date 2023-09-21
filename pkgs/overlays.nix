@@ -15,7 +15,6 @@
     })
     (final: prev: {
       looking-glass-client = prev.looking-glass-client.overrideAttrs {
-        version = "dev";
         src = prev.fetchFromGitHub {
           repo = "LookingGlass";
           owner = "gnif";
@@ -23,6 +22,15 @@
           sha256 = "sha256-AOb79RiHpYnrPv/jHCijAgr4uIe+TUIsY8pmVt0b0cU=";
           fetchSubmodules = true;
         };
+        desktopItem = prev.makeDesktopItem {
+          desktopName = "Looking Glass Client";
+          exec = "looking-glass-client";
+          name = "looking-glass-client";
+          type = "Application";
+          icon = "lg-logo";
+          terminal = false;
+        };
+        version = "dev";
       };
     })
     (final: prev: {
