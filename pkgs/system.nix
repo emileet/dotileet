@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    catppuccin-cursors.mochaLight
     catppuccin-gtk
-    bibata-cursors
     nix-diff
     pciutils
     killall
