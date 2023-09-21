@@ -7,6 +7,7 @@
     autotiling
     lm_sensors
     libnotify
+    flameshot
     rnix-lsp
     hyfetch
     discord
