@@ -52,6 +52,10 @@
   };
 
   virtualisation = {
+    kvmfr = {
+      shm.enable = true;
+      enable = true;
+    };
     libvirtd = {
       qemu = {
         verbatimConfig = ''
