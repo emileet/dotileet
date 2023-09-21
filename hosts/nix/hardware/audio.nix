@@ -1,7 +1,10 @@
 { ... }:
 {
   hardware.pulseaudio.enable = false;
-  sound.enable = true;
+  sound = {
+    vban.enable = true;
+    enable = true;
+  };
 
   services.pipewire = {
     alsa = {

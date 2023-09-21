@@ -6,5 +6,6 @@
     ./system.nix
     ./user.nix
     ./kvmfr
+    ./vban
   ];
 }
