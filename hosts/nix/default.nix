@@ -15,7 +15,7 @@
             "/dev/null", "/dev/full", "/dev/zero", 
             "/dev/random", "/dev/urandom",
             "/dev/ptmx", "/dev/kvm", "/dev/kqemu",
-            "/dev/rtc","/dev/hpet",
+            "/dev/rtc","/dev/hpet", "/dev/kvmfr0",
             "/dev/input/by-id/uinput-persist-keyboard0",
             "/dev/input/by-id/uinput-persist-mouse0"
           ]
@@ -25,7 +25,11 @@
     };
 
     kvmfr = {
-      shm.enable = true;
+      shm = {
+        group = "libvirtd";
+        user = "emileet";
+        enable = true;
+      };
       enable = true;
     };
 
