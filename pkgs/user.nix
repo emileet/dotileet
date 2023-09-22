@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
   users.users.emileet.packages = with pkgs; [
-    obs-studio-plugins.obs-ndi
-    obs-studio
     firefox-devedition
     lxappearance
     pavucontrol
@@ -27,5 +25,11 @@
     feh
     dex
     git
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [
+        (callPackage ./kvmfr-obs {})
+        obs-ndi
+      ];
+    })
   ];
 }
