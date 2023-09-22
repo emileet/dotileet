@@ -63,5 +63,31 @@
         withVencord = true;
       };
     })
+    (final: prev: {
+      ndi = prev.ndi.overrideAttrs (oldAttrs: rec {
+        version = "5.6.0";
+        src = builtins.fetchurl {
+          url = "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz";
+          sha256 = "sha256:1xgp2apmabdy07v9yv91pld2imzz9s6z8jbd3mpnpvka7mlm8p3y";
+        };
+        installPhase = ''
+          mkdir $out
+          mv bin/x86_64-linux-gnu $out/bin
+          for i in $out/bin/*; do
+            patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$i"
+          done
+          patchelf --set-rpath "${prev.avahi}/lib:${prev.stdenv.cc.libc}/lib" $out/bin/ndi-record
+          mv lib/x86_64-linux-gnu $out/lib
+          for i in $out/lib/*; do
+            if [ -L "$i" ]; then continue; fi
+            patchelf --set-rpath "${prev.avahi}/lib:${prev.stdenv.cc.libc}/lib" "$i"
+          done
+          mv include examples $out/
+          mkdir -p $out/share/doc/${oldAttrs.pname}-${version}
+          mv licenses $out/share/doc/${oldAttrs.pname}-${version}/licenses
+          mv documentation/* $out/share/doc/${oldAttrs.pname}-${version}/
+        '';
+      });
+    })
   ];
 }
