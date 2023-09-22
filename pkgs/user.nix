@@ -18,6 +18,7 @@
     vscode
     slack
     dunst
+    gimp
     tldr
     rofi
     feh
