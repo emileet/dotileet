@@ -14,13 +14,10 @@
       };
     })
     (final: prev: {
-      looking-glass-client = prev.looking-glass-client.overrideAttrs {
-        src = prev.fetchFromGitHub {
-          repo = "LookingGlass";
-          owner = "gnif";
+      looking-glass-client = prev.looking-glass-client.overrideAttrs (oldAttrs: rec {
+        src = oldAttrs.src.override {
           rev = "e658c2e0a205c40701b00d97364c2a9903ed34cf";
           sha256 = "sha256-AOb79RiHpYnrPv/jHCijAgr4uIe+TUIsY8pmVt0b0cU=";
-          fetchSubmodules = true;
         };
         desktopItem = prev.makeDesktopItem {
           desktopName = "Looking Glass Client";
@@ -30,8 +27,13 @@
           icon = "lg-logo";
           terminal = false;
         };
+        postInstall = ''
+          mkdir -p $out/share/pixmaps
+          ln -s ${desktopItem}/share/applications $out/share/
+          cp $src/resources/lg-logo.png $out/share/pixmaps
+        '';
         version = "dev";
-      };
+      });
     })
     (final: prev: {
       qemu = (prev.qemu.overrideAttrs {
