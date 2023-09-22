@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/lib/obs-plugins
-    install -D liblooking-glass-obs.so $out/lib/obs-plugins/obs-ndi.so
+    install -D liblooking-glass-obs.so $out/lib/obs-plugins/liblooking-glass-obs.so
   '';
 
   meta = with lib; {
