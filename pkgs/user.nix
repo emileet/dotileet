@@ -8,6 +8,7 @@
     lm_sensors
     libnotify
     flameshot
+    obsidian
     rnix-lsp
     hyfetch
     discord
