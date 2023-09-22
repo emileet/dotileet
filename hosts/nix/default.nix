@@ -96,6 +96,10 @@
     enable = true;
   };
 
+  networking.extraHosts = ''
+    10.0.0.2 plsnobully.me git.plsnobully.me cdn.plsnobully.me
+  '';
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   time.timeZone = "Australia/Melbourne";
 
