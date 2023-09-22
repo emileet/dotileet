@@ -54,6 +54,14 @@
       enable = true;
     };
 
+    avahi = {
+      enable = true;
+      publish = {
+        enable = true;
+        userServices = true;
+      };
+    };
+
     flatpak.enable = true;
     tumbler.enable = true;
     gvfs.enable = true;
