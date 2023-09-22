@@ -8,6 +8,7 @@
     pavucontrol
     autotiling
     lm_sensors
+    vscode.fhs
     libnotify
     flameshot
     obsidian
@@ -17,7 +18,6 @@
     wezterm
     barrier
     bottom
-    vscode
     slack
     dunst
     gimp
