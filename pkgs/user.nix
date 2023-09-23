@@ -2,6 +2,7 @@
 {
   users.users.emileet.packages = with pkgs; [
     firefox-devedition
+    spicetify-cli
     lxappearance
     pavucontrol
     autotiling
@@ -27,7 +28,7 @@
     git
     (wrapOBS {
       plugins = with obs-studio-plugins; [
-        (callPackage ./kvmfr-obs {})
+        (callPackage ./kvmfr-obs { })
         obs-ndi
       ];
     })
