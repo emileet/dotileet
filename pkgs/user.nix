@@ -18,6 +18,7 @@
     barrier
     bottom
     slack
+    qt6ct
     dunst
     gimp
     tldr
