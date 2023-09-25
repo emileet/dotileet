@@ -80,7 +80,7 @@
       kernelModules = [ "amdgpu" "vfio" "vfio_pci" "vfio_iommu_type1" ];
     };
 
-    kernelModules = [ "amdgpu" "kvm-amd" "vfio" "vfio_pci" "vfio_iommu_type1" ];
+    kernelModules = [ "amdgpu" "kvm-amd" "vfio" "vfio_pci" "vfio_iommu_type1" "i2c-dev" ];
     blacklistedKernelModules = [ "nvidia" "nouveau" ];
     extraModulePackages = [ ];
 

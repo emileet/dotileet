@@ -4,6 +4,7 @@
     virt-manager
     liquidctl
     qjackctl
+    openrgb
     mdadm
     vban
   ];
@@ -15,6 +16,10 @@
         obs-ndi
       ];
     })
+  ];
+
+  services.udev.packages = with pkgs; [
+    openrgb
   ];
 
   programs = {
