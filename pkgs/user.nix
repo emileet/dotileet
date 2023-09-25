@@ -26,11 +26,5 @@
     feh
     dex
     git
-    (wrapOBS {
-      plugins = with obs-studio-plugins; [
-        (callPackage ./kvmfr-obs { })
-        obs-ndi
-      ];
-    })
   ];
 }

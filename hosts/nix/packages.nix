@@ -8,6 +8,15 @@
     vban
   ];
 
+  users.users.emileet.packages = with pkgs; [
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [
+        (callPackage ../../pkgs/kvmfr-obs { })
+        obs-ndi
+      ];
+    })
+  ];
+
   programs = {
     thunar.enable = true;
     nix-ld.enable = true;
