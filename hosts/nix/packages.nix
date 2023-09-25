@@ -5,7 +5,6 @@
     liquidctl
     qjackctl
     mdadm
-    vban
   ];
 
   programs = {

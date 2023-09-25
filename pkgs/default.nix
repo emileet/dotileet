@@ -1,10 +1,11 @@
-args@{ font-sf-mono, src-kvmfr, src-vban, src-ndi, ... }:
+{ font-sf-mono, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   imports = [
-    (import ./overlays.nix args)
+    (import ./overlays.nix { inherit font-sf-mono; })
     ./system.nix
     ./user.nix
     ./kvmfr
+    ./vban
   ];
 }

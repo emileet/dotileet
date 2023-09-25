@@ -1,4 +1,4 @@
-{ font-sf-mono, src-kvmfr, src-vban, src-ndi, ... }:
+{ font-sf-mono, ... }:
 {
   nixpkgs.overlays = [
     (final: prev: {
@@ -15,8 +15,10 @@
     })
     (final: prev: {
       looking-glass-client = prev.looking-glass-client.overrideAttrs (oldAttrs: rec {
-        src = src-kvmfr;
-        version = "dev";
+        src = oldAttrs.src.override {
+          rev = "e658c2e0a205c40701b00d97364c2a9903ed34cf";
+          sha256 = "sha256-AOb79RiHpYnrPv/jHCijAgr4uIe+TUIsY8pmVt0b0cU=";
+        };
         desktopItem = prev.makeDesktopItem {
           desktopName = "Looking Glass Client";
           exec = "looking-glass-client";
@@ -30,6 +32,7 @@
           ln -s ${desktopItem}/share/applications $out/share/
           cp $src/resources/lg-logo.png $out/share/pixmaps
         '';
+        version = "dev";
       });
     })
     (final: prev: {
@@ -62,12 +65,11 @@
     })
     (final: prev: {
       ndi = prev.ndi.overrideAttrs (oldAttrs: rec {
-        version = "dev";
-        src = src-ndi;
-        unpackPhase = ''
-          echo y | $src
-          sourceRoot="NDI SDK for Linux";
-        '';
+        version = "5.6.0";
+        src = builtins.fetchurl {
+          url = "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz";
+          sha256 = "sha256:1xgp2apmabdy07v9yv91pld2imzz9s6z8jbd3mpnpvka7mlm8p3y";
+        };
         installPhase = ''
           mkdir $out
           mv bin/x86_64-linux-gnu $out/bin
@@ -86,9 +88,6 @@
           mv documentation/* $out/share/doc/${oldAttrs.pname}-${version}/
         '';
       });
-    })
-    (final: prev: {
-      vban = prev.callPackage ./vban { inherit src-vban; };
     })
   ];
 }
