@@ -10,11 +10,24 @@
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
     };
+
+    src-kvmfr = {
+      url = "git+https://github.com/gnif/LookingGlass?submodules=1";
+      flake = false;
+    };
+
+    src-vban = {
+      url = "git+https://github.com/quiniouben/vban?submodules=1";
+      flake = false;
+    };
+
+    src-ndi = {
+      url = "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, impermanence, font-sf-mono }: {
-    nixosConfigurations = (import ./hosts {
-      inherit nixpkgs impermanence font-sf-mono;
-    });
+  outputs = args@{ self, nixpkgs, impermanence, font-sf-mono, src-kvmfr, src-vban, src-ndi }: {
+    nixosConfigurations = (import ./hosts args);
   };
 }

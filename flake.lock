@@ -50,7 +50,58 @@
       "inputs": {
         "font-sf-mono": "font-sf-mono",
         "impermanence": "impermanence",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "src-kvmfr": "src-kvmfr",
+        "src-ndi": "src-ndi",
+        "src-vban": "src-vban"
+      }
+    },
+    "src-kvmfr": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694606071,
+        "narHash": "sha256-AOb79RiHpYnrPv/jHCijAgr4uIe+TUIsY8pmVt0b0cU=",
+        "ref": "refs/heads/master",
+        "rev": "e658c2e0a205c40701b00d97364c2a9903ed34cf",
+        "revCount": 3114,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/gnif/LookingGlass"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/gnif/LookingGlass"
+      }
+    },
+    "src-ndi": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Pn6KQ37WxVCgnCVwoECmnMFu62SNAqXZk7grDEhGM3s=",
+        "type": "tarball",
+        "url": "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz"
+      }
+    },
+    "src-vban": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1602441870,
+        "narHash": "sha256-V7f+jcj3NpxXNr15Ozx2is4ReeeVpl3xvelMuPNfNT0=",
+        "ref": "refs/heads/master",
+        "rev": "4f69e5a6cd02627a891f2b15c2cf01bf4c87d23d",
+        "revCount": 97,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/quiniouben/vban"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/quiniouben/vban"
       }
     }
   },
