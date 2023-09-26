@@ -6,8 +6,6 @@ in
 {
   config = mkIf cfg.enable {
     services = {
-      gnome.gnome-keyring.enable = true;
-
       xserver = {
         windowManager.i3 = {
           extraSessionCommands = ''
@@ -43,10 +41,29 @@ in
             enable = true;
           };
         };
+
         desktopManager.xterm.enable = false;
         libinput.enable = false;
         layout = "us";
         enable = true;
+      };
+
+      gnome.gnome-keyring.enable = true;
+    };
+
+    systemd.user.services = {
+      polkit-gnome-authentication-agent-1 = {
+        description = "polkit-gnome-authentication-agent-1";
+        wantedBy = [ "graphical-session.target" ];
+        wants = [ "graphical-session.target" ];
+        after = [ "graphical-session.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          TimeoutStopSec = 10;
+          RestartSec = 1;
+        };
       };
     };
 
