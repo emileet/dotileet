@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   users.users.emileet.packages = with pkgs; [
-    firefox-devedition
     spicetify-cli
     lxappearance
     pavucontrol

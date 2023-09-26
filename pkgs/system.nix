@@ -1,6 +1,6 @@
 { pkgs, ... }:
-{
-  environment.systemPackages = with pkgs; [
+with pkgs; {
+  environment.systemPackages = [
     catppuccin-cursors.mochaLight
     catppuccin-gtk
     papirus-icon-theme
@@ -14,11 +14,15 @@
     vim
   ];
 
-  fonts.packages = with pkgs; [
+  fonts.packages = [
     noto-fonts-cjk
     sf-mono-liga
     font-awesome
     tamzen
     siji
   ];
+
+  programs = {
+    zsh.enable = true;
+  };
 }

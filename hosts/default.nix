@@ -1,11 +1,13 @@
 { nixpkgs, impermanence, font-sf-mono, src-kvmfr, src-vban, src-ndi, ... }:
 let
   pkgs = (import ../pkgs { inherit font-sf-mono src-kvmfr src-vban src-ndi; });
-  lib = nixpkgs.lib;
-  sharedModules = [
+
+  sharedModules = (import ../modules) ++ [
     "${impermanence}/nixos.nix"
     pkgs
   ];
+
+  lib = nixpkgs.lib;
 in
 {
   nix = lib.nixosSystem {

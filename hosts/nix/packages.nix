@@ -23,18 +23,6 @@
   ];
 
   programs = {
-    thunar.enable = true;
-    nix-ld.enable = true;
-    dconf.enable = true;
-    mtr.enable = true;
-
-    zsh = {
-      shellAliases = {
-        update = "sudo nixos-rebuild switch";
-      };
-      enable = true;
-    };
-
     gnupg.agent = {
       enableSSHSupport = true;
       enable = true;
@@ -44,5 +32,11 @@
       defaultEditor = true;
       enable = true;
     };
+
+    firefox.enable = true;
+    thunar.enable = true;
+    nix-ld.enable = true;
+    dconf.enable = true;
+    mtr.enable = true;
   };
 }

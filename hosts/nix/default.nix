@@ -23,16 +23,6 @@
       };
       enable = true;
     };
-
-    kvmfr = {
-      shm = {
-        group = "libvirtd";
-        user = "emileet";
-        enable = true;
-      };
-      enable = true;
-    };
-
     docker.enable = true;
   };
 
@@ -45,15 +35,6 @@
       enable = true;
     };
 
-    openssh = {
-      settings = {
-        KbdInteractiveAuthentication = false;
-        PasswordAuthentication = false;
-      };
-      ports = [ 2269 ];
-      enable = true;
-    };
-
     avahi = {
       enable = true;
       publish = {
@@ -62,6 +43,7 @@
       };
     };
 
+    openssh.enable = true;
     flatpak.enable = true;
     tumbler.enable = true;
     gvfs.enable = true;
@@ -82,6 +64,7 @@
         };
       };
     };
+
     user.services = {
       polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
@@ -97,11 +80,6 @@
         };
       };
     };
-  };
-
-  xdg.portal = {
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    enable = true;
   };
 
   networking.extraHosts = ''

@@ -12,19 +12,23 @@
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
     opengl.enable = true;
+    i2c.enable = true;
   };
 
   networking = {
     networkmanager.enable = true;
+
     interfaces = {
       enp69s0.useDHCP = true;
       br0.useDHCP = true;
     };
+
     bridges = {
       "br0" = {
         interfaces = [ "enp69s0" ];
       };
     };
+
     firewall = {
       # allowedTCPPorts = [ ... ];
       # allowedUDPPorts = [ ... ];
@@ -77,11 +81,11 @@
 
     initrd = {
       availableKernelModules = [ "xhci_pci" "nvme" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
-      kernelModules = [ "amdgpu" "vfio" "vfio_pci" "vfio_iommu_type1" ];
+      kernelModules = [ "amdgpu" ];
     };
 
-    kernelModules = [ "amdgpu" "kvm-amd" "vfio" "vfio_pci" "vfio_iommu_type1" "i2c-dev" ];
     blacklistedKernelModules = [ "nvidia" "nouveau" ];
+    kernelModules = [ "amdgpu" "kvm-amd" ];
     extraModulePackages = [ ];
 
     tmp.cleanOnBoot = true;
