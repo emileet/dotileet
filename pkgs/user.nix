@@ -10,6 +10,7 @@
     vscode.fhs
     libnotify
     flameshot
+    shotwell
     obsidian
     rnix-lsp
     hyfetch
