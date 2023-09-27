@@ -3,6 +3,8 @@ let
   wallpaper = "/storage/pictures/wallpapers/nightsky-2560.jpg";
 in
 {
+  home-manager.users.emileet.xsession.windowManager.i3.wallpaper = "${wallpaper}";
+
   services.xserver = {
     displayManager = {
       lightdm.background = "${wallpaper}";
@@ -20,31 +22,5 @@ in
 
     windowManager.i3.enable = true;
     autorun = true;
-  };
-
-  home-manager.users.emileet.xsession.windowManager.i3 = {
-    wallpaper = "${wallpaper}";
-    config =
-      let
-        ws1 = "1:一";
-        ws2 = "2:二";
-        ws3 = "3:三";
-        ws4 = "4:四";
-        ws5 = "5:五";
-        ws6 = "6:六";
-        ws7 = "7:七";
-        ws8 = "8:八";
-        ws9 = "9:九";
-        ws10 = "10:十";
-      in
-      {
-        workspaceOutputAssign = [
-          { workspace = "${ws1}"; output = "DisplayPort-0"; }
-          { workspace = "${ws2}"; output = "DisplayPort-0"; }
-          { workspace = "${ws8}"; output = "DisplayPort-1"; }
-          { workspace = "${ws9}"; output = "DisplayPort-1"; }
-          { workspace = "${ws10}"; output = "DisplayPort-1"; }
-        ];
-      };
   };
 }

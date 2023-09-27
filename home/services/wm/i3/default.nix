@@ -1,6 +1,7 @@
 { lib, pkgs, config, osConfig, ... }:
 with lib;
 let
+  hostName = osConfig.networking.hostName;
   cfg = config.xsession.windowManager.i3;
 in
 {
@@ -133,6 +134,14 @@ in
               "Shift+Print" = "exec --no-startup-id flameshot gui -c";
               "Print" = "exec --no-startup-id flameshot screen -c";
             };
+
+          workspaceOutputAssign = mkIf (hostName == "nix") [
+            { workspace = "${ws1}"; output = "DisplayPort-0"; }
+            { workspace = "${ws2}"; output = "DisplayPort-0"; }
+            { workspace = "${ws8}"; output = "DisplayPort-1"; }
+            { workspace = "${ws9}"; output = "DisplayPort-1"; }
+            { workspace = "${ws10}"; output = "DisplayPort-1"; }
+          ];
 
           colors = {
             focusedInactive = {
