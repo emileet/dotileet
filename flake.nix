@@ -6,6 +6,11 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     font-sf-mono = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
@@ -27,7 +32,7 @@
     };
   };
 
-  outputs = args@{ self, nixpkgs, impermanence, font-sf-mono, src-kvmfr, src-vban, src-ndi }: {
+  outputs = args@{ self, nixpkgs, impermanence, home-manager, font-sf-mono, src-kvmfr, src-vban, src-ndi }: {
     nixosConfigurations = (import ./hosts args);
   };
 }

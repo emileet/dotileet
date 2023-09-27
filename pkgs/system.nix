@@ -6,9 +6,6 @@ with pkgs; {
     papirus-icon-theme
     nix-diff
     pciutils
-    killall
-    polybar
-    picom
     htop
     wget
     vim

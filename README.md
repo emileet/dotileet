@@ -12,11 +12,11 @@ sudo nixos-rebuild switch --flake .#HOSTNAME
 
 ## hosts
 
-| hostname  | description                  |
-| --------- | ---------------------------- |
-| nix       | my main threadripper desktop |
+| hostname | description                  |
+| -------- | ---------------------------- |
+| nix      | my main threadripper desktop |
 
 ## todo
 
-- actually migrate my dots here (home-manager maybe?)
+- completely migrate my dots here
 - clean up hosts directory
