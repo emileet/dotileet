@@ -18,10 +18,6 @@ in
 {
   nix = lib.nixosSystem {
     system = "x86_64-linux";
-    modules = [ ./nix ] ++ sharedModules ++ [{
-      home-manager.extraSpecialArgs = {
-        graphical = true;
-      };
-    }];
+    modules = [ ./nix ] ++ sharedModules;
   };
 }

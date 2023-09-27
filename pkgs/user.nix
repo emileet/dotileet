@@ -22,10 +22,7 @@
     dunst
     gimp
     tldr
-    rofi
     eza
-    feh
-    dex
     git
   ];
 }

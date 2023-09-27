@@ -2,3 +2,4 @@
   ./picom
   ./polybar
 ]
+++ (import ./wm)

@@ -1,0 +1,222 @@
+{ lib, pkgs, config, osConfig, ... }:
+with lib;
+let
+  cfg = config.xsession.windowManager.i3;
+in
+{
+  options.xsession.windowManager.i3 = {
+    wallpaper = mkOption {
+      type = types.str;
+      default = "";
+      description = "wallpaper path";
+    };
+  };
+
+  config = mkIf cfg.enable {
+    xsession.windowManager.i3 = {
+      config =
+        let
+          ws1 = "1:一";
+          ws2 = "2:二";
+          ws3 = "3:三";
+          ws4 = "4:四";
+          ws5 = "5:五";
+          ws6 = "6:六";
+          ws7 = "7:七";
+          ws8 = "8:八";
+          ws9 = "9:九";
+          ws10 = "10:十";
+        in
+        {
+          startup = [
+            (mkIf osConfig.services.flatpak.enable {
+              command = "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal";
+              notification = false;
+              always = true;
+            })
+            (mkIf config.services.polybar.enable {
+              command = "systemctl --user restart polybar";
+              notification = false;
+              always = false;
+            })
+            (mkIf (cfg.wallpaper != "") {
+              command = "${pkgs.feh}/bin/feh --bg-fill ${cfg.wallpaper}";
+              notification = false;
+              always = false;
+            })
+            {
+              command = "~/.config/flameshot/launch.sh";
+              notification = false;
+              always = true;
+            }
+            {
+              command = "barriers --disable-crypto";
+              notification = false;
+              always = false;
+            }
+            {
+              command = "~/.config/vban/launch.sh";
+              notification = false;
+              always = true;
+            }
+            {
+              command = "autotiling";
+              notification = false;
+              always = true;
+            }
+          ];
+
+          assigns = {
+            "${ws1}" = [{ class = "looking-glass-client"; }];
+          };
+
+          window = {
+            commands = [
+              {
+                command = "floating enable";
+                criteria.class = "looking-glass-client";
+              }
+              {
+                command = "border pixel 0";
+                criteria.class = "^.*";
+              }
+            ];
+            border = 0;
+          };
+
+          keybindings = let modifier = cfg.config.modifier; in
+            {
+              "${modifier}+d" = ''exec --no-startup-id ${pkgs.rofi}/bin/rofi -modi drun -show drun -display-drun "run" -config ~/.config/rofi/config'';
+              "${modifier}+Shift+p" = "exec --no-startup-id sh ~/.config/i3/scripts/toggle-service.sh picom";
+              "${modifier}+Return" = "exec --no-startup-id wezterm";
+
+              "${modifier}+Shift+e" = ''exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"'';
+              "${modifier}+Shift+r" = "restart";
+              "${modifier}+Shift+c" = "reload";
+              "${modifier}+Shift+q" = "kill";
+
+              "${modifier}+Shift+o" = "floating enable, resize set 1920 1080, move position center";
+              "${modifier}+Shift+space" = "floating toggle";
+              "${modifier}+Shift+f" = "fullscreen toggle";
+              "${modifier}+space" = "focus mode_toggle";
+              "${modifier}+r" = ''mode "resize"'';
+              "${modifier}+a" = "focus parent";
+
+              "${modifier}+Right" = "focus right";
+              "${modifier}+Left" = "focus left";
+              "${modifier}+Down" = "focus down";
+              "${modifier}+Up" = "focus up";
+
+              "${modifier}+Shift+Right" = "move right";
+              "${modifier}+Shift+Left" = "move left";
+              "${modifier}+Shift+Down" = "move down";
+              "${modifier}+Shift+Up" = "move up";
+
+              "${modifier}+e" = "layout toggle split";
+              "${modifier}+s" = "layout stacking";
+              "${modifier}+w" = "layout tabbed";
+
+              "${modifier}+h" = "split h";
+              "${modifier}+v" = "split v";
+
+              "${modifier}+1" = "workspace number ${ws1}";
+              "${modifier}+2" = "workspace number ${ws2}";
+              "${modifier}+3" = "workspace number ${ws3}";
+              "${modifier}+4" = "workspace number ${ws4}";
+              "${modifier}+5" = "workspace number ${ws5}";
+              "${modifier}+6" = "workspace number ${ws6}";
+              "${modifier}+7" = "workspace number ${ws7}";
+              "${modifier}+8" = "workspace number ${ws8}";
+              "${modifier}+9" = "workspace number ${ws9}";
+              "${modifier}+0" = "workspace number ${ws10}";
+
+              "Shift+Print" = "exec --no-startup-id flameshot gui -c";
+              "Print" = "exec --no-startup-id flameshot screen -c";
+            };
+
+          colors = {
+            focusedInactive = {
+              border = "#100d1f99";
+              background = "#100d1f99";
+              text = "#ffffff";
+              indicator = "";
+              childBorder = "";
+            };
+
+            focused = {
+              border = "#100d1f99";
+              background = "#100d1f99";
+              text = "#ffffff";
+              indicator = "";
+              childBorder = "";
+            };
+
+            unfocused = {
+              border = "#100d1f50";
+              background = "#100d1f50";
+              text = "#ffffff";
+              indicator = "";
+              childBorder = "";
+            };
+
+            placeholder = {
+              border = "#100d1f50";
+              background = "#100d1f50";
+              text = "#ffffff";
+              indicator = "";
+              childBorder = "";
+            };
+
+            urgent = {
+              border = "#100d1f50";
+              background = "#100d1f50";
+              text = "#ffffff";
+              indicator = "#900000";
+              childBorder = "#900000";
+            };
+
+            background = "#100d1f00";
+          };
+
+          fonts = {
+            names = [ "Liga SFMono Nerd Font" ];
+            style = "Regular";
+            size = 9.0;
+          };
+
+          gaps = {
+            inner = 25;
+            outer = 50;
+          };
+
+          modifier = "Mod4";
+          bars = [ ];
+        };
+    };
+
+    home.file."${config.xdg.configHome}/i3/scripts" = {
+      source = ./scripts;
+      recursive = true;
+    };
+
+    systemd.user.services.polkit-gnome-authentication-agent-1 = {
+      Unit = {
+        Description = "polkit-gnome-authentication-agent-1";
+        After = [ "graphical-session-pre.target" ];
+        PartOf = [ "graphical-session.target" ];
+      };
+
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        TimeoutStopSec = 10;
+        RestartSec = 1;
+      };
+
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
+  };
+}

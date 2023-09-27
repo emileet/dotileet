@@ -1,13 +1,19 @@
-{ lib, graphical, ... }:
-with lib; {
+{ lib, osConfig, ... }:
+with lib;
+let
+  wm = osConfig.services.xserver.windowManager;
+in
+{
   imports = (import ./services);
   home.stateVersion = "23.11";
 
-  services = {
-    picom = mkIf graphical {
-      enable = true;
-    };
-    polybar = mkIf graphical {
+  services = { } // mkIf wm.i3.enable {
+    polybar.enable = true;
+    picom.enable = true;
+  };
+
+  xsession = {
+    windowManager.i3 = mkIf wm.i3.enable {
       enable = true;
     };
   };
