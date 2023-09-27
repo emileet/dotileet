@@ -1,8 +1,11 @@
 { pkgs, ... }:
+let
+  wallpaper = "/storage/pictures/wallpapers/nightsky-2560.jpg";
+in
 {
   services.xserver = {
     displayManager = {
-      lightdm.background = "/storage/pictures/wallpapers/nightsky-2560.jpg";
+      lightdm.background = "${wallpaper}";
       setupCommands = ''
         LEFT='DisplayPort-1'
         RIGHT='DisplayPort-0'
@@ -20,7 +23,7 @@
   };
 
   home-manager.users.emileet.xsession.windowManager.i3 = {
-    wallpaper = "/storage/pictures/wallpapers/nightsky-2560.jpg";
+    wallpaper = "${wallpaper}";
     config =
       let
         ws1 = "1:一";
