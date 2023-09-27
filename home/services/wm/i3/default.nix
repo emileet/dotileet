@@ -56,11 +56,6 @@ in
               always = false;
             }
             {
-              command = "~/.config/vban/launch.sh";
-              notification = false;
-              always = true;
-            }
-            {
               command = "autotiling";
               notification = false;
               always = true;

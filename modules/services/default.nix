@@ -1,4 +1,5 @@
 [
   ./openssh
+  ./vban
 ]
 ++ (import ./wm)
