@@ -46,14 +46,14 @@ in
               always = false;
             })
             {
-              command = "~/.config/flameshot/launch.sh";
-              notification = false;
-              always = true;
-            }
-            {
               command = "barriers --disable-crypto";
               notification = false;
               always = false;
+            }
+            {
+              command = "flameshot &";
+              notification = false;
+              always = true;
             }
             {
               command = "autotiling";
