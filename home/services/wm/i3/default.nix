@@ -1,6 +1,7 @@
 { lib, pkgs, config, osConfig, ... }:
 with lib;
 let
+  i3Enabled = osConfig.services.xserver.windowManager.i3.enable;
   hostName = osConfig.networking.hostName;
   cfg = config.xsession.windowManager.i3;
 in
@@ -13,8 +14,14 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf i3Enabled {
+    services = {
+      polybar.enable = true;
+      picom.enable = true;
+    };
+
     xsession.windowManager.i3 = {
+      enable = true;
       config =
         let
           ws1 = "1:一";
@@ -35,16 +42,16 @@ in
               notification = false;
               always = true;
             })
-            (mkIf config.services.polybar.enable {
-              command = "systemctl --user restart polybar";
-              notification = false;
-              always = false;
-            })
             (mkIf (cfg.wallpaper != "") {
               command = "${pkgs.feh}/bin/feh --bg-fill ${cfg.wallpaper}";
               notification = false;
               always = false;
             })
+            {
+              command = "systemctl --user restart polybar";
+              notification = false;
+              always = false;
+            }
             {
               command = "barriers --disable-crypto";
               notification = false;
