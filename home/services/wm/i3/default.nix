@@ -126,6 +126,17 @@ in
               "${modifier}+9" = "workspace number ${ws9}";
               "${modifier}+0" = "workspace number ${ws10}";
 
+              "${modifier}+Shift+1" = "move container to workspace ${ws1}";
+              "${modifier}+Shift+2" = "move container to workspace ${ws2}";
+              "${modifier}+Shift+3" = "move container to workspace ${ws3}";
+              "${modifier}+Shift+4" = "move container to workspace ${ws4}";
+              "${modifier}+Shift+5" = "move container to workspace ${ws5}";
+              "${modifier}+Shift+6" = "move container to workspace ${ws6}";
+              "${modifier}+Shift+7" = "move container to workspace ${ws7}";
+              "${modifier}+Shift+8" = "move container to workspace ${ws8}";
+              "${modifier}+Shift+9" = "move container to workspace ${ws9}";
+              "${modifier}+Shift+0" = "move container to workspace ${ws10}";
+
               "Shift+Print" = "exec --no-startup-id flameshot gui -c";
               "Print" = "exec --no-startup-id flameshot screen -c";
             };
