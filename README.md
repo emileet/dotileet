@@ -19,4 +19,3 @@ sudo nixos-rebuild switch --flake .#HOSTNAME
 ## todo
 
 - completely migrate my dots here
-- clean up hosts directory

@@ -1,6 +1,7 @@
 { pkgs, ... }:
+with pkgs;
 {
-  home-manager.users.emileet.home.packages = with pkgs; [
+  home-manager.users.emileet.home.packages = [
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         (callPackage ../../pkgs/kvmfr-obs { })
@@ -9,7 +10,7 @@
     })
   ];
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     virt-manager
     pavucontrol
     liquidctl
@@ -19,25 +20,7 @@
     vban
   ];
 
-  services.udev.packages = with pkgs; [
+  services.udev.packages = [
     openrgb
   ];
-
-  programs = {
-    gnupg.agent = {
-      enableSSHSupport = true;
-      enable = true;
-    };
-
-    neovim = {
-      defaultEditor = true;
-      enable = true;
-    };
-
-    firefox.enable = true;
-    thunar.enable = true;
-    nix-ld.enable = true;
-    dconf.enable = true;
-    mtr.enable = true;
-  };
 }
