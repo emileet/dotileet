@@ -4,6 +4,7 @@ with pkgs; {
     catppuccin-cursors.mochaLight
     catppuccin-gtk
     papirus-icon-theme
+    lm_sensors
     nix-diff
     pciutils
     htop

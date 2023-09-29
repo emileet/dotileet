@@ -1,28 +1,31 @@
-{ pkgs, ... }:
-{
-  users.users.emileet.packages = with pkgs; [
+lib: pkgs: osConfig:
+with lib; with pkgs;
+let
+  graphical = osConfig.services.xserver.enable;
+in
+mkMerge [
+  (mkIf graphical [
     spicetify-cli
     lxappearance
-    pavucontrol
-    autotiling
-    lm_sensors
     vscode.fhs
     libnotify
     flameshot
-    shotwell
     obsidian
-    rnix-lsp
-    hyfetch
+    shotwell
     discord
     wezterm
     barrier
-    bottom
-    slack
     qt6ct
     dunst
+    slack
     gimp
+  ])
+  ([
+    rnix-lsp
+    hyfetch
+    bottom
     tldr
     eza
     git
-  ];
-}
+  ])
+]

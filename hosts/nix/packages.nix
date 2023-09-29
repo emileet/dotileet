@@ -1,21 +1,22 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    virt-manager
-    liquidctl
-    qjackctl
-    openrgb
-    mdadm
-    vban
-  ];
-
-  users.users.emileet.packages = with pkgs; [
+  home-manager.users.emileet.home.packages = with pkgs; [
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         (callPackage ../../pkgs/kvmfr-obs { })
         obs-ndi
       ];
     })
+  ];
+
+  environment.systemPackages = with pkgs; [
+    virt-manager
+    pavucontrol
+    liquidctl
+    qjackctl
+    openrgb
+    mdadm
+    vban
   ];
 
   services.udev.packages = with pkgs; [

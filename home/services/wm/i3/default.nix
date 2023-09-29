@@ -15,6 +15,8 @@ in
   };
 
   config = mkIf i3Enabled {
+    home.packages = with pkgs; [ autotiling ];
+
     services = {
       polybar.enable = true;
       picom.enable = true;
