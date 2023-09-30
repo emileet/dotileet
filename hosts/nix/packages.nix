@@ -11,7 +11,6 @@ with pkgs;
   ];
 
   environment.systemPackages = [
-    virt-manager
     pavucontrol
     liquidctl
     qjackctl

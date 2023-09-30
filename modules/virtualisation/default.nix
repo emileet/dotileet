@@ -1,10 +1,11 @@
-{ lib, config, ... }:
+{ lib, pkgs, config, ... }:
 with lib;
 let
   cfg = config.virtualisation;
 in
 {
   config = mkIf cfg.libvirtd.enable {
+    environment.systemPackages = with pkgs; [ virt-manager ];
     virtualisation = {
       kvmfr = {
         shm = {
