@@ -8,6 +8,7 @@
       extraGroups = [
         "libvirtd"
         "realtime"
+        "docker"
         "audio"
         "wheel"
       ];
