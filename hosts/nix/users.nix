@@ -11,6 +11,7 @@
         "docker"
         "audio"
         "wheel"
+        "input"
       ];
     };
     mutableUsers = false;
