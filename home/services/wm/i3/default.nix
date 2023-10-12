@@ -78,6 +78,10 @@ in
           window = {
             commands = [
               {
+                command = "floating enable, floating enable, move container to workspace ${ws1}, move position 2880 160";
+                criteria.class = "vmileet";
+              }
+              {
                 command = "floating enable";
                 criteria.class = "looking-glass-client";
               }
