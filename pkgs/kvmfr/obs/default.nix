@@ -1,7 +1,7 @@
 { lib, stdenv, obs-studio, cmake, libbfd, libGL, looking-glass-client, ... }:
 
 stdenv.mkDerivation rec {
-  pname = "looking-glass-obs";
+  pname = "obs-kvmfr";
   version = looking-glass-client.version;
 
   nativeBuildInputs = [ cmake ];

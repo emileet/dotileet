@@ -89,6 +89,7 @@
     })
     (final: prev: {
       vban = prev.callPackage ./vban { inherit src-vban; };
+      obs-kvmfr = prev.callPackage ./kvmfr/obs { };
     })
   ];
 }

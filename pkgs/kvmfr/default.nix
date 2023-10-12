@@ -37,7 +37,7 @@ in
     environment.systemPackages = [ pkgs.looking-glass-client ];
 
     boot.extraModulePackages = with config.boot.kernelPackages; [
-      (pkgs.callPackage ./package.nix { inherit kernel; })
+      (pkgs.callPackage ./kmod { inherit kernel; })
     ];
 
     boot.initrd.kernelModules = [ "kvmfr" ];

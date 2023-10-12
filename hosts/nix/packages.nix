@@ -4,7 +4,7 @@ with pkgs;
   home-manager.users.emileet.home.packages = [
     (wrapOBS {
       plugins = with obs-studio-plugins; [
-        (callPackage ../../pkgs/kvmfr-obs { })
+        obs-kvmfr
         obs-ndi
       ];
     })
