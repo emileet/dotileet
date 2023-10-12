@@ -4,6 +4,7 @@ args@{ font-sf-mono, src-kvmfr, src-vban, src-ndi, ... }:
   imports = [
     (import ./overlays.nix args)
     ./system.nix
+    ./memflow
     ./kvmfr
   ];
 }

@@ -15,6 +15,11 @@ in
         };
         enable = true;
       };
+      memflow = {
+        group = "libvirtd";
+        mode = "0660";
+        enable = true;
+      };
     };
     boot = {
       initrd.kernelModules = [ "vfio" "vfio_pci" "vfio_iommu_type1" ];
