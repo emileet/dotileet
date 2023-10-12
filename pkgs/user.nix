@@ -24,6 +24,7 @@ mkMerge [
     rnix-lsp
     hyfetch
     bottom
+    direnv
     tldr
     eza
     git
