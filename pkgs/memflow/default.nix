@@ -25,7 +25,7 @@ in
 
     boot.kernelModules = [ "memflow" ];
 
-    services.udev.extraRules = optionals cfg.enable ''
+    services.udev.extraRules = ''
       KERNEL=="memflow" SUBSYSTEM=="misc" GROUP="${cfg.group}" MODE="${cfg.mode}"
     '';
   };
