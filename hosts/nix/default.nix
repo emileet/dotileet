@@ -64,6 +64,20 @@
         };
       };
     };
+    user = {
+      services = {
+        x0vncserver = {
+          description = "remote desktop service (vnc)";
+          wantedBy = [ "graphical-session.target" ];
+          partOf = [ "graphical-session.target" ];
+          serviceConfig = {
+            ExecStart = "${pkgs.tigervnc}/bin/x0vncserver -rfbauth /nix/secrets/vnc/emileet.passwd";
+            Restart = "always";
+            RestartSec = 3;
+          };
+        };
+      };
+    };
   };
 
   networking.extraHosts = ''
