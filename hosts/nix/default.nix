@@ -66,12 +66,12 @@
     };
     user = {
       services = {
-        x0vncserver = {
+        vncserver = {
           description = "remote desktop service (vnc)";
           wantedBy = [ "graphical-session.target" ];
           partOf = [ "graphical-session.target" ];
           serviceConfig = {
-            ExecStart = "${pkgs.tigervnc}/bin/x0vncserver -rfbauth /nix/secrets/vnc/emileet.passwd";
+            ExecStart = "${pkgs.tigervnc}/bin/x0vncserver -rfbauth /nix/secrets/vnc/emileet";
             Restart = "always";
             RestartSec = 3;
           };
