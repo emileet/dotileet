@@ -19,6 +19,7 @@ mkMerge [
     dunst
     slack
     gimp
+    vlc
   ])
   ([
     rnix-lsp
