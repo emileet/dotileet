@@ -86,6 +86,10 @@ in
                 criteria.class = "looking-glass-client";
               }
               {
+                command = "floating enable";
+                criteria.class = "Lunar Client.*";
+              }
+              {
                 command = "border pixel 0";
                 criteria.class = "^.*";
               }

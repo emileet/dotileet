@@ -2,6 +2,7 @@
 with pkgs;
 {
   home-manager.users.emileet.home.packages = [
+    lunar-client
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         obs-kvmfr
