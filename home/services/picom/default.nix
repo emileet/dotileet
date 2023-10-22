@@ -19,6 +19,7 @@ in
         "class_g = 'Polybar'"
         "class_g = 'i3-frame'"
         "class_g *= 'Lunar Client*'"
+        "class_g = 'ffxiv_dx11.exe'"
         "class_g = 'looking-glass-client'"
         "name = 'Notification area'"
       ];
@@ -37,6 +38,7 @@ in
         "class_g = 'flameshot'"
         "class_g *= 'Minecraft* 1'"
         "class_g *= 'Lunar Client*'"
+        "class_g = 'ffxiv_dx11.exe'"
         "class_g = 'looking-glass-client'"
         "window_type = 'desktop'"
       ];
