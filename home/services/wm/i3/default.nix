@@ -78,16 +78,20 @@ in
           window = {
             commands = [
               {
-                command = "floating enable, floating enable, move container to workspace ${ws1}, move position 2880 160";
+                command = "floating enable, move container to workspace ${ws2}, move position center";
+                criteria.class = "Lunar Client.*";
+              }
+              {
+                command = "floating enable, move container to workspace ${ws2}, move position center";
+                criteria.class = "ffxiv_dx11.exe";
+              }
+              {
+                command = "floating enable, move container to workspace ${ws1}, move position center";
                 criteria.class = "vmileet";
               }
               {
                 command = "floating enable";
                 criteria.class = "looking-glass-client";
-              }
-              {
-                command = "floating enable";
-                criteria.class = "Lunar Client.*";
               }
               {
                 command = "border pixel 0";
@@ -108,6 +112,7 @@ in
               "${modifier}+Shift+c" = "reload";
               "${modifier}+Shift+q" = "kill";
 
+              "${modifier}+Shift+g" = "floating enable, resize set 2560 1390, move position center";
               "${modifier}+Shift+o" = "floating enable, resize set 1920 1080, move position center";
               "${modifier}+Shift+space" = "floating toggle";
               "${modifier}+Shift+f" = "fullscreen toggle";

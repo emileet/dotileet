@@ -7,6 +7,10 @@
     ./hardware
   ];
 
+  programs = {
+    steam.enable = true;
+  };
+
   virtualisation = {
     libvirtd = {
       qemu = {

@@ -11,7 +11,7 @@ in
       setupCommands = ''
         LEFT='DisplayPort-1'
         RIGHT='DisplayPort-0'
-        ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --mode 2560x1440 --rate 165 --primary --output $RIGHT --mode 2560x1440 --rate 165 --right-of $LEFT
+        ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --mode 2560x1440 --rate 165 --output $RIGHT --primary --mode 2560x1440 --rate 165 --right-of $LEFT
       '';
     };
 
