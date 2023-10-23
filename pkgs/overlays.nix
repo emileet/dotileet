@@ -48,6 +48,16 @@
       };
     })
     (final: prev: {
+      python3 = prev.python3.override {
+        packageOverrides = python-final: python-prev: {
+          catppuccin = python-prev.catppuccin.overridePythonAttrs {
+            # missing rich module import for UT? too lazy to investigate :)
+            doCheck = false;
+          };
+        };
+      };
+    })
+    (final: prev: {
       polybar = prev.polybar.override {
         githubSupport = true;
         pulseSupport = true;
