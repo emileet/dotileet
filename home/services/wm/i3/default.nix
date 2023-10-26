@@ -163,6 +163,21 @@ in
               "Print" = "exec --no-startup-id flameshot screen -c";
             };
 
+          modes = {
+            resize = {
+              "Left" = "resize shrink width 10 px or 10 ppt";
+              "Down" = "resize grow height 10 px or 10 ppt";
+              "Up" = "resize shrink height 10 px or 10 ppt";
+              "Right" = "resize grow width 10 px or 10 ppt";
+              "Shift+Left" = "resize shrink width 1 px";
+              "Shift+Down" = "resize grow height 1 px";
+              "Shift+Up" = "resize shrink height 1 px";
+              "Shift+Right" = "resize grow width 1 px";
+              "Escape" = "mode default";
+              "Return" = "mode default";
+            };
+          };
+
           workspaceOutputAssign = mkIf (hostName == "nix") [
             { workspace = "${ws1}"; output = "DisplayPort-0"; }
             { workspace = "${ws2}"; output = "DisplayPort-0"; }
