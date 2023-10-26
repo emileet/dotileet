@@ -26,6 +26,9 @@ mkMerge [
     hyfetch
     bottom
     direnv
+    p7zip
+    unzip
+    file
     tldr
     eza
     git
