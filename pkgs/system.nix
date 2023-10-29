@@ -5,9 +5,6 @@ let
 in
 {
   environment.systemPackages = [
-    catppuccin-cursors.mochaLight
-    catppuccin-gtk
-    papirus-icon-theme
     lm_sensors
     nix-diff
     pciutils

@@ -5,6 +5,9 @@ let
 in
 mkMerge [
   (mkIf graphical [
+    catppuccin-cursors.mochaLight
+    catppuccin-gtk
+    papirus-icon-theme
     spicetify-cli
     lxappearance
     vscode.fhs
