@@ -8,7 +8,6 @@ in
     programs = {
       zsh = {
         shellAliases = {
-          update = "sudo nixos-rebuild switch";
           ela = "eza -lagh --icons --group-directories-first";
           el = "eza -lgh --icons --group-directories-first";
         };

@@ -9,6 +9,10 @@
 
   programs = {
     steam.enable = true;
+    zsh.shellAliases = {
+      update = "sudo nixos-rebuild switch -j 4 --cores 16";
+      bupdate = "sudo nixos-rebuild boot -j 4 --cores 16"; # pronounced boop-date
+    };
   };
 
   virtualisation = {
