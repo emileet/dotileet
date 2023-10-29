@@ -53,11 +53,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1698553279,
-        "narHash": "sha256-T/9P8yBSLcqo/v+FTOBK+0rjzjPMctVymZydbvR/Fak=",
+        "lastModified": 1698575487,
+        "narHash": "sha256-msK5JH24pZZ705PSnvZmFXr9JXUrxPylq9fDC6jnApA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "90e85bc7c1a6fc0760a94ace129d3a1c61c3d035",
+        "rev": "71ef7ea8fe2aff7c21cf2e7ec7283a4276a2f366",
         "type": "github"
       },
       "original": {
@@ -80,11 +80,11 @@
     "src-kvmfr": {
       "flake": false,
       "locked": {
-        "lastModified": 1698404913,
-        "narHash": "sha256-zK2Jx/rhSucI7CkwyctmkCFiSbqvvPzydAgxUJsELiw=",
+        "lastModified": 1698576828,
+        "narHash": "sha256-lrZbHspIHw6KZvqbA9p5KIAa99buAyGFo3eA8DjVEOE=",
         "ref": "refs/heads/master",
-        "rev": "e225f66ceee66fbf2647571136155a5d56120b09",
-        "revCount": 3149,
+        "rev": "1e30539fb238245c18a25dbedbff4df5315df4e9",
+        "revCount": 3153,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/gnif/LookingGlass"
