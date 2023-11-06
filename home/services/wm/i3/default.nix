@@ -82,7 +82,7 @@ in
                 criteria.class = "Lunar Client.*";
               }
               {
-                command = "floating enable, move container to workspace ${ws2}, move position center";
+                command = "floating enable, move container to workspace ${ws1}, move position center";
                 criteria.class = "ffxiv_dx11.exe";
               }
               {
