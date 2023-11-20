@@ -72,7 +72,7 @@ in
           ];
 
           assigns = {
-            "${ws1}" = [{ class = "looking-glass-client"; }];
+            #"${ws1}" = [{ class = "looking-glass-client"; }];
           };
 
           window = {
