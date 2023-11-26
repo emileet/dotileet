@@ -53,6 +53,7 @@ in
 
     xdg.portal = mkIf config.services.flatpak.enable {
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      config.common.default = "*";
       enable = true;
     };
   };

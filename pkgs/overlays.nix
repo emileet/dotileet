@@ -80,6 +80,7 @@
           mkdir $out
           mv bin/x86_64-linux-gnu $out/bin
           for i in $out/bin/*; do
+            if [ -L "$i" ]; then rm $i && continue; fi
             patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$i"
           done
           patchelf --set-rpath "${prev.avahi}/lib:${prev.stdenv.cc.libc}/lib" $out/bin/ndi-record
