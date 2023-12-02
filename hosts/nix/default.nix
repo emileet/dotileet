@@ -95,6 +95,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   time.timeZone = "Australia/Melbourne";
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
   networking.hostName = "nix";
 }
