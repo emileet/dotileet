@@ -13,7 +13,7 @@ mkMerge [
     vscode.fhs
     libnotify
     flameshot
-    obsidian
+#    obsidian
     shotwell
     discord
     wezterm
