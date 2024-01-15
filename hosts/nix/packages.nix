@@ -6,6 +6,7 @@ with pkgs;
     xivlauncher
     (wrapOBS {
       plugins = with obs-studio-plugins; [
+        obs-vkcapture
         obs-kvmfr
         obs-ndi
       ];
