@@ -1,4 +1,4 @@
-{ font-sf-mono, src-kvmfr, src-vban, src-ndi, ... }:
+{ font-sf-mono, src-vkcapture, src-kvmfr, src-vban, src-ndi, ... }:
 {
   nixpkgs.overlays = [
     (final: prev: {
@@ -98,6 +98,7 @@
     })
     (final: prev: {
       vban = prev.callPackage ./vban { inherit src-vban; };
+      obs-vkcapture-kms = prev.callPackage ./vkcapture { inherit src-vkcapture; };
       obs-kvmfr = prev.callPackage ./kvmfr/obs { };
     })
   ];

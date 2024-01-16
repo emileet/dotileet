@@ -75,7 +75,8 @@
         "nixpkgs": "nixpkgs",
         "src-kvmfr": "src-kvmfr",
         "src-ndi": "src-ndi",
-        "src-vban": "src-vban"
+        "src-vban": "src-vban",
+        "src-vkcapture": "src-vkcapture"
       }
     },
     "src-kvmfr": {
@@ -125,6 +126,22 @@
         "submodules": true,
         "type": "git",
         "url": "https://github.com/quiniouben/vban"
+      }
+    },
+    "src-vkcapture": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702747365,
+        "narHash": "sha256-lZ3I34f6wP4Iy6yjSeq5oa+INKQYX3EeV8/wtdxWRFo=",
+        "owner": "scaledteam",
+        "repo": "obs-vkcapture",
+        "rev": "3e3c19a862bf0959322190edc45526d22392e46f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "scaledteam",
+        "repo": "obs-vkcapture",
+        "type": "github"
       }
     }
   },

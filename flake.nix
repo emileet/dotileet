@@ -16,6 +16,11 @@
       flake = false;
     };
 
+    src-vkcapture = {
+      url = "github:scaledteam/obs-vkcapture";
+      flake = false;
+    };
+
     src-kvmfr = {
       url = "git+https://github.com/gnif/LookingGlass?submodules=1";
       flake = false;
@@ -32,7 +37,7 @@
     };
   };
 
-  outputs = args@{ self, nixpkgs, impermanence, home-manager, font-sf-mono, src-kvmfr, src-vban, src-ndi }: {
+  outputs = args@{ self, nixpkgs, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, src-ndi }: {
     nixosConfigurations = (import ./hosts args);
   };
 }
