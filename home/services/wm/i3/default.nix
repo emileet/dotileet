@@ -78,16 +78,20 @@ in
           window = {
             commands = [
               {
+                command = "floating enable, move container to workspace ${ws1}, move position center";
+                criteria.class = "vmileet";
+              }
+              {
                 command = "floating enable, move container to workspace ${ws2}, move position center";
                 criteria.class = "Lunar Client.*";
               }
               {
-                command = "floating enable, move container to workspace ${ws1}, move position center";
+                command = "move container to workspace ${ws1}";
                 criteria.class = "ffxiv_dx11.exe";
               }
               {
-                command = "floating enable, move container to workspace ${ws1}, move position center";
-                criteria.class = "vmileet";
+                command = "move container to workspace ${ws10}";
+                criteria.class = "conhost.exe"; # discord rich presence on wine
               }
               {
                 command = "floating enable";
@@ -112,8 +116,6 @@ in
               "${modifier}+Shift+c" = "reload";
               "${modifier}+Shift+q" = "kill";
 
-              "${modifier}+Shift+g" = "floating enable, resize set 5120 1390, move position center";
-              "${modifier}+Shift+o" = "floating enable, resize set 1920 1080, move position center";
               "${modifier}+Shift+space" = "floating toggle";
               "${modifier}+Shift+f" = "fullscreen toggle";
               "${modifier}+space" = "focus mode_toggle";
@@ -159,6 +161,9 @@ in
               "${modifier}+Shift+9" = "move container to workspace ${ws9}";
               "${modifier}+Shift+0" = "move container to workspace ${ws10}";
 
+              "${modifier}+Shift+o" = ''mode "sizes"'';
+              "${modifier}+Shift+g" = ''mode "gaps"'';
+
               "Shift+Print" = "exec --no-startup-id flameshot gui -c";
               "Print" = "exec --no-startup-id flameshot screen -c";
             };
@@ -173,6 +178,20 @@ in
               "Shift+Down" = "resize grow height 1 px";
               "Shift+Up" = "resize shrink height 1 px";
               "Shift+Right" = "resize grow width 1 px";
+              "Escape" = "mode default";
+              "Return" = "mode default";
+            };
+            sizes = {
+              "1" = "mode default, floating enable, resize set 5120 1390, move position center";
+              "2" = "mode default, floating enable, resize set 1920 1080, move position center";
+              "3" = "mode default, floating enable, resize set 1600 900, move position center";
+              "4" = "mode default, floating enable, resize set 1280 720, move position center";
+              "Escape" = "mode default";
+              "Return" = "mode default";
+            };
+            gaps = {
+              "1" = "mode default, gaps inner all set 0, gaps outer all set 0, gaps bottom all set 25, gaps top all set 25";
+              "2" = "mode default, gaps inner all set 25, gaps outer all set 40";
               "Escape" = "mode default";
               "Return" = "mode default";
             };
@@ -230,7 +249,7 @@ in
 
           gaps = {
             inner = 25;
-            outer = 50;
+            outer = 40;
           };
 
           modifier = "Mod4";
