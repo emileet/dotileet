@@ -112,7 +112,7 @@ in
               "${modifier}+Shift+c" = "reload";
               "${modifier}+Shift+q" = "kill";
 
-              "${modifier}+Shift+g" = "floating enable, resize set 2560 1390, move position center";
+              "${modifier}+Shift+g" = "floating enable, resize set 5120 1390, move position center";
               "${modifier}+Shift+o" = "floating enable, resize set 1920 1080, move position center";
               "${modifier}+Shift+space" = "floating toggle";
               "${modifier}+Shift+f" = "fullscreen toggle";
@@ -177,14 +177,6 @@ in
               "Return" = "mode default";
             };
           };
-
-          workspaceOutputAssign = mkIf (hostName == "nix") [
-            { workspace = "${ws1}"; output = "DisplayPort-0"; }
-            { workspace = "${ws2}"; output = "DisplayPort-0"; }
-            { workspace = "${ws8}"; output = "DisplayPort-1"; }
-            { workspace = "${ws9}"; output = "DisplayPort-1"; }
-            { workspace = "${ws10}"; output = "DisplayPort-1"; }
-          ];
 
           colors = {
             focusedInactive = {

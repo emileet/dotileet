@@ -46,10 +46,9 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-#tray-position = right
-#tray-padding = 8
+tray-position = right
+tray-padding = 8
 #tray-maxsize = 16
-#tray-transparent = true
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev

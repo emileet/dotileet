@@ -8,9 +8,6 @@ in
     services.polybar.script = ''
       polybar bottom -c ~/.config/polybar/bottom.dp-0 &
       polybar top -c ~/.config/polybar/top.dp-0 &
-      sleep 0.1
-      polybar bottom -c ~/.config/polybar/bottom.dp-1 &
-      polybar top -c ~/.config/polybar/top.dp-1 &
     '';
 
     # have our window manager start the polybar service

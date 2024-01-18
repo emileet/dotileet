@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  wallpaper = "/storage/pictures/wallpapers/nightsky-2560.jpg";
+  wallpaper = "/storage/pictures/wallpapers/nightsky-raw.jpg";
 in
 {
   home-manager.users.emileet.xsession.windowManager.i3.wallpaper = "${wallpaper}";
@@ -9,9 +9,8 @@ in
     displayManager = {
       lightdm.background = "${wallpaper}";
       setupCommands = ''
-        LEFT='DisplayPort-1'
-        RIGHT='DisplayPort-0'
-        ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --mode 2560x1440 --rate 165 --output $RIGHT --primary --mode 2560x1440 --rate 165 --right-of $LEFT
+        MONITOR='DisplayPort-0'
+        ${pkgs.xorg.xrandr}/bin/xrandr --output $MONITOR --primary --mode 5120x1440 --rate 240
       '';
     };
 
