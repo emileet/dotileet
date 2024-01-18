@@ -161,6 +161,7 @@ in
               "${modifier}+Shift+9" = "move container to workspace ${ws9}";
               "${modifier}+Shift+0" = "move container to workspace ${ws10}";
 
+              "${modifier}+Shift+l" = ''mode "layouts"'';
               "${modifier}+Shift+o" = ''mode "sizes"'';
               "${modifier}+Shift+g" = ''mode "gaps"'';
 
@@ -178,6 +179,11 @@ in
               "Shift+Down" = "resize grow height 1 px";
               "Shift+Up" = "resize shrink height 1 px";
               "Shift+Right" = "resize grow width 1 px";
+              "Escape" = "mode default";
+              "Return" = "mode default";
+            };
+            layouts = {
+              "0" = "mode default, append_layout ~/.i3/workspace-10.json";
               "Escape" = "mode default";
               "Return" = "mode default";
             };
