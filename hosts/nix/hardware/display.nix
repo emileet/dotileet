@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  wallpaper = "/storage/pictures/wallpapers/nightsky-raw.jpg";
+  wallpaper = "/storage/pictures/wallpapers/nightsky-ultrawide.jpg";
 in
 {
   home-manager.users.emileet.xsession.windowManager.i3.wallpaper = "${wallpaper}";
