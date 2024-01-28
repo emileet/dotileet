@@ -196,8 +196,8 @@ in
               "Return" = "mode default";
             };
             gaps = {
-              "1" = "mode default, gaps inner all set 0, gaps outer all set 0, gaps bottom all set 25, gaps top all set 25";
-              "2" = "mode default, gaps inner all set 25, gaps outer all set 40";
+              "0" = "mode default, gaps inner all set 0, gaps outer all set 0, gaps bottom all set 25, gaps top all set 25";
+              "1" = "mode default, gaps inner all set 25, gaps outer all set 40";
               "Escape" = "mode default";
               "Return" = "mode default";
             };
