@@ -44,7 +44,7 @@ in
 
         desktopManager.xterm.enable = false;
         libinput.enable = false;
-        layout = "us";
+        xkb.layout = "us";
         enable = true;
       };
 
