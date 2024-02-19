@@ -8,15 +8,20 @@
         variant = "mocha";
         size = "compact";
       };
-      python3 = prev.python3.override {
-        packageOverrides = python-final: python-prev: {
-          catppuccin = python-prev.catppuccin.overridePythonAttrs {
-            # missing rich module import for UT? too lazy to investigate :)
-            doCheck = false;
-          };
-        };
-      };
     })
+    # (final: prev: {
+    #   xivlauncher = prev.xivlauncher.overrideAttrs {
+    #     postPatch = ''
+    #       sed -i '73,80d' lib/FFXIVQuickLauncher/src/XIVLauncher.Common/Dalamud/DalamudLauncher.cs
+    #       substituteInPlace lib/FFXIVQuickLauncher/src/XIVLauncher.Common/Game/Patch/Acquisition/Aria/AriaHttpPatchAcquisition.cs \
+    #         --replace 'ariaPath = "aria2c"' 'ariaPath = "${prev.aria2}/bin/aria2c"'
+    #       substituteInPlace lib/FFXIVQuickLauncher/src/XIVLauncher.Common/Dalamud/DalamudLauncher.cs \
+    #         --replace 'https://kamori.goats.dev/Dalamud/Release/VersionInfo?track=' 'https://emi.gay/xiv/dalamud/'
+    #       substituteInPlace lib/FFXIVQuickLauncher/src/XIVLauncher.Common/Dalamud/DalamudUpdater.cs \
+    #         --replace 'release&bucket={this.RolloutBucket}' 'release'
+    #     '';
+    #   };
+    # })
     (final: prev: {
       polybar = prev.polybar.override {
         githubSupport = true;
