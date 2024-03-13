@@ -1,5 +1,5 @@
-{ stdenv, lib, fetchFromGitHub, pkg-config, autoconf, automake, alsaLib, libpulseaudio, libjack2, src-vban, ... }:
-stdenv.mkDerivation rec {
+{ stdenv, lib, pkg-config, autoconf, automake, alsaLib, libpulseaudio, libjack2, src-vban, ... }:
+stdenv.mkDerivation {
   pname = "vban";
   version = "dev";
   src = src-vban;

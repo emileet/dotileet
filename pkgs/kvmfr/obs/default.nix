@@ -1,5 +1,5 @@
 { lib, stdenv, obs-studio, cmake, libbfd, libGL, looking-glass-client, ... }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "obs-kvmfr";
   version = looking-glass-client.version;
 

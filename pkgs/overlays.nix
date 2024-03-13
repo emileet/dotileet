@@ -36,7 +36,7 @@
       };
     })
     (final: prev: {
-      sf-mono-liga = prev.stdenvNoCC.mkDerivation rec {
+      sf-mono-liga = prev.stdenvNoCC.mkDerivation {
         pname = "sf-mono-liga";
         version = "dev";
         src = font-sf-mono;

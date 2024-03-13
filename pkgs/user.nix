@@ -34,5 +34,6 @@ mkMerge [
     tldr
     eza
     git
+    nil
   ])
 ]
