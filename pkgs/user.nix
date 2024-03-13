@@ -25,7 +25,6 @@ mkMerge [
     vlc
   ])
   ([
-    rnix-lsp
     hyfetch
     bottom
     direnv
