@@ -66,6 +66,7 @@
           icon = "lg-logo";
           terminal = false;
         };
+        patches = [];
         postInstall = ''
           mkdir -p $out/share/pixmaps
           ln -s ${desktopItem}/share/applications $out/share/

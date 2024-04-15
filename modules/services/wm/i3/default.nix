@@ -16,7 +16,6 @@ in
         };
 
         displayManager = {
-          defaultSession = "none+i3";
           lightdm = {
             greeters.mini = {
               extraConfig = ''
@@ -48,6 +47,7 @@ in
         enable = true;
       };
 
+      displayManager.defaultSession = "none+i3";
       gnome.gnome-keyring.enable = true;
     };
 
