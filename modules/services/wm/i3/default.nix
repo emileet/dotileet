@@ -42,13 +42,13 @@ in
         };
 
         desktopManager.xterm.enable = false;
-        libinput.enable = false;
         xkb.layout = "us";
         enable = true;
       };
 
       displayManager.defaultSession = "none+i3";
       gnome.gnome-keyring.enable = true;
+      libinput.enable = false;
     };
 
     xdg.portal = mkIf config.services.flatpak.enable {

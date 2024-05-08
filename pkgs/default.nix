@@ -1,4 +1,4 @@
-args@{ font-sf-mono, src-vkcapture, src-kvmfr, src-vban, src-ndi, ... }:
+args@{ ... }:
 {
   nixpkgs.config.allowUnfree = true;
   imports = [

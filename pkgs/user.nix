@@ -21,7 +21,6 @@ mkMerge [
     qt6ct
     dunst
     slack
-    gimp
     vlc
   ])
   ([
