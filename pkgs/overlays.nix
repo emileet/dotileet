@@ -49,7 +49,7 @@
     })
     (final: prev: {
       qemu = (prev.qemu.overrideAttrs {
-        patches = [ /nix/patches/qemu/qemu-vmi-8.1.0.patch ];
+        patches = [ /nix/patches/qemu/qemu-vmi-9.0.1.patch ];
       }).override {
         enableDocs = false;
       };
