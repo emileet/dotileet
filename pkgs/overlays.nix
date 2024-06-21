@@ -29,12 +29,12 @@
         i3Support = true;
       };
     })
-    (final: prev: {
-      discord = prev.discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-      };
-    })
+    # (final: prev: {
+    #   discord = prev.discord.override {
+    #     withOpenASAR = true;
+    #     withVencord = true;
+    #   };
+    # })
     (final: prev: {
       sf-mono-liga = prev.stdenvNoCC.mkDerivation {
         pname = "sf-mono-liga";

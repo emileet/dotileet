@@ -15,7 +15,8 @@ mkMerge [
     flameshot
 #    obsidian
     shotwell
-    discord
+#    discord
+    vesktop
     wezterm
     barrier
     qt6ct
