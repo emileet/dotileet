@@ -11,7 +11,7 @@
   hardware = {
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
-    opengl.enable = true;
+    graphics.enable = true;
     i2c.enable = true;
   };
 
