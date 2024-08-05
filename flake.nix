@@ -2,7 +2,8 @@
   description = ".dotileet - emileet's nixos systems";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
 
@@ -37,7 +38,7 @@
     };
   };
 
-  outputs = args@{ self, nixpkgs, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, src-ndi }: {
+  outputs = args@{ self, nixpkgs, nixpkgs-master, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, src-ndi }: {
     nixosConfigurations = (import ./hosts args);
   };
 }

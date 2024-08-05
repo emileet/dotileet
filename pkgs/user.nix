@@ -6,8 +6,8 @@ in
 mkMerge [
   (mkIf graphical [
     catppuccin-cursors.mochaLight
-    catppuccin-gtk
     papirus-icon-theme
+    colloid-gtk-theme
     spicetify-cli
     lxappearance
     vscode.fhs

@@ -90,10 +90,6 @@ in
                 criteria.class = "ffxiv_dx11.exe";
               }
               {
-                command = "floating enable";
-                criteria.class = "FF Logs Uploader";
-              }
-              {
                 command = "move container to workspace ${ws10}";
                 criteria.class = "conhost.exe"; # discord rich presence on wine
               }

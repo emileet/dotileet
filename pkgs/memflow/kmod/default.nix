@@ -1,26 +1,22 @@
 { stdenv, lib, fetchFromGitHub, kernel, ... }:
 stdenv.mkDerivation rec {
   pname = "memflow-${version}-${kernel.version}";
-  version = "0.1.7";
+  version = "dev";
 
   src = fetchFromGitHub {
     owner = "memflow";
     repo = "memflow-kvm";
-    rev = "refs/tags/v${version}";
-    sha256 = "sha256-IVpK2Y6k9tr4SvCtupOpAvdaMtjz3CAYgh50UWQuEFk=";
+    rev = "refs/tags/bin-main";
+    sha256 = "sha256-KCPHd50qltFXDRE2J5rbWiX7wwFGtbJk3sNXYmaXzJc=";
     fetchSubmodules = true;
   };
-
-  patches = [
-    /nix/patches/memflow/memflow-kmod-0.1.7.patch
-  ];
 
   hardeningDisable = [ "pic" "format" ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
-  preBuild = ''
-    sed -e "s@/lib/modules/\$(.*)@${kernel.dev}/lib/modules/${kernel.modDirVersion}@" -i Makefile
-  '';
+  makeFlags = kernel.makeFlags ++ [
+    "KERNELDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+  ];
 
   installPhase = ''
     install -D ./build/memflow.ko -t $out/lib/modules/${kernel.modDirVersion}/misc/

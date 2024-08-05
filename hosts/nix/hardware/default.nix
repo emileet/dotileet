@@ -12,6 +12,7 @@
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
     graphics.enable = true;
+    xone.enable = true;
     i2c.enable = true;
   };
 
@@ -53,7 +54,7 @@
 
     kernelPackages = pkgs.linuxPackages_zen;
     kernelPatches = [{
-      patch = /nix/patches/linux/linux-vmi-6.9.3.patch;
+      patch = /nix/patches/linux/linux-vmi-6.10.2.patch;
       name = "virtual machine introspection";
       extraConfig = ''
         EVDEV_MIRROR y

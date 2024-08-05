@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f036f2e..692f012 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -134,7 +134,7 @@ install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/obs-gamecapture
+ 
+ if (BUILD_PLUGIN)
+ 	add_executable(vkcapture-kmsgrab src/vkcapture-kmsgrab.c src/capture.c)
+-	target_include_directories(vkcapture-kmsgrab PUBLIC /usr/include/libdrm)
++	target_include_directories(vkcapture-kmsgrab PUBLIC ${DRM_INCLUDE_DIR})
+ 	target_link_libraries(vkcapture-kmsgrab drm)
+ 
+ 	install(TARGETS vkcapture-kmsgrab
+diff --git a/src/vklayer.c b/src/vklayer.c
+index 38e6155..9862068 100644
+--- a/src/vklayer.c
++++ b/src/vklayer.c
+@@ -28,6 +28,14 @@ with this program. If not, see <https://www.gnu.org/licenses/>
+ #include <inttypes.h>
+ #include <vulkan/vk_layer.h>
+ 
++#if defined(__GNUC__) && __GNUC__ >= 4
++#define VK_LAYER_EXPORT __attribute__((visibility("default")))
++#elif defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590)
++#define VK_LAYER_EXPORT __attribute__((visibility("default")))
++#else
++#define VK_LAYER_EXPORT
++#endif
++
+ // Based on obs-studio/plugins/win-capture/graphics-hook/vulkan-capture.c
+ 
+ /* ======================================================================== */

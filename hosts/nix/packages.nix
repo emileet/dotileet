@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-master, ... }:
 with pkgs;
 {
   home-manager.users.emileet.home.packages = [
-    xivlauncher
+    pkgs-master.xivlauncher
+    pkgs-master.fflogs
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         obs-vkcapture-kms

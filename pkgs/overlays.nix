@@ -2,26 +2,12 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      catppuccin-gtk = prev.catppuccin-gtk.override {
-        accents = [ "pink" "lavender" ];
-        tweaks = [ "rimless" ];
-        variant = "mocha";
-        size = "compact";
+      colloid-gtk-theme = prev.colloid-gtk-theme.override {
+        tweaks = [ "rimless" "dracula" ];
+        themeVariants = [ "purple" ];
+        sizeVariants = [ "compact" ];
       };
     })
-    # (final: prev: {
-    #   xivlauncher = prev.xivlauncher.overrideAttrs {
-    #     postPatch = ''
-    #       sed -i '73,80d' lib/FFXIVQuickLauncher/src/XIVLauncher.Common/Dalamud/DalamudLauncher.cs
-    #       substituteInPlace lib/FFXIVQuickLauncher/src/XIVLauncher.Common/Game/Patch/Acquisition/Aria/AriaHttpPatchAcquisition.cs \
-    #         --replace 'ariaPath = "aria2c"' 'ariaPath = "${prev.aria2}/bin/aria2c"'
-    #       substituteInPlace lib/FFXIVQuickLauncher/src/XIVLauncher.Common/Dalamud/DalamudLauncher.cs \
-    #         --replace 'https://kamori.goats.dev/Dalamud/Release/VersionInfo?track=' 'https://emi.gay/xiv/dalamud/'
-    #       substituteInPlace lib/FFXIVQuickLauncher/src/XIVLauncher.Common/Dalamud/DalamudUpdater.cs \
-    #         --replace 'release&bucket={this.RolloutBucket}' 'release'
-    #     '';
-    #   };
-    # })
     (final: prev: {
       polybar = prev.polybar.override {
         githubSupport = true;

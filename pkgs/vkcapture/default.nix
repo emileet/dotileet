@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
     libGL
   ];
 
-  patches = [ /nix/patches/obs-vkcapture/kms-grab.patch ];
+  patches = [ ./vkle-drm.patch ];
 
   DRM_INCLUDE_DIR = "${libdrm.dev}/include/libdrm";
   cmakeFlags = [ "-DDRM_INCLUDE_DIR=${DRM_INCLUDE_DIR}" ];
