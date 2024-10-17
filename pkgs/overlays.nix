@@ -61,8 +61,7 @@
       };
     })
     (final: prev: {
-      ndi = prev.ndi.overrideAttrs (oldAttrs: rec {
-        version = "dev";
+      ndi = prev.ndi.overrideAttrs (oldAttrs: {
         src = src-ndi;
         unpackPhase = ''
           echo y | $src
@@ -72,7 +71,7 @@
           mkdir $out
           mv bin/x86_64-linux-gnu $out/bin
           for i in $out/bin/*; do
-            if [ -L "$i" ]; then rm $i && continue; fi
+            if [ -L "$i" ]; then continue; fi
             patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$i"
           done
           patchelf --set-rpath "${prev.avahi}/lib:${prev.stdenv.cc.libc}/lib" $out/bin/ndi-record
@@ -81,11 +80,18 @@
             if [ -L "$i" ]; then continue; fi
             patchelf --set-rpath "${prev.avahi}/lib:${prev.stdenv.cc.libc}/lib" "$i"
           done
+          rm $out/bin/libndi.so.${oldAttrs.majorVersion}
+          ln -s $out/lib/libndi.so.${oldAttrs.version} $out/bin/libndi.so.${oldAttrs.majorVersion}
           mv include examples $out/
-          mkdir -p $out/share/doc/${oldAttrs.pname}-${version}
-          mv licenses $out/share/doc/${oldAttrs.pname}-${version}/licenses
-          mv documentation/* $out/share/doc/${oldAttrs.pname}-${version}/
+          mkdir -p $out/share/doc/${oldAttrs.pname}-${oldAttrs.version}
+          mv licenses $out/share/doc/${oldAttrs.pname}-${oldAttrs.version}/licenses
+          mv documentation/* $out/share/doc/${oldAttrs.pname}-${oldAttrs.version}/
         '';
+      });
+    })
+    (final: prev: {
+      obs-studio-plugins.obs-ndi = prev.obs-studio-plugins.obs-ndi.overrideAttrs (oldAttrs: {
+        cmakeFlags = [ "-DENABLE_QT=ON" "--compile-no-warning-as-error" ];
       });
     })
     (final: prev: {

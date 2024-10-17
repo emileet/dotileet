@@ -8,6 +8,7 @@
         "/etc/nixos"
         "/etc/ssh"
         "/var/lib/flatpak"
+        "/var/lib/nixos"
         "/var/log"
         "/var/tmp"
         "/tmp"
