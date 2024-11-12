@@ -1,10 +1,10 @@
-{ stdenv, lib, pkg-config, autoconf, automake, alsaLib, libpulseaudio, libjack2, src-vban, ... }:
+{ stdenv, lib, pkg-config, autoconf, automake, alsa-lib, libpulseaudio, libjack2, src-vban, ... }:
 stdenv.mkDerivation {
   pname = "vban";
   version = "dev";
   src = src-vban;
 
-  nativeBuildInputs = [ pkg-config autoconf automake alsaLib.dev libpulseaudio libjack2 ];
+  nativeBuildInputs = [ pkg-config autoconf automake alsa-lib.dev libpulseaudio libjack2 ];
 
   configurePhase = ''
     ./autogen.sh

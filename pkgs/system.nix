@@ -14,7 +14,7 @@ in
   ];
 
   fonts.packages = [
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     sf-mono-liga
     font-awesome
     tamzen

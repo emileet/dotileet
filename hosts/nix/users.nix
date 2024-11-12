@@ -8,6 +8,7 @@
       extraGroups = [
         "libvirtd"
         "realtime"
+        "gamemode"
         "docker"
         "audio"
         "wheel"
