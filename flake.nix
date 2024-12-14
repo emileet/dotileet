@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs";
+    nixpkgs-be.url = "github:nixos/nixpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
 
@@ -33,7 +33,7 @@
     };
   };
 
-  outputs = args@{ self, nixpkgs, nixpkgs-master, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban }: {
+  outputs = args@{ self, nixpkgs, nixpkgs-be, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban }: {
     nixosConfigurations = (import ./hosts args);
   };
 }

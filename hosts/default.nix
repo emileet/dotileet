@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-master, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, ... }:
+{ nixpkgs, nixpkgs-be, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, ... }:
 let
   pkgs = (import ../pkgs { inherit font-sf-mono src-vkcapture src-kvmfr src-vban; });
   home = {
@@ -20,7 +20,7 @@ in
     system = "x86_64-linux";
     modules = [ ./nix ] ++ sharedModules;
     specialArgs = {
-      pkgs-master = import nixpkgs-master {
+      pkgs-be = import nixpkgs-be {
         config.allowUnfree = true;
         inherit system;
       };
