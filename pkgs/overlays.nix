@@ -1,4 +1,4 @@
-{ font-sf-mono, src-vkcapture, src-kvmfr, src-vban, src-ndi, ... }:
+{ font-sf-mono, src-vkcapture, src-kvmfr, src-vban, ... }:
 {
   nixpkgs.overlays = [
     (final: prev: {

@@ -1,6 +1,6 @@
-{ nixpkgs, nixpkgs-master, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, src-ndi, ... }:
+{ nixpkgs, nixpkgs-master, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, ... }:
 let
-  pkgs = (import ../pkgs { inherit font-sf-mono src-vkcapture src-kvmfr src-vban src-ndi; });
+  pkgs = (import ../pkgs { inherit font-sf-mono src-vkcapture src-kvmfr src-vban; });
   home = {
     home-manager.users.emileet = import ../home;
     home-manager.useGlobalPkgs = true;

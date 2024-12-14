@@ -31,14 +31,9 @@
       url = "git+https://github.com/quiniouben/vban?submodules=1";
       flake = false;
     };
-
-    src-ndi = {
-      url = "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz";
-      flake = false;
-    };
   };
 
-  outputs = args@{ self, nixpkgs, nixpkgs-master, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, src-ndi }: {
+  outputs = args@{ self, nixpkgs, nixpkgs-master, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban }: {
     nixosConfigurations = (import ./hosts args);
   };
 }
