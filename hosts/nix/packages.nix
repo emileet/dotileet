@@ -4,6 +4,13 @@ with pkgs;
   home-manager.users.emileet.home.packages = [
     pkgs-be.xivlauncher
     pkgs-be.fflogs
+    (lutris.override {
+      extraPkgs = pkgs: [
+        wineWowPackages.stable
+        gamemode
+        mangohud
+      ];
+    })
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         obs-vkcapture-kms

@@ -8,12 +8,17 @@
   ];
 
   programs = {
-    steam.enable = true;
+    steam = {
+      enable = true;
+      extraPackages = with pkgs; [
+        gamemode
+        mangohud
+      ];
+    };
     gamemode = {
       enable = true;
-      settings = {
-        general.inhibit_screensaver = 0;
-      };
+      enableRenice = true;
+      settings.general.inhibit_screensaver = 0;
     };
     zsh.shellAliases = {
       update = "sudo nixos-rebuild switch -j 4 --cores 16";
