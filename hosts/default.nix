@@ -1,6 +1,6 @@
-{ nixpkgs, nixpkgs-be, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, ... }:
+{ nixpkgs, nixpkgs-master, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, ... }:
 let
-  pkgs = (import ../pkgs { inherit font-sf-mono src-vkcapture src-kvmfr src-vban; });
+  pkgs = (import ../pkgs { inherit nixpkgs-master font-sf-mono src-vkcapture src-kvmfr src-vban; });
   home = {
     home-manager.users.emileet = import ../home;
     home-manager.useGlobalPkgs = true;
@@ -16,14 +16,8 @@ let
   lib = nixpkgs.lib;
 in
 {
-  nix = lib.nixosSystem rec {
+  nix = lib.nixosSystem {
     system = "x86_64-linux";
     modules = [ ./nix ] ++ sharedModules;
-    specialArgs = {
-      pkgs-be = import nixpkgs-be {
-        config.allowUnfree = true;
-        inherit system;
-      };
-    };
   };
 }

@@ -67,7 +67,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-be": {
+    "nixpkgs-master": {
       "locked": {
         "lastModified": 1734697167,
         "narHash": "sha256-EbZvfBE8kbaZsDU7X66ewsmQAZ2n/h469/av96EIEK0=",
@@ -88,7 +88,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-be": "nixpkgs-be",
+        "nixpkgs-master": "nixpkgs-master",
         "src-kvmfr": "src-kvmfr",
         "src-vban": "src-vban",
         "src-vkcapture": "src-vkcapture"

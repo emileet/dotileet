@@ -1,9 +1,9 @@
-{ pkgs, pkgs-be, ... }:
+{ pkgs, ... }:
 with pkgs;
 {
   home-manager.users.emileet.home.packages = [
-    pkgs-be.xivlauncher
-    pkgs-be.fflogs
+    master.xivlauncher
+    master.fflogs
     (lutris.override {
       extraPkgs = pkgs: [
         wineWowPackages.stable

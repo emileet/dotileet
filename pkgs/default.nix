@@ -2,7 +2,7 @@ args@{ ... }:
 {
   nixpkgs.config.allowUnfree = true;
   imports = [
-    (import ./overlays.nix args)
+    (import ./overlays args)
     ./system.nix
     ./memflow
     ./kvmfr
