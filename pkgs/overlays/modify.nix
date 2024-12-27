@@ -37,6 +37,9 @@ font-sf-mono: src-kvmfr:
       terminal = false;
     };
     patches = [];
+    postPatch = ''
+      sed -i '1656s/float t\[6\];/float t[6] = {0};/' ../repos/nanosvg/src/nanosvg.h
+    '';
     postInstall = ''
       mkdir -p $out/share/pixmaps
       ln -s ${desktopItem}/share/applications $out/share/
