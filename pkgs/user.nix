@@ -10,19 +10,17 @@ mkMerge [
     colloid-gtk-theme
     spicetify-cli
     lxappearance
-    vscode.fhs
     libnotify
     flameshot
-#    obsidian
     shotwell
-#    discord
-    vesktop
     wezterm
     barrier
     qt6ct
     dunst
     slack
     vlc
+    master.vscode.fhs
+    master.vesktop
   ])
   ([
     hyfetch
