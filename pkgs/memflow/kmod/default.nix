@@ -6,8 +6,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "memflow";
     repo = "memflow-kvm";
-    rev = "refs/tags/bin-main";
-    sha256 = "sha256-KCPHd50qltFXDRE2J5rbWiX7wwFGtbJk3sNXYmaXzJc=";
+    rev = "refs/tags/bin-v0.2.1";
+    sha256 = "sha256-7qGM8pxjfGpxZM8HT5rtLDo3c95CjiMSBR9pi4WvKew=";
     fetchSubmodules = true;
   };
 
@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
   ];
 
   installPhase = ''
-    install -D ./build/memflow.ko -t $out/lib/modules/${kernel.modDirVersion}/misc/
+    install -D ./memflow-kmod/memflow.ko -t $out/lib/modules/${kernel.modDirVersion}/misc/
   '';
 
   meta = with lib; {

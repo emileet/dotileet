@@ -18,7 +18,7 @@ in
       memflow = {
         group = "libvirtd";
         mode = "0660";
-        enable = false; # todo: fix kmod build error when i care enough
+        enable = true;
       };
     };
     boot = {
