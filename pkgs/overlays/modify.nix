@@ -44,6 +44,6 @@ font-sf-mono: src-kvmfr:
     '';
   };
   obs-studio-plugins.obs-ndi = prev.obs-studio-plugins.obs-ndi.overrideAttrs (oldAttrs: {
-    cmakeFlags = [ "-DENABLE_QT=ON" "--compile-no-warning-as-error" ];
+    cmakeFlags = oldAttrs.cmakeFlags ++ [ "--compile-no-warning-as-error" ];
   });
 })
