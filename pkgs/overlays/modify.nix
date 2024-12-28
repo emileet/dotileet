@@ -37,16 +37,11 @@ font-sf-mono: src-kvmfr:
       terminal = false;
     };
     patches = [];
-    postPatch = ''
-      sed -i '1656s/float t\[6\];/float t[6] = {0};/' ../repos/nanosvg/src/nanosvg.h
-    '';
+    env.NIX_CFLAGS_COMPILE = "-Wno-maybe-uninitialized";
     postInstall = ''
       mkdir -p $out/share/pixmaps
       ln -s ${desktopItem}/share/applications $out/share/
       cp $src/resources/lg-logo.png $out/share/pixmaps
     '';
   };
-  obs-studio-plugins.obs-ndi = prev.obs-studio-plugins.obs-ndi.overrideAttrs (oldAttrs: {
-    cmakeFlags = oldAttrs.cmakeFlags ++ [ "--compile-no-warning-as-error" ];
-  });
 })
