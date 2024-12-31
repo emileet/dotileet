@@ -13,6 +13,7 @@
       extraPackages = with pkgs; [
         gamemode
         mangohud
+        usbutils
       ];
     };
     gamemode = {
