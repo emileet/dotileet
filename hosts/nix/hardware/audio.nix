@@ -1,8 +1,8 @@
 { ... }:
 {
-  hardware.pulseaudio.enable = false;
-
   services = {
+    pulseaudio.enable = false;
+
     pipewire = {
       alsa = {
         support32Bit = true;
