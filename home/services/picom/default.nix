@@ -11,7 +11,7 @@ in
         "class_g = 'i3lock'"
       ];
 
-      corner-radius = 8;
+      corner-radius = 0;
       rounded-corners-exclude = [
         "class_g = 'mpv'"
         "class_g = 'Rofi'"
