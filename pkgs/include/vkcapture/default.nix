@@ -14,6 +14,9 @@ stdenv.mkDerivation rec {
   pname = "obs-vkcapture-kms";
   version = "dev";
 
+  src = src-vkcapture;
+  patches = [ ./vkle-drm.patch ];
+
   nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [
     obs-studio
@@ -23,12 +26,8 @@ stdenv.mkDerivation rec {
     libGL
   ];
 
-  patches = [ ./vkle-drm.patch ];
-
   DRM_INCLUDE_DIR = "${libdrm.dev}/include/libdrm";
   cmakeFlags = [ "-DDRM_INCLUDE_DIR=${DRM_INCLUDE_DIR}" ];
-
-  src = src-vkcapture;
 
   meta = with lib; {
     description = "VKCapture with KMSGrab included";
