@@ -47,6 +47,10 @@
   };
 
   services = {
+    udev.extraRules = ''
+      KERNEL=="ntsync" MODE="0644"
+    '';
+
     persistent-evdev = {
       devices = {
         persist-mouse0 = "usb-Glorious_Model_O_Wireless_000000000000-event-mouse";
