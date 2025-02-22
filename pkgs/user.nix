@@ -1,5 +1,6 @@
 lib: pkgs: osConfig:
-with lib; with pkgs;
+with lib;
+with pkgs;
 let
   graphical = osConfig.services.xserver.enable;
 in
@@ -23,6 +24,7 @@ mkMerge [
     master.vesktop
   ])
   ([
+    nixfmt-rfc-style
     hyfetch
     bottom
     direnv
