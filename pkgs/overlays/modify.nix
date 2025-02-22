@@ -16,15 +16,20 @@ font-sf-mono: src-kvmfr:
     '';
   };
   colloid-gtk-theme = prev.colloid-gtk-theme.override {
-    tweaks = [ "rimless" "dracula" ];
+    tweaks = [
+      "rimless"
+      "dracula"
+    ];
     themeVariants = [ "purple" ];
     sizeVariants = [ "compact" ];
   };
-  qemu = (prev.qemu.overrideAttrs {
-    patches = [ /nix/patches/qemu/qemu-vmi-9.0.1.patch ];
-  }).override {
-    enableDocs = false;
-  };
+  qemu =
+    (prev.qemu.overrideAttrs {
+      patches = [ /nix/patches/qemu/qemu-vmi-9.0.1.patch ];
+    }).override
+      {
+        enableDocs = false;
+      };
   looking-glass-client = prev.looking-glass-client.overrideAttrs rec {
     src = src-kvmfr;
     version = "dev";
@@ -36,7 +41,7 @@ font-sf-mono: src-kvmfr:
       icon = "lg-logo";
       terminal = false;
     };
-    patches = [];
+    patches = [ ];
     env.NIX_CFLAGS_COMPILE = "-Wno-maybe-uninitialized";
     postInstall = ''
       mkdir -p $out/share/pixmaps

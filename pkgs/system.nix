@@ -1,5 +1,11 @@
-{ lib, pkgs, config, ... }:
-with pkgs; with lib;
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+with pkgs;
+with lib;
 let
   graphical = config.services.xserver.enable;
 in

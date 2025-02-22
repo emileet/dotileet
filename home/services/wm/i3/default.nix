@@ -1,4 +1,10 @@
-{ lib, pkgs, config, osConfig, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  osConfig,
+  ...
+}:
 with lib;
 let
   i3Enabled = osConfig.services.xserver.windowManager.i3.enable;
@@ -105,13 +111,18 @@ in
             border = 0;
           };
 
-          keybindings = let modifier = cfg.config.modifier; in
+          keybindings =
+            let
+              modifier = cfg.config.modifier;
+            in
             {
-              "${modifier}+d" = ''exec --no-startup-id ${pkgs.rofi}/bin/rofi -modi drun -show drun -display-drun "run" -config ~/.config/rofi/config'';
+              "${modifier}+d" =
+                ''exec --no-startup-id ${pkgs.rofi}/bin/rofi -modi drun -show drun -display-drun "run" -config ~/.config/rofi/config'';
               "${modifier}+Shift+p" = "exec --no-startup-id sh ~/.config/i3/scripts/toggle-service.sh picom";
               "${modifier}+Return" = "exec --no-startup-id wezterm";
 
-              "${modifier}+Shift+e" = ''exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"'';
+              "${modifier}+Shift+e" =
+                ''exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"'';
               "${modifier}+Shift+r" = "restart";
               "${modifier}+Shift+c" = "reload";
               "${modifier}+Shift+q" = "kill";
@@ -196,7 +207,8 @@ in
               "Return" = "mode default";
             };
             gaps = {
-              "0" = "mode default, gaps inner all set 0, gaps outer all set 0, gaps bottom all set 25, gaps top all set 25";
+              "0" =
+                "mode default, gaps inner all set 0, gaps outer all set 0, gaps bottom all set 25, gaps top all set 25";
               "1" = "mode default, gaps inner all set 25, gaps outer all set 40";
               "Escape" = "mode default";
               "Return" = "mode default";

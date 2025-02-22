@@ -53,14 +53,16 @@
     };
 
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelPatches = [{
-      patch = /nix/patches/linux/linux-vmi-6.10.2.patch;
-      name = "virtual machine introspection";
-      extraConfig = ''
-        EVDEV_MIRROR y
-        LIVEPATCH y
-      '';
-    }];
+    kernelPatches = [
+      {
+        patch = /nix/patches/linux/linux-vmi-6.10.2.patch;
+        name = "virtual machine introspection";
+        extraConfig = ''
+          EVDEV_MIRROR y
+          LIVEPATCH y
+        '';
+      }
+    ];
 
     kernelParams = [
       "video=DisplayPort-0:5120x1440@240"
@@ -80,12 +82,26 @@
     ];
 
     initrd = {
-      availableKernelModules = [ "xhci_pci" "nvme" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "nvme"
+        "ahci"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+        "sr_mod"
+      ];
       kernelModules = [ "amdgpu" ];
     };
 
-    blacklistedKernelModules = [ "nvidia" "nouveau" ];
-    kernelModules = [ "amdgpu" "kvm-amd" ];
+    blacklistedKernelModules = [
+      "nvidia"
+      "nouveau"
+    ];
+    kernelModules = [
+      "amdgpu"
+      "kvm-amd"
+    ];
     extraModulePackages = [ ];
 
     binfmt.registrations.appimage = {
@@ -104,7 +120,10 @@
     "/" = {
       device = "none";
       fsType = "tmpfs";
-      options = [ "size=3G" "mode=755" ];
+      options = [
+        "size=3G"
+        "mode=755"
+      ];
     };
 
     "/boot" = {

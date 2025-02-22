@@ -33,7 +33,19 @@
     };
   };
 
-  outputs = args@{ self, nixpkgs, nixpkgs-master, impermanence, home-manager, font-sf-mono, src-vkcapture, src-kvmfr, src-vban }: {
-    nixosConfigurations = (import ./hosts args);
-  };
+  outputs =
+    args@{
+      self,
+      nixpkgs,
+      nixpkgs-master,
+      impermanence,
+      home-manager,
+      font-sf-mono,
+      src-vkcapture,
+      src-kvmfr,
+      src-vban,
+    }:
+    {
+      nixosConfigurations = (import ./hosts args);
+    };
 }

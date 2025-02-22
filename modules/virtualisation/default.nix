@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 with lib;
 let
   cfg = config.virtualisation;
@@ -22,8 +27,16 @@ in
       };
     };
     boot = {
-      initrd.kernelModules = [ "vfio" "vfio_pci" "vfio_iommu_type1" ];
-      kernelModules = [ "vfio" "vfio_pci" "vfio_iommu_type1" ];
+      initrd.kernelModules = [
+        "vfio"
+        "vfio_pci"
+        "vfio_iommu_type1"
+      ];
+      kernelModules = [
+        "vfio"
+        "vfio_pci"
+        "vfio_iommu_type1"
+      ];
     };
   };
 }

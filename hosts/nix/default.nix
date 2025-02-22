@@ -108,7 +108,10 @@
     10.0.0.2 plsnobully.me git.plsnobully.me cdn.plsnobully.me
   '';
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   time.timeZone = "Australia/Melbourne";
 
   system.stateVersion = "25.05";

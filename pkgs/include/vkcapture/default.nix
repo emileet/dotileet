@@ -1,14 +1,15 @@
-{ lib
-, stdenv
-, pkg-config
-, cmake
-, obs-studio
-, libdrm
-, libGL
-, vulkan-headers
-, vulkan-loader
-, src-vkcapture
-, ...
+{
+  lib,
+  stdenv,
+  pkg-config,
+  cmake,
+  obs-studio,
+  libdrm,
+  libGL,
+  vulkan-headers,
+  vulkan-loader,
+  src-vkcapture,
+  ...
 }:
 stdenv.mkDerivation rec {
   pname = "obs-vkcapture-kms";
@@ -17,11 +18,14 @@ stdenv.mkDerivation rec {
   src = src-vkcapture;
   patches = [ ./vkle-drm.patch ];
 
-  nativeBuildInputs = [ cmake pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+    cmake
+  ];
   buildInputs = [
-    obs-studio
     vulkan-headers
     vulkan-loader
+    obs-studio
     libdrm.dev
     libGL
   ];

@@ -1,4 +1,9 @@
-{ lib, pkgs, osConfig, ... }:
+{
+  lib,
+  pkgs,
+  osConfig,
+  ...
+}:
 {
   imports = (import ./services);
   home.packages = import ../pkgs/user.nix lib pkgs osConfig;

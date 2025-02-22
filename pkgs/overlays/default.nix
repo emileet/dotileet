@@ -1,4 +1,11 @@
-{ nixpkgs-master, font-sf-mono, src-vkcapture, src-kvmfr, src-vban, ... }:
+{
+  nixpkgs-master,
+  font-sf-mono,
+  src-vkcapture,
+  src-kvmfr,
+  src-vban,
+  ...
+}:
 {
   nixpkgs.overlays = [
     (import ./include.nix src-vban src-vkcapture)

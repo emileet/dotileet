@@ -1,11 +1,21 @@
-{ stdenv, lib, kernel, fetchpatch, looking-glass-client, ... }:
+{
+  stdenv,
+  lib,
+  kernel,
+  fetchpatch,
+  looking-glass-client,
+  ...
+}:
 stdenv.mkDerivation rec {
   pname = "kvmfr-${version}-${kernel.version}";
   version = looking-glass-client.version;
 
   src = looking-glass-client.src;
   sourceRoot = "source/module";
-  hardeningDisable = [ "pic" "format" ];
+  hardeningDisable = [
+    "pic"
+    "format"
+  ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
   patches = [

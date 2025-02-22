@@ -1,4 +1,10 @@
-{ stdenv, lib, fetchFromGitHub, kernel, ... }:
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  kernel,
+  ...
+}:
 stdenv.mkDerivation rec {
   pname = "memflow-${version}-${kernel.version}";
   version = "dev";
@@ -11,7 +17,10 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  hardeningDisable = [ "pic" "format" ];
+  hardeningDisable = [
+    "pic"
+    "format"
+  ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
   makeFlags = kernel.makeFlags ++ [
