@@ -8,8 +8,8 @@
 }:
 {
   nixpkgs.overlays = [
-    (import ./include.nix src-vban src-vkcapture)
-    (import ./modify.nix font-sf-mono src-kvmfr)
+    (import ./include.nix font-sf-mono src-vban src-vkcapture)
+    (import ./modify.nix src-kvmfr)
     (final: prev: {
       master = import nixpkgs-master {
         config.allowUnfree = true;

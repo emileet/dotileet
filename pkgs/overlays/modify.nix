@@ -1,19 +1,9 @@
-font-sf-mono: src-kvmfr:
+src-kvmfr:
 (final: prev: {
   polybar = prev.polybar.override {
     githubSupport = true;
     pulseSupport = true;
     i3Support = true;
-  };
-  sf-mono-liga = prev.stdenvNoCC.mkDerivation {
-    pname = "sf-mono-liga";
-    version = "dev";
-    src = font-sf-mono;
-    dontConfigure = true;
-    installPhase = ''
-      mkdir -p $out/share/fonts/opentype
-      cp -R $src/*.otf $out/share/fonts/opentype/
-    '';
   };
   colloid-gtk-theme = prev.colloid-gtk-theme.override {
     tweaks = [
