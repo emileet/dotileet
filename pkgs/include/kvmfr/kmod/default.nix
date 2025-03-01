@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
   patches = [
     (fetchpatch {
       url = "https://patch-diff.githubusercontent.com/raw/gnif/LookingGlass/pull/1149.patch";
-      hash = "sha256-CswVgctC4G58cNFHrAh3sHsgOlB2ENJ/snyWQAHO6Ks=";
+      hash = "sha256-LSocSQMdv5qjvZ1LSMZ9arX3kVRuO1wIKYXtUeM6TuM=";
       excludes = [ "AUTHORS" ];
       stripLen = 1;
     })
