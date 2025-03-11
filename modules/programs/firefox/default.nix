@@ -45,6 +45,7 @@ in
         };
 
         DownloadDirectory = "/storage/downloads/downloaded";
+        DisableFirefoxStudies = true;
         DisableTelemetry = true;
         DisablePocket = true;
       };
