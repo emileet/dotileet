@@ -2,7 +2,6 @@
   stdenv,
   lib,
   kernel,
-  fetchpatch,
   looking-glass-client,
   ...
 }:
@@ -17,15 +16,6 @@ stdenv.mkDerivation rec {
     "format"
   ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
-
-  patches = [
-    (fetchpatch {
-      url = "https://patch-diff.githubusercontent.com/raw/gnif/LookingGlass/pull/1149.patch";
-      hash = "sha256-LSocSQMdv5qjvZ1LSMZ9arX3kVRuO1wIKYXtUeM6TuM=";
-      excludes = [ "AUTHORS" ];
-      stripLen = 1;
-    })
-  ];
 
   makeFlags = [
     "KVER=${kernel.modDirVersion}"
