@@ -41,23 +41,8 @@ src-kvmfr:
       cp -r ${src}/Themes $out/bin/Themes
     '';
   };
-  looking-glass-client = prev.looking-glass-client.overrideAttrs rec {
+  looking-glass-client = prev.looking-glass-client.overrideAttrs {
     src = src-kvmfr;
     version = "dev";
-    desktopItem = prev.makeDesktopItem {
-      desktopName = "Looking Glass Client";
-      exec = "looking-glass-client";
-      name = "looking-glass-client";
-      type = "Application";
-      icon = "lg-logo";
-      terminal = false;
-    };
-    patches = [ ];
-    env.NIX_CFLAGS_COMPILE = "-Wno-maybe-uninitialized";
-    postInstall = ''
-      mkdir -p $out/share/pixmaps
-      ln -s ${desktopItem}/share/applications $out/share/
-      cp $src/resources/lg-logo.png $out/share/pixmaps
-    '';
   };
 })
