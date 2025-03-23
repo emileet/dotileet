@@ -22,8 +22,8 @@
       settings.general.inhibit_screensaver = 0;
     };
     zsh.shellAliases = {
-      update = "sudo nixos-rebuild switch -j 3 --cores 24";
-      bupdate = "sudo nixos-rebuild boot -j 3 --cores 24"; # pronounced boop-date
+      update = "sudo nixos-rebuild switch -j 3 --cores 18";
+      bupdate = "sudo nixos-rebuild boot -j 3 --cores 18"; # pronounced boop-date
     };
   };
 
