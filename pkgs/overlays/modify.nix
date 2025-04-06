@@ -21,13 +21,14 @@ src-kvmfr:
         enableDocs = false;
       };
   spicetify-cli = prev.spicetify-cli.overrideAttrs rec {
-    version = "2.39.5";
+    version = "2.39.6";
     src = prev.fetchFromGitHub {
       owner = "spicetify";
       repo = "cli";
       rev = "v${version}";
-      hash = "sha256-vqif3oLDm9SUrkY+qEYHUEmHN+psoK6GNUB+kA6sQ4Q=";
+      hash = "sha256-rdyHVHKVgl9fOviFYQuXY8Ko+/XwpKlKDfriQAgkusE=";
     };
+    vendorHash = "sha256-sC8HmszcH5fYnuoPW6aElB8UXPwk3Lpp2odsBaiP4mI=";
     ldflags = [
       "-s -w"
       "-X 'main.version=${version}'"
