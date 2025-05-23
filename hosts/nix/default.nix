@@ -114,6 +114,6 @@
   ];
   time.timeZone = "Australia/Melbourne";
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
   networking.hostName = "nix";
 }

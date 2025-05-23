@@ -9,7 +9,6 @@ mkMerge [
     catppuccin-cursors.mochaLight
     papirus-icon-theme
     colloid-gtk-theme
-    spicetify-cli
     lxappearance
     libnotify
     flameshot
@@ -20,6 +19,7 @@ mkMerge [
     dunst
     slack
     vlc
+    master.spicetify-cli
     master.vscode.fhs
     master.vesktop
   ])
