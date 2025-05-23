@@ -79,6 +79,7 @@
       "kvm_amd.npt=1"
       "iommu=pt"
       "mitigations=off" # ohnoe :>
+      "amdgpu.dcdebugmask=0x10"
     ];
 
     initrd = {
