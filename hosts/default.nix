@@ -1,6 +1,7 @@
 {
   nixpkgs,
   nixpkgs-master,
+  nixpkgs-stable,
   impermanence,
   home-manager,
   font-sf-mono,
@@ -14,6 +15,7 @@ let
     import ../pkgs {
       inherit
         nixpkgs-master
+        nixpkgs-stable
         font-sf-mono
         src-vkcapture
         src-kvmfr
