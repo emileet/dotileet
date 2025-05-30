@@ -15,6 +15,7 @@
       ];
       files = [
         "/etc/barrier.conf"
+        "/etc/machine-id"
       ];
     };
     "/nix/persist/virt" = {
