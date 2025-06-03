@@ -52,7 +52,7 @@
       enable = true;
     };
 
-    kernelPackages = pkgs.stable.linuxPackages_zen;
+    kernelPackages = pkgs.master.linuxPackages_zen;
     kernelPatches = [
       {
         patch = /nix/patches/linux/linux-vmi-6.14.patch;
