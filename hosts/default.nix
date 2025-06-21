@@ -6,8 +6,10 @@
   home-manager,
   font-sf-mono,
   src-vkcapture,
+  src-distroav,
   src-kvmfr,
   src-vban,
+  src-ndi,
   ...
 }:
 let
@@ -18,8 +20,10 @@ let
         nixpkgs-stable
         font-sf-mono
         src-vkcapture
+        src-distroav
         src-kvmfr
         src-vban
+        src-ndi
         ;
     }
   );

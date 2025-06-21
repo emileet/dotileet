@@ -106,9 +106,27 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-stable": "nixpkgs-stable",
+        "src-distroav": "src-distroav",
         "src-kvmfr": "src-kvmfr",
+        "src-ndi": "src-ndi",
         "src-vban": "src-vban",
         "src-vkcapture": "src-vkcapture"
+      }
+    },
+    "src-distroav": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750453143,
+        "narHash": "sha256-IjzV/aEyHNzxyse7WFIagzcp9exvqzqQA8SoHnnmvJ8=",
+        "owner": "DistroAV",
+        "repo": "DistroAV",
+        "rev": "f9b0648b9859d3a9e7573ef5b3bf7f783de2753b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DistroAV",
+        "repo": "DistroAV",
+        "type": "github"
       }
     },
     "src-kvmfr": {
@@ -127,6 +145,19 @@
         "submodules": true,
         "type": "git",
         "url": "https://github.com/gnif/LookingGlass"
+      }
+    },
+    "src-ndi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748879757,
+        "narHash": "sha256-RlzOkQhCSToyI3nVwsxbMRRPcMVnyQqHCFnhrHlVznU=",
+        "type": "tarball",
+        "url": "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v6_Linux.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v6_Linux.tar.gz"
       }
     },
     "src-vban": {

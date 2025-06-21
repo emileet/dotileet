@@ -23,6 +23,11 @@
       flake = false;
     };
 
+    src-distroav = {
+      url = "github:DistroAV/DistroAV";
+      flake = false;
+    };
+
     src-kvmfr = {
       url = "git+https://github.com/gnif/LookingGlass?submodules=1";
       flake = false;
@@ -30,6 +35,11 @@
 
     src-vban = {
       url = "git+https://github.com/quiniouben/vban?submodules=1";
+      flake = false;
+    };
+
+    src-ndi = {
+      url = "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v6_Linux.tar.gz";
       flake = false;
     };
   };
@@ -44,8 +54,10 @@
       home-manager,
       font-sf-mono,
       src-vkcapture,
+      src-distroav,
       src-kvmfr,
       src-vban,
+      src-ndi,
     }:
     {
       nixosConfigurations = (import ./hosts args);
