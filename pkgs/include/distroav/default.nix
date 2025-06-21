@@ -11,7 +11,7 @@
 
 stdenv.mkDerivation {
   pname = "obs-distroav";
-  version = "6.1.1";
+  version = "dev";
 
   nativeBuildInputs = [
     qt6.qtbase
