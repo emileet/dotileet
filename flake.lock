@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750304462,
-        "narHash": "sha256-Mj5t4yX05/rXnRqJkpoLZTWqgStB88Mr/fegTRqyiWc=",
+        "lastModified": 1751693185,
+        "narHash": "sha256-+LKghTO5wWBcR/MJAeoSarWR7c7dO6GyA8+jM8DHV08=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "863842639722dd12ae9e37ca83bcb61a63b36f6c",
+        "rev": "36c57c6a1d03a5efbf5e23c04dbe21259d25f992",
         "type": "github"
       },
       "original": {
@@ -53,11 +53,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1750215678,
-        "narHash": "sha256-Rc/ytpamXRf6z8UA2SGa4aaWxUXRbX2MAWIu2C8M+ok=",
+        "lastModified": 1751625545,
+        "narHash": "sha256-4E7wWftF1ExK5ZEDzj41+9mVgxtuRV3wWCId7QAYMAU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5395fb3ab3f97b9b7abca147249fa2e8ed27b192",
+        "rev": "c860cf0b3a0829f0f6cf344ca8de83a2bbfab428",
         "type": "github"
       },
       "original": {
@@ -69,11 +69,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1750491667,
-        "narHash": "sha256-+3iutG1dvtfIKmEa+S26NAU+DM/5KtHGGMz1f4F47a0=",
+        "lastModified": 1751720224,
+        "narHash": "sha256-kUk0mxlH/1rMrY11WbbnlWEnujGXeUTWrr8GAMtS6fI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5a9ef10cbcf0e8fce9f6515ee4466b135a921ea9",
+        "rev": "05a55c3a82c95a9482ff02ae7cffb3bbc245f828",
         "type": "github"
       },
       "original": {
@@ -116,11 +116,11 @@
     "src-distroav": {
       "flake": false,
       "locked": {
-        "lastModified": 1750453143,
-        "narHash": "sha256-IjzV/aEyHNzxyse7WFIagzcp9exvqzqQA8SoHnnmvJ8=",
+        "lastModified": 1751161325,
+        "narHash": "sha256-iwZRudOwUNHahnLt6PnH4OJ9+/veqALd5lGbYCKwsj8=",
         "owner": "DistroAV",
         "repo": "DistroAV",
-        "rev": "f9b0648b9859d3a9e7573ef5b3bf7f783de2753b",
+        "rev": "a600e6ae9450d9ee0320f8e920d4342c2743ec32",
         "type": "github"
       },
       "original": {
@@ -132,11 +132,11 @@
     "src-kvmfr": {
       "flake": false,
       "locked": {
-        "lastModified": 1746839577,
-        "narHash": "sha256-0ux2n3W/u0CmCtsp6HB/Yjboavrn7rCL16rROzdX8VM=",
+        "lastModified": 1751257508,
+        "narHash": "sha256-U3iRVVzmxgmoukX1O9LtzYOk5/fEjkzQnOPHSiaDfHQ=",
         "ref": "refs/heads/master",
-        "rev": "f15d72cdfef744399cb46b95c21846ac00e0285a",
-        "revCount": 3482,
+        "rev": "cb304115f68eb5ba5632eaacf5fb2d34f93e6814",
+        "revCount": 3485,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/gnif/LookingGlass"
