@@ -48,6 +48,7 @@
 
   services = {
     udev.extraRules = ''
+      SUBSYSTEM=="input", ATTRS{idVendor}=="4f53", ATTRS{idProduct}=="514b", ENV{ID_INPUT_JOYSTICK}="" 
       KERNEL=="ntsync" MODE="0644"
     '';
 
