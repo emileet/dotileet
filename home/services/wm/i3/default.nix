@@ -194,6 +194,15 @@ in
               "Return" = "mode default";
             };
             layouts = {
+              "1" = "mode default, append_layout ~/.i3/workspace-1.json";
+              "2" = "mode default, append_layout ~/.i3/workspace-2.json";
+              "3" = "mode default, append_layout ~/.i3/workspace-3.json";
+              "4" = "mode default, append_layout ~/.i3/workspace-4.json";
+              "5" = "mode default, append_layout ~/.i3/workspace-5.json";
+              "6" = "mode default, append_layout ~/.i3/workspace-6.json";
+              "7" = "mode default, append_layout ~/.i3/workspace-7.json";
+              "8" = "mode default, append_layout ~/.i3/workspace-8.json";
+              "9" = "mode default, append_layout ~/.i3/workspace-9.json";
               "0" = "mode default, append_layout ~/.i3/workspace-10.json";
               "Escape" = "mode default";
               "Return" = "mode default";
