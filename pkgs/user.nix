@@ -13,8 +13,8 @@ mkMerge [
     libnotify
     flameshot
     shotwell
+    deskflow
     wezterm
-    barrier
     qt6ct
     dunst
     slack

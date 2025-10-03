@@ -14,7 +14,7 @@
         "/tmp"
       ];
       files = [
-        "/etc/barrier.conf"
+        "/etc/deskflow-server.conf"
         "/etc/machine-id"
       ];
     };

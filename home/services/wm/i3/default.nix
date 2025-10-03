@@ -61,7 +61,7 @@ in
               always = false;
             }
             {
-              command = "barriers --disable-crypto";
+              command = "deskflow-core server -c /etc/deskflow-server.conf";
               notification = false;
               always = false;
             }
