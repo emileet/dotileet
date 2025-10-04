@@ -11,13 +11,12 @@ in
         "class_g = 'i3lock'"
       ];
 
-      corner-radius = 0;
+      corner-radius = 8;
       rounded-corners-exclude = [
         "class_g = 'mpv'"
         "class_g = 'Rofi'"
         "class_g = 'vmileet'"
         "class_g = 'Polybar'"
-        "class_g = 'i3-frame'"
         "class_g *= 'Lunar Client*'"
         "class_g = 'ffxiv_dx11.exe'"
         "class_g = 'looking-glass-client'"
