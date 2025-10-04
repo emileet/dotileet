@@ -10,6 +10,11 @@
   programs = {
     steam = {
       enable = true;
+      package = pkgs.steam.override {
+        extraEnv = {
+          GDK_PIXBUF_MODULE_FILE = ""; # fixes tray icon when launched from rofi
+        };
+      };
       extraPackages = with pkgs; [
         gamemode
         mangohud
