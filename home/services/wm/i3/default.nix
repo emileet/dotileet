@@ -28,22 +28,22 @@ in
       picom.enable = true;
     };
 
-    xsession.windowManager.i3 = {
-      enable = true;
-      config =
-        let
-          ws1 = "1:一";
-          ws2 = "2:二";
-          ws3 = "3:三";
-          ws4 = "4:四";
-          ws5 = "5:五";
-          ws6 = "6:六";
-          ws7 = "7:七";
-          ws8 = "8:八";
-          ws9 = "9:九";
-          ws10 = "10:十";
-        in
-        {
+    xsession.windowManager.i3 =
+      let
+        ws1 = "1:一";
+        ws2 = "2:二";
+        ws3 = "3:三";
+        ws4 = "4:四";
+        ws5 = "5:五";
+        ws6 = "6:六";
+        ws7 = "7:七";
+        ws8 = "8:八";
+        ws9 = "9:九";
+        ws10 = "10:十";
+      in
+      {
+        enable = true;
+        config = {
           startup = [
             (mkIf osConfig.services.flatpak.enable {
               command = "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal";
@@ -102,6 +102,10 @@ in
               {
                 command = "floating enable";
                 criteria.class = "looking-glass-client";
+              }
+              {
+                command = "floating enable";
+                criteria.class = "XIVLauncher.Core";
               }
               {
                 command = "border pixel 0";
@@ -282,7 +286,13 @@ in
           modifier = "Mod4";
           bars = [ ];
         };
-    };
+        extraConfig = ''
+          workspace ${ws1} gaps inner 0
+          workspace ${ws1} gaps outer 0
+          workspace ${ws1} gaps bottom 25
+          workspace ${ws1} gaps top 25
+        '';
+      };
 
     home.file."${config.xdg.configHome}/i3/scripts" = {
       source = ./scripts;
