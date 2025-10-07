@@ -58,7 +58,7 @@
         patch = /nix/patches/linux/linux-vmi-6.16.3.patch;
         name = "virtual machine introspection";
         extraConfig = ''
-          EVDEV_MIRROR y
+          EVDEV_MIRROR m
           LIVEPATCH y
         '';
       }
@@ -71,8 +71,6 @@
       "default_hugepagesz=1G"
       "hugepagesz=1G"
       "hugepages=16"
-      "kvm.report_ignored_msrs=0"
-      "kvm.ignore_msrs=1"
       "kvm_amd.intercept_rdtsc=0"
       "kvm.spoof_msr_tsc=0"
       "kvm_amd.avic=1"
