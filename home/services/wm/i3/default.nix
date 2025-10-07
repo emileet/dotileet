@@ -291,6 +291,10 @@ in
           workspace ${ws1} gaps outer 0
           workspace ${ws1} gaps bottom 25
           workspace ${ws1} gaps top 25
+          workspace ${ws2} gaps inner 0
+          workspace ${ws2} gaps outer 0
+          workspace ${ws2} gaps bottom 25
+          workspace ${ws2} gaps top 25
         '';
       };
 
