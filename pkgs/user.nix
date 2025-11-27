@@ -9,13 +9,13 @@ mkMerge [
     catppuccin-cursors.mochaLight
     papirus-icon-theme
     colloid-gtk-theme
+    qt6Packages.qt6ct
     lxappearance
     libnotify
     flameshot
     shotwell
     deskflow
     wezterm
-    qt6ct
     dunst
     slack
     vlc

@@ -17,7 +17,7 @@ in
             eval $(gnome-keyring-daemon --daemonize)
             export SSH_AUTH_SOCK
           '';
-          package = pkgs.i3-gaps;
+          package = pkgs.i3;
         };
 
         displayManager = {
