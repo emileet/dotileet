@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/93decbb869808bea91756a3f4053909e22dd2fa4"; # not the stable branch, but a commit that's stable enough for me
+    nixpkgs-stable.url = "github:nixos/nixpkgs/6f16a3566ed9024338f82e8c98f07303c17479ab"; # not the stable branch, but a commit that's stable enough for me
 
     impermanence.url = "github:nix-community/impermanence";
 
