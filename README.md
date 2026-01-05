@@ -12,9 +12,10 @@ sudo nixos-rebuild switch --flake .#HOSTNAME
 
 ## hosts
 
-| hostname | description                  |
-| -------- | ---------------------------- |
-| nix      | my main threadripper desktop |
+| hostname | description         |
+| -------- | ------------------- |
+| nix      | threadripper server |
+| shodan   | primary desktop     |
 
 ## todo
 

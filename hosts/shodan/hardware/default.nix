@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./display.nix
@@ -12,6 +12,7 @@
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
     graphics.enable = true;
+    nvidia.open = true;
     xone.enable = true;
     i2c.enable = true;
   };
@@ -20,13 +21,13 @@
     networkmanager.enable = true;
 
     interfaces = {
-      enp69s0.useDHCP = true;
+      enp11s0.useDHCP = true;
       br0.useDHCP = true;
     };
 
     bridges = {
       "br0" = {
-        interfaces = [ "enp69s0" ];
+        interfaces = [ "enp11s0" ];
       };
     };
 
@@ -47,35 +48,9 @@
       };
     };
 
-    swraid = {
-      mdadmConf = "MAILADDR hi@emi.gay";
-      enable = true;
-    };
-
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelPatches = [
-      {
-        patch = /nix/patches/linux/linux-vmi-6.17.8.patch;
-        name = "virtual machine introspection";
-        extraConfig = ''
-          EVDEV_MIRROR m
-          LIVEPATCH y
-        '';
-      }
-    ];
-
     kernelParams = [
-      "video=DisplayPort-0:3440x1440@100"
-      "vfio-pci.ids=10de:2486,10de:228b"
-      "transparent_hugepage=never"
-      "default_hugepagesz=1G"
-      "hugepagesz=1G"
-      "hugepages=16"
-      "kvm_amd.intercept_rdtsc=0"
-      "kvm.spoof_msr_tsc=0"
-      "kvm_amd.avic=1"
-      "kvm_amd.npt=1"
-      "iommu=pt"
+      "video=DisplayPort-0:5120x1440@240"
       "mitigations=off" # ohnoe :>
     ];
 
@@ -89,18 +64,18 @@
         "sd_mod"
         "sr_mod"
       ];
-      kernelModules = [ "amdgpu" ];
+      kernelModules = [ "nvidia" ];
     };
 
     blacklistedKernelModules = [
-      "nvidia"
+      "amdgpu"
       "nouveau"
     ];
     kernelModules = [
-      "amdgpu"
+      "nvidia"
       "kvm-amd"
     ];
-    extraModulePackages = [ ];
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
@@ -131,16 +106,16 @@
 
     "/nix" = {
       device = "/dev/disk/by-label/NIX";
-      fsType = "btrfs";
+      fsType = "ext4";
     };
 
     "/home" = {
       device = "/dev/disk/by-label/HOME";
-      fsType = "btrfs";
+      fsType = "ext4";
     };
 
     "/storage" = {
-      device = "/dev/disk/by-label/RAID0";
+      device = "/dev/disk/by-label/STORAGE";
       fsType = "ext4";
     };
   };

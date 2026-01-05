@@ -23,6 +23,13 @@ in
   config = mkIf i3Enabled {
     home.packages = with pkgs; [ autotiling ];
 
+    home.pointerCursor = {
+      package = pkgs.catppuccin-cursors.mochaLight;
+      name = "catppuccin-mocha-light-cursors";
+      gtk.enable = true;
+      x11.enable = true;
+    };
+
     services = {
       polybar.enable = true;
       picom.enable = true;
@@ -50,6 +57,16 @@ in
               notification = false;
               always = true;
             })
+            (mkIf (hostName == "shodan") {
+              command = "deskflow-core server -c /etc/deskflow-server.conf";
+              notification = false;
+              always = false;
+            })
+            (mkIf (hostName == "nix") {
+              command = "deskflow-core client 10.0.0.10";
+              notification = false;
+              always = false;
+            })
             (mkIf (cfg.wallpaper != "") {
               command = "${pkgs.feh}/bin/feh --bg-fill ${cfg.wallpaper}";
               notification = false;
@@ -57,11 +74,6 @@ in
             })
             {
               command = "systemctl --user restart polybar";
-              notification = false;
-              always = false;
-            }
-            {
-              command = "deskflow-core server -c /etc/deskflow-server.conf";
               notification = false;
               always = false;
             }

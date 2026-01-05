@@ -9,17 +9,15 @@ in
     displayManager = {
       lightdm.background = "${wallpaper}";
       setupCommands = ''
-        MONITOR='DisplayPort-0'
-        ${pkgs.xorg.xrandr}/bin/xrandr --output $MONITOR --primary --mode 3440x1440 --rate 100
+        MONITOR='DP-0'
+        ${pkgs.xorg.xrandr}/bin/xrandr --output $MONITOR --primary --mode 5120x1440 --rate 240
       '';
     };
 
-    videoDrivers = [ "amdgpu" ];
-    deviceSection = ''
-      Option "TearFree" "true"
-    '';
+    videoDrivers = [ "nvidia" ];
 
     windowManager.i3.enable = true;
     autorun = true;
+    dpi = 96;
   };
 }

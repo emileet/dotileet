@@ -46,4 +46,8 @@ in
     system = "x86_64-linux";
     modules = [ ./nix ] ++ sharedModules;
   };
+  shodan = lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [ ./shodan ] ++ sharedModules;
+  };
 }

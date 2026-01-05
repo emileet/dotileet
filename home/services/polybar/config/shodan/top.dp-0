@@ -1,0 +1,107 @@
+[settings]
+pseudo-transparency = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[color]
+white = #fff
+red = #f1383d
+blue = #19aed3
+pink = #f26262
+orange = #fbb253
+purple = #e58a95
+black = #99100d1f
+lavender = #9589ff
+
+[bar/top]
+monitor = DP-0
+bottom = false
+
+override-redirect = true
+fixed-center = true
+wm-restack = i3
+
+width = 100%
+height = 25
+
+font-0 = "Tamzen:size=14;2"
+font-1 = "Siji:size=14;3"
+font-2 = "Liga SFMono Nerd Font:style=Bold:size=9;2"
+font-3 = "Noto Sans CJK JP:style=Bold:size=10:antialias=true;2"
+
+background = ${color.black}
+foreground = ${color.white}
+
+line-color = ${color.lavender}
+underline-size = 0
+overline-size = 0
+
+border-bottom-size = 0
+border-bottom-color = ${color.lavender}
+
+padding-left = 2
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+tray-position = right
+tray-padding = 8
+#tray-maxsize = 16
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+modules-left = distro xwindow
+modules-center = i3
+modules-right = network date
+
+[module/distro]
+type = custom/text
+content-foreground = ${color.lavender}
+content-background = ${color.black}
+content = 
+
+[module/xwindow]
+type = internal/xwindow
+format = ‎<label>
+label = %title%
+label-maxlen = 75
+
+[module/i3]
+type = internal/i3
+wrapping-scroll = false
+strip-wsnumbers = true
+pin-workspaces = true
+enable-click = true
+
+label-focused = %name%
+label-focused-foreground = ${color.lavender}
+label-focused-background = ${color.black}
+label-focused-padding = 1
+
+label-unfocused = %name%
+label-unfocused-padding = 1
+
+label-visible = %name%
+label-visible-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${color.black}
+label-urgent-foreground = ${color.red}
+label-urgent-padding = 1
+
+[module/network]
+type = internal/network
+interface = enp11s0
+#format-connected-offset = -15
+format-connected = <label-connected>
+label-connected =  %downspeed% -  %upspeed%
+
+[module/date]
+type = internal/date
+interval = 5
+label =  %time%
+time =  %a %d %b %I:%M %p
+time-alt =  %Y-%m-%d %I:%M %p
