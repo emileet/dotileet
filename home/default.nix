@@ -7,5 +7,5 @@
 {
   imports = (import ./programs) ++ (import ./services);
   home.packages = import ../pkgs/user.nix lib pkgs osConfig;
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }
