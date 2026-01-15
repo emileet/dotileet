@@ -63,7 +63,7 @@ in
               always = false;
             })
             (mkIf (hostName == "shodan") {
-              command = "deskflow-core server";
+              command = "deskflow-core server &";
               notification = false;
               always = false;
             })
