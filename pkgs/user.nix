@@ -24,9 +24,9 @@ mkMerge [
     master.vesktop
   ])
   ([
-    nixfmt-rfc-style
     hyfetch
     bottom
+    nixfmt
     direnv
     p7zip
     unzip

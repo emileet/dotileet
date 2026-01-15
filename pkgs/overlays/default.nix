@@ -15,12 +15,12 @@
     (import ./modify.nix src-kvmfr src-ndi)
     (final: prev: {
       master = import nixpkgs-master {
+        stdenv.hostPlatform.system = final.system;
         config.allowUnfree = true;
-        system = final.system;
       };
       stable = import nixpkgs-stable {
+        stdenv.hostPlatform.system = final.system;
         config.allowUnfree = true;
-        system = final.system;
       };
     })
   ];
