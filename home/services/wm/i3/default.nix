@@ -57,13 +57,13 @@ in
               notification = false;
               always = true;
             })
-            (mkIf (hostName == "shodan") {
-              command = "deskflow-core server -c /etc/deskflow-server.conf";
+            (mkIf (hostName == "nix") {
+              command = "deskflow-core client 10.0.0.10 &";
               notification = false;
               always = false;
             })
-            (mkIf (hostName == "nix") {
-              command = "deskflow-core client 10.0.0.10";
+            (mkIf (hostName == "shodan") {
+              command = "deskflow-core server";
               notification = false;
               always = false;
             })
