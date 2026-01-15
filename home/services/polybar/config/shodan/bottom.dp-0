@@ -69,7 +69,7 @@ format-prefix = " "
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-hwmon-path = /sys/devices/pci0000:00/0000:00:14.0/i2c-1/1-0051/hwmon/hwmon3/temp1_input
+hwmon-path = /sys/devices/pci0000:00/0000:00:14.0/i2c-1/1-0051/hwmon/hwmon1/temp1_input
 warn-temperature = 85
 
 format = <ramp> <label>

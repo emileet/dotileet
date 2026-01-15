@@ -11,6 +11,7 @@
         "audio"
         "wheel"
         "input"
+        "i2c"
       ];
     };
     mutableUsers = false;

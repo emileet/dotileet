@@ -74,6 +74,8 @@
     kernelModules = [
       "nvidia"
       "kvm-amd"
+      "i2c-dev"
+      "i2c-piix4"
     ];
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
