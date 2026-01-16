@@ -60,6 +60,16 @@
     gvfs.enable = true;
   };
 
+  systemd.user.services.openrgb-profile = {
+    description = "load openrgb profile";
+    wantedBy = [ "default.target" ];
+    enable = true;
+    serviceConfig = {
+      ExecStart = "${pkgs.openrgb}/bin/openrgb -p shodan.orp";
+      Type = "oneshot";
+    };
+  };
+
   networking.extraHosts = ''
     10.0.0.2 plsnobully.me git.plsnobully.me cdn.plsnobully.me
   '';
