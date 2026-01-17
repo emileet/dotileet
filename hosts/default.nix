@@ -27,6 +27,7 @@ let
         ;
     }
   );
+
   home = {
     home-manager.users.emileet = import ../home;
     home-manager.useGlobalPkgs = true;
