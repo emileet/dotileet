@@ -7,7 +7,6 @@ in
 mkMerge [
   (mkIf graphical [
     qt6Packages.qt6ct
-    lxappearance
     libnotify
     flameshot
     shotwell
