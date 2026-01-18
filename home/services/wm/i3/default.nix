@@ -23,13 +23,6 @@ in
   config = mkIf i3Enabled {
     home.packages = with pkgs; [ autotiling ];
 
-    home.pointerCursor = {
-      package = pkgs.catppuccin-cursors.mochaLight;
-      name = "catppuccin-mocha-light-cursors";
-      gtk.enable = true;
-      x11.enable = true;
-    };
-
     services = {
       polybar.enable = true;
       picom.enable = true;

@@ -1,4 +1,5 @@
 [
+  ./theme
   ./picom
   ./polybar
 ]

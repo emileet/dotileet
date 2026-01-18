@@ -6,9 +6,6 @@ let
 in
 mkMerge [
   (mkIf graphical [
-    catppuccin-cursors.mochaLight
-    papirus-icon-theme
-    colloid-gtk-theme
     qt6Packages.qt6ct
     lxappearance
     libnotify
