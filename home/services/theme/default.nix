@@ -9,6 +9,13 @@ let
   graphical = osConfig.services.xserver.enable;
 in
 {
+  options.theme = {
+    wallpaper = mkOption {
+      type = types.str;
+      default = "";
+      description = "wallpaper path";
+    };
+  };
   config = mkIf graphical {
     home = {
       pointerCursor = {

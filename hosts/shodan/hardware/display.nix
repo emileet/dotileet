@@ -3,7 +3,7 @@ let
   wallpaper = "/storage/pictures/wallpapers/sunset.jpg";
 in
 {
-  home-manager.users.emileet.xsession.windowManager.i3.wallpaper = "${wallpaper}";
+  home-manager.users.emileet.theme.wallpaper = "${wallpaper}";
 
   services.xserver = {
     displayManager = {

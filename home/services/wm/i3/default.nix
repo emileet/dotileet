@@ -12,14 +12,6 @@ let
   cfg = config.xsession.windowManager.i3;
 in
 {
-  options.xsession.windowManager.i3 = {
-    wallpaper = mkOption {
-      type = types.str;
-      default = "";
-      description = "wallpaper path";
-    };
-  };
-
   config = mkIf i3Enabled {
     home.packages = with pkgs; [ autotiling ];
 
@@ -60,8 +52,8 @@ in
               notification = false;
               always = false;
             })
-            (mkIf (cfg.wallpaper != "") {
-              command = "${pkgs.feh}/bin/feh --bg-fill ${cfg.wallpaper}";
+            (mkIf (config.theme.wallpaper != "") {
+              command = "${pkgs.feh}/bin/feh --bg-fill ${config.theme.wallpaper}";
               notification = false;
               always = false;
             })
