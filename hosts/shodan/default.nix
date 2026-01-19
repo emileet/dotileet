@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./packages.nix
@@ -16,19 +16,6 @@
   };
 
   services = {
-    udev.extraRules = ''
-      SUBSYSTEM=="input", ATTRS{idVendor}=="4f53", ATTRS{idProduct}=="514b", ENV{ID_INPUT_JOYSTICK}="" 
-      KERNEL=="ntsync" MODE="0644"
-    '';
-
-    persistent-evdev = {
-      devices = {
-        persist-mouse0 = "usb-Glorious_Model_O_Wireless_000000000000-event-mouse";
-        persist-keyboard0 = "usb-Qwertykeys_QK65_Hotswap-if02-event-kbd";
-      };
-      enable = true;
-    };
-
     avahi = {
       enable = true;
       publish = {
@@ -41,16 +28,6 @@
     flatpak.enable = true;
     tumbler.enable = true;
     gvfs.enable = true;
-  };
-
-  systemd.user.services.openrgb-profile = {
-    description = "load openrgb profile";
-    wantedBy = [ "default.target" ];
-    enable = true;
-    serviceConfig = {
-      ExecStart = "${pkgs.openrgb}/bin/openrgb -p ${config.networking.hostName}.orp";
-      Type = "oneshot"; # like all banger yuris :')
-    };
   };
 
   networking.extraHosts = ''
