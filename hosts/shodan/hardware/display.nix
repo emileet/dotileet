@@ -14,6 +14,14 @@ in
       '';
     };
 
+    serverFlagsSection = ''
+      Option "BlankTime" "0"
+    '';
+
+    monitorSection = ''
+      Option "DPMS" "false"
+    '';
+
     videoDrivers = [ "nvidia" ];
 
     windowManager.i3.enable = true;
