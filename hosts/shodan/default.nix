@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./packages.nix
@@ -48,8 +48,8 @@
     wantedBy = [ "default.target" ];
     enable = true;
     serviceConfig = {
-      ExecStart = "${pkgs.openrgb}/bin/openrgb -p shodan.orp";
-      Type = "oneshot";
+      ExecStart = "${pkgs.openrgb}/bin/openrgb -p ${config.networking.hostName}.orp";
+      Type = "oneshot"; # like all banger yuris :')
     };
   };
 
