@@ -20,11 +20,8 @@
     "/nix/persist/virt" = {
       hideMounts = true;
       directories = [
-        "/var/lib/libvirt/qemu/networks"
         "/etc/libvirt/hooks/qemu.d"
-      ];
-      files = [
-        "/var/lib/libvirt/qemu/Windows11.xml"
+        "/var/lib/libvirt/qemu"
       ];
     };
   };
