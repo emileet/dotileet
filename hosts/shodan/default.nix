@@ -8,24 +8,7 @@
   ];
 
   programs = {
-    steam = {
-      enable = true;
-      package = pkgs.steam.override {
-        extraEnv = {
-          GDK_PIXBUF_MODULE_FILE = ""; # fixes tray icon when launched from rofi
-        };
-      };
-      extraPackages = with pkgs; [
-        gamemode
-        mangohud
-        usbutils
-      ];
-    };
-    gamemode = {
-      enable = true;
-      enableRenice = true;
-      settings.general.inhibit_screensaver = 0;
-    };
+    steam.enable = true;
     zsh.shellAliases = {
       update = "sudo nixos-rebuild switch -j 3 --cores 12";
       bupdate = "sudo nixos-rebuild boot -j 3 --cores 12"; # pronounced boop-date
