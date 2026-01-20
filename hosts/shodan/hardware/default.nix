@@ -75,7 +75,7 @@
 
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
-      "video=DisplayPort-0:5120x1440@240"
+      "video=DP-0:5120x1440@240"
       "mitigations=off" # ohnoe :>
     ];
 
