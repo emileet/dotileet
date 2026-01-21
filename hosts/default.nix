@@ -44,11 +44,9 @@ let
 in
 {
   nix = lib.nixosSystem {
-    system = "x86_64-linux";
-    modules = [ ./nix ] ++ sharedModules;
+    modules = sharedModules ++ [ ./nix ];
   };
   shodan = lib.nixosSystem {
-    system = "x86_64-linux";
-    modules = [ ./shodan ] ++ sharedModules;
+    modules = sharedModules ++ [ ./shodan ];
   };
 }
