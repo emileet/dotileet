@@ -6,7 +6,6 @@
       directories = [
         "/etc/NetworkManager"
         "/etc/nixos"
-        "/etc/ssh"
         "/var/lib/flatpak"
         "/var/lib/nixos"
         "/var/log"

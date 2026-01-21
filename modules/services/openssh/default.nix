@@ -14,12 +14,14 @@ in
       };
       ports = [ 2269 ];
     };
-
     security.pam.services = {
       sshd = {
         googleAuthenticator.enable = true;
         unixAuth = mkForce true;
       };
     };
+    environment.persistence."/nix/persist/system".directories = [
+      "/etc/ssh"
+    ];
   };
 }

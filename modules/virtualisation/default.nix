@@ -10,7 +10,6 @@ let
 in
 {
   config = mkIf cfg.libvirtd.enable {
-    environment.systemPackages = with pkgs; [ virt-manager ];
     virtualisation = {
       kvmfr = {
         shm = {
@@ -37,6 +36,16 @@ in
         "vfio_pci"
         "vfio_iommu_type1"
       ];
+    };
+    environment = {
+      systemPackages = with pkgs; [ virt-manager ];
+      persistence."/nix/persist/virt" = {
+        hideMounts = true;
+        directories = [
+          "/etc/libvirt/hooks/qemu.d"
+          "/var/lib/libvirt/qemu"
+        ];
+      };
     };
   };
 }
