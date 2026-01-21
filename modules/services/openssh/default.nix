@@ -18,7 +18,7 @@ in
     security.pam.services = {
       sshd = {
         googleAuthenticator.enable = true;
-        unixAuth = lib.mkForce true;
+        unixAuth = mkForce true;
       };
     };
   };
