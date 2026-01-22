@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/ea30586ee015f37f38783006a9bc9e4aa64d7d61"; # not the stable branch, but a commit that's stable enough for me
+    nixpkgs-pinned.url = "github:nixos/nixpkgs/ed142ab1b3a092c4d149245d0c4126a5d7ea00b0";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -58,7 +58,7 @@
       self,
       nixpkgs,
       nixpkgs-master,
-      nixpkgs-stable,
+      nixpkgs-pinned,
       nix-index-database,
       home-manager,
       impermanence,

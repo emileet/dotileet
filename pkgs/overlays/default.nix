@@ -1,6 +1,6 @@
 {
   nixpkgs-master,
-  nixpkgs-stable,
+  nixpkgs-pinned,
   font-sf-mono,
   src-vkcapture,
   src-distroav,
@@ -18,7 +18,7 @@
         localSystem = final.stdenv.hostPlatform;
         inherit (final) config;
       };
-      stable = import nixpkgs-stable {
+      pinned = import nixpkgs-pinned {
         localSystem = final.stdenv.hostPlatform;
         inherit (final) config;
       };

@@ -1,7 +1,7 @@
 {
   nixpkgs,
   nixpkgs-master,
-  nixpkgs-stable,
+  nixpkgs-pinned,
   nix-index-database,
   home-manager,
   impermanence,
@@ -18,7 +18,7 @@ let
     import ../pkgs {
       inherit
         nixpkgs-master
-        nixpkgs-stable
+        nixpkgs-pinned
         font-sf-mono
         src-vkcapture
         src-distroav
