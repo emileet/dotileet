@@ -44,6 +44,12 @@ in
         enable = true;
       };
 
+      nh = {
+        flake = "/etc/nixos";
+        clean.enable = true;
+        enable = true;
+      };
+
       zsh.enable = true;
     })
   ];

@@ -10,8 +10,8 @@
   programs = {
     steam.enable = true;
     zsh.shellAliases = {
-      update = "sudo nixos-rebuild switch -j 3 --cores 18";
-      bupdate = "sudo nixos-rebuild boot -j 3 --cores 18"; # pronounced boop-date
+      update = "nh os switch -j 3 --cores 18";
+      bupdate = "nh os boot -j 3 --cores 18"; # pronounced boop-date
     };
   };
 
