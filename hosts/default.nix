@@ -2,6 +2,7 @@
   nixpkgs,
   nixpkgs-master,
   nixpkgs-stable,
+  nix-index-database,
   home-manager,
   impermanence,
   font-sf-mono,
@@ -34,6 +35,7 @@ let
   };
 
   sharedModules = (import ../modules) ++ [
+    nix-index-database.nixosModules.nix-index
     impermanence.nixosModules.impermanence
     home-manager.nixosModules.home-manager
     home

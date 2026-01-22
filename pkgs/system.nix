@@ -50,6 +50,7 @@ in
         enable = true;
       };
 
+      nix-index-database.comma.enable = true;
       zsh.enable = true;
     })
   ];

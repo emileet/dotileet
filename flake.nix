@@ -6,6 +6,11 @@
     nixpkgs-master.url = "github:nixos/nixpkgs";
     nixpkgs-stable.url = "github:nixos/nixpkgs/ea30586ee015f37f38783006a9bc9e4aa64d7d61"; # not the stable branch, but a commit that's stable enough for me
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +59,7 @@
       nixpkgs,
       nixpkgs-master,
       nixpkgs-stable,
+      nix-index-database,
       home-manager,
       impermanence,
       font-sf-mono,
