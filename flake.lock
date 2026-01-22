@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768942641,
-        "narHash": "sha256-i25tkhqjsfo0YKz8To/+gzazW1v4f8qUGqJQ8OLrkqE=",
+        "lastModified": 1769015285,
+        "narHash": "sha256-MlqzCJbckJsgwfkRs64H2xaX2Uxl4o6Z9XYfkYS1N/E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9997de2f62d1875644f02ddf96cf485a4baecb6f",
+        "rev": "ec0247a7a19f641595c24ac1ea4df6461d1cdb36",
         "type": "github"
       },
       "original": {
@@ -77,11 +77,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1768964325,
-        "narHash": "sha256-cwwQCqUSf2TSKv96T2M//meVt3fvQ/miPZ0nq/o05Sg=",
+        "lastModified": 1769039415,
+        "narHash": "sha256-PVsrl8kHG/XqHrHEDSFSP9kyEEcqyhes2+0RlO61fHk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a84495756071092b16156d27421af8a8de8597af",
+        "rev": "e7aecd2dbde47df2425aac05330cd1bb952a59cd",
         "type": "github"
       },
       "original": {
@@ -158,8 +158,8 @@
     "src-ndi": {
       "flake": false,
       "locked": {
-        "lastModified": 1755790409,
-        "narHash": "sha256-lSxeerK2POim5YV8YSgM5fGOc0PM5VMGXPZ1AtpxCEQ=",
+        "lastModified": 1768952549,
+        "narHash": "sha256-6HA8clElkbKMK7K32Lrm/vDX7KDBXVUv9XfPhOAiAeA=",
         "type": "tarball",
         "url": "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v6_Linux.tar.gz"
       },
