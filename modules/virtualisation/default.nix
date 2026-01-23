@@ -11,6 +11,7 @@ in
 {
   config = mkIf cfg.libvirtd.enable {
     virtualisation = {
+      libvirtd.qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
       kvmfr = {
         shm = {
           group = "libvirtd";
