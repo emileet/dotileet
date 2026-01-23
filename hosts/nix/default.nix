@@ -61,7 +61,7 @@
   };
 
   networking.extraHosts = ''
-    10.0.0.2 plsnobully.me git.plsnobully.me cdn.plsnobully.me
+    10.0.0.11 plsnobully.me git.plsnobully.me
   '';
 
   nix.settings.experimental-features = [
