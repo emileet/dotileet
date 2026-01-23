@@ -23,6 +23,10 @@
     openssh.enable = true;
   };
 
+  networking.extraHosts = ''
+    10.0.0.11 pod.plsnobully.me
+  '';
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
