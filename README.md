@@ -25,6 +25,7 @@ sudo nixos-rebuild switch --flake .#HOSTNAME
 | hostname | description         |
 | -------- | ------------------- |
 | nix      | threadripper server |
+| nixsrv   | vm server           |
 | shodan   | primary desktop     |
 
 ## todo

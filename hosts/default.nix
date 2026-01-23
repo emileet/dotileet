@@ -48,6 +48,9 @@ in
   nix = lib.nixosSystem {
     modules = sharedModules ++ [ ./nix ];
   };
+  nixsrv = lib.nixosSystem {
+    modules = sharedModules ++ [ ./nixsrv ];
+  };
   shodan = lib.nixosSystem {
     modules = sharedModules ++ [ ./shodan ];
   };
