@@ -20,17 +20,20 @@
           useACMEHost = "emi.gay";
           default = true;
         };
-        "dl.emi.gay" = base { } // {
-          useACMEHost = "emi.gay";
-          locations."/" = {
-            basicAuthFile = "/nix/secrets/nginx/auth/dl.emi.gay";
-            root = "/vmshare/srv/dl.emi.gay";
-            extraConfig = ''
-              autoindex_format json;
-              autoindex on;
-            '';
+        "dl.emi.gay" =
+          base {
+            "/" = {
+              basicAuthFile = "/nix/secrets/nginx/auth/dl.emi.gay";
+              root = "/vmshare/srv/dl.emi.gay";
+              extraConfig = ''
+                autoindex_format json;
+                autoindex on;
+              '';
+            };
+          }
+          // {
+            useACMEHost = "emi.gay";
           };
-        };
         "plsnobully.me" = base { } // {
           useACMEHost = "plsnobully.me";
           globalRedirect = "emi.gay";
