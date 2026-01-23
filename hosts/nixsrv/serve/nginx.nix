@@ -14,7 +14,7 @@
         https "max-age=31536000; includeSubdomains; preload";
       }
 
-      add_header Content-Security-Policy "script-src 'self'; object-src 'none'; base-uri 'none';" always;
+      #add_header Content-Security-Policy "script-src 'self'; object-src 'none'; base-uri 'none';" always;
       add_header 'Referrer-Policy' 'origin-when-cross-origin';
       add_header Strict-Transport-Security $hsts_header;
       add_header X-Content-Type-Options nosniff;
@@ -30,13 +30,15 @@
           forceSSL = true;
         };
         proxy =
-          port:
+          config: port:
           base {
-            "/".proxyPass = "http://127.0.0.1:" + toString (port) + "/";
+            "/" = config // {
+              proxyPass = "http://127.0.0.1:" + toString (port) + "/";
+            };
           };
       in
       {
-        "emi.gay" = proxy 6984 // {
+        "emi.gay" = proxy { } 6984 // {
           useACMEHost = "emi.gay";
           default = true;
         };
@@ -44,6 +46,13 @@
           useACMEHost = "plsnobully.me";
           globalRedirect = "emi.gay";
         };
+        "git.plsnobully.me" =
+          proxy {
+            extraConfig = "gzip off;";
+          } 6981
+          // {
+            useACMEHost = "plsnobully.me";
+          };
       };
   };
 
