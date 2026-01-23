@@ -14,14 +14,23 @@
               proxyPass = "http://127.0.0.1:" + toString (port) + "/";
             };
           };
+        emi-gay = {
+          useACMEHost = "emi.gay";
+        };
+        plsnobully = {
+          useACMEHost = "plsnobully.me";
+        };
       in
       {
-        "emi.gay" = proxy { } 6981 // {
-          useACMEHost = "emi.gay";
-          default = true;
-        };
+        "emi.gay" =
+          emi-gay
+          // proxy { } 6981
+          // {
+            default = true;
+          };
         "dl.emi.gay" =
-          base {
+          emi-gay
+          // base {
             "/" = {
               basicAuthFile = "/nix/secrets/nginx/auth/dl.emi.gay";
               root = "/vmshare/srv/dl.emi.gay";
@@ -30,21 +39,18 @@
                 autoindex on;
               '';
             };
-          }
-          // {
-            useACMEHost = "emi.gay";
           };
-        "plsnobully.me" = base { } // {
-          useACMEHost = "plsnobully.me";
-          globalRedirect = "emi.gay";
-        };
+        "plsnobully.me" =
+          plsnobully
+          // base { }
+          // {
+            globalRedirect = "emi.gay";
+          };
         "git.plsnobully.me" =
-          proxy {
+          plsnobully
+          // proxy {
             extraConfig = "gzip off;";
-          } 6985
-          // {
-            useACMEHost = "plsnobully.me";
-          };
+          } 6985;
       };
 
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
