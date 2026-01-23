@@ -51,6 +51,14 @@
           // proxy {
             extraConfig = "gzip off;";
           } 6985;
+        "pod.plsnobully.me" =
+          plsnobully
+          // proxy {
+            extraConfig = ''
+              client_max_body_size 800M;
+              gzip off;
+            '';
+          } 5050;
       };
 
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
