@@ -1,8 +1,7 @@
-{ ... }:
+{ pkgs, ... }:
+with pkgs;
 {
-  home-manager.users.emileet.home.packages = [
-  ];
-
   environment.systemPackages = [
+    git
   ];
 }
