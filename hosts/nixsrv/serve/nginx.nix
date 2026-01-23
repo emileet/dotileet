@@ -1,12 +1,48 @@
 { ... }:
 {
   services.nginx = {
-    enable = true;
-
-    recommendedProxySettings = true;
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedTlsSettings = true;
+    virtualHosts =
+      let
+        base = locations: {
+          inherit locations;
+          forceSSL = true;
+        };
+        proxy =
+          config: port:
+          base {
+            "/" = config // {
+              proxyPass = "http://127.0.0.1:" + toString (port) + "/";
+            };
+          };
+      in
+      {
+        "emi.gay" = proxy { } 6981 // {
+          useACMEHost = "emi.gay";
+          default = true;
+        };
+        "dl.emi.gay" = base { } // {
+          useACMEHost = "emi.gay";
+          locations."/" = {
+            basicAuthFile = "/nix/secrets/nginx/auth/dl.emi.gay";
+            root = "/vmshare/srv/dl.emi.gay";
+            extraConfig = ''
+              autoindex_format json;
+              autoindex on;
+            '';
+          };
+        };
+        "plsnobully.me" = base { } // {
+          useACMEHost = "plsnobully.me";
+          globalRedirect = "emi.gay";
+        };
+        "git.plsnobully.me" =
+          proxy {
+            extraConfig = "gzip off;";
+          } 6985
+          // {
+            useACMEHost = "plsnobully.me";
+          };
+      };
 
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
     appendHttpConfig = ''
@@ -23,37 +59,12 @@
       proxy_cookie_path / "/; secure; HttpOnly; SameSite=strict";
     '';
 
-    virtualHosts =
-      let
-        base = locations: {
-          inherit locations;
-          forceSSL = true;
-        };
-        proxy =
-          config: port:
-          base {
-            "/" = config // {
-              proxyPass = "http://127.0.0.1:" + toString (port) + "/";
-            };
-          };
-      in
-      {
-        "emi.gay" = proxy { } 6984 // {
-          useACMEHost = "emi.gay";
-          default = true;
-        };
-        "plsnobully.me" = base { } // {
-          useACMEHost = "plsnobully.me";
-          globalRedirect = "emi.gay";
-        };
-        "git.plsnobully.me" =
-          proxy {
-            extraConfig = "gzip off;";
-          } 6981
-          // {
-            useACMEHost = "plsnobully.me";
-          };
-      };
+    recommendedProxySettings = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedTlsSettings = true;
+
+    enable = true;
   };
 
   security.acme = {
