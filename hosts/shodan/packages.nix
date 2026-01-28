@@ -14,6 +14,7 @@ with pkgs;
 
   environment.systemPackages = [
     pavucontrol
+    cifs-utils
     qjackctl
     openrgb
     vban
