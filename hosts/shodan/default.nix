@@ -15,6 +15,7 @@
     };
   };
 
+  virtualisation.docker.enable = true;
   services = {
     avahi = {
       enable = true;

@@ -9,6 +9,7 @@
         "realtime"
         "gamemode"
         "ollama"
+        "docker"
         "audio"
         "wheel"
         "input"
