@@ -32,16 +32,27 @@
     gvfs.enable = true;
   };
 
-  networking.extraHosts = ''
-    10.0.0.11 plsnobully.me git.plsnobully.me
-  '';
+  networking = {
+    bridges."br0".interfaces = [ "enp11s0" ];
+    interfaces = {
+      enp11s0.useDHCP = true;
+      br0.useDHCP = true;
+    };
+
+    extraHosts = ''
+      10.0.0.11 plsnobully.me git.plsnobully.me
+    '';
+
+    networkmanager.enable = true;
+    firewall.enable = false;
+    hostName = "shodan";
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-  time.timeZone = "Australia/Melbourne";
 
+  time.timeZone = "Australia/Melbourne";
   system.stateVersion = "26.05";
-  networking.hostName = "shodan";
 }

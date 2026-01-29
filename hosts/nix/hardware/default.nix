@@ -44,27 +44,6 @@
     };
   };
 
-  networking = {
-    networkmanager.enable = true;
-
-    interfaces = {
-      enp69s0.useDHCP = true;
-      br0.useDHCP = true;
-    };
-
-    bridges = {
-      "br0" = {
-        interfaces = [ "enp69s0" ];
-      };
-    };
-
-    firewall = {
-      # allowedTCPPorts = [ ... ];
-      # allowedUDPPorts = [ ... ];
-      enable = false;
-    };
-  };
-
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;

@@ -3,20 +3,6 @@
   powerManagement.cpuFreqGovernor = "performance";
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  networking = {
-    networkmanager.enable = true;
-
-    interfaces = {
-      enp1s0.useDHCP = true;
-    };
-
-    firewall = {
-      # allowedTCPPorts = [ ... ];
-      # allowedUDPPorts = [ ... ];
-      enable = false;
-    };
-  };
-
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
