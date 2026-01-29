@@ -5,7 +5,7 @@
     ./persist.nix
     ./users.nix
     ./hardware
-    ./serve
+    ./services
   ];
 
   programs = {
