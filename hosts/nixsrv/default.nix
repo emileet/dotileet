@@ -15,14 +15,6 @@
     };
   };
 
-  virtualisation = {
-    docker.enable = true;
-  };
-
-  services = {
-    openssh.enable = true;
-  };
-
   networking = {
     extraHosts = ''
       10.0.0.11 pod.plsnobully.me
