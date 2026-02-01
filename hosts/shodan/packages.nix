@@ -6,6 +6,7 @@ with pkgs;
     master.fflogs
     pcsx2
     rpcs3
+    wayvr
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         obs-vkcapture-kms
