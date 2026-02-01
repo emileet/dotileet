@@ -28,6 +28,7 @@
     openssh.enable = true;
     flatpak.enable = true;
     tumbler.enable = true;
+    monado.enable = true;
     ollama.enable = true;
     gvfs.enable = true;
   };
