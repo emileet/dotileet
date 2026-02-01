@@ -16,7 +16,7 @@ black = #99100d1f
 lavender = #9589ff
 
 [bar/top]
-monitor = DP-0
+monitor = DP-2
 bottom = false
 
 override-redirect = true
