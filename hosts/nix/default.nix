@@ -8,6 +8,7 @@
   ];
 
   programs = {
+    obs-studio.enable = true;
     steam.enable = true;
     zsh.shellAliases = {
       update = "nh os switch -j 3 --cores 18";

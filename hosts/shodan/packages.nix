@@ -6,12 +6,6 @@ with pkgs;
     master.fflogs
     pcsx2
     rpcs3
-    (wrapOBS {
-      plugins = with obs-studio-plugins; [
-        obs-vkcapture-kms
-        obs-distroav
-      ];
-    })
   ];
 
   environment.systemPackages = [

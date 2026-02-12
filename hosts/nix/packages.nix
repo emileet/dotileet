@@ -3,13 +3,6 @@ with pkgs;
 {
   home-manager.users.emileet.home.packages = [
     master.xivlauncher
-    (wrapOBS {
-      plugins = with obs-studio-plugins; [
-        obs-vkcapture-kms
-        obs-distroav
-        obs-kvmfr
-      ];
-    })
   ];
 
   environment.systemPackages = [
