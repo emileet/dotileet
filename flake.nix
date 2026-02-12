@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nvidia-patch = {
+      url = "github:icewind1991/nvidia-patch-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     font-sf-mono = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
@@ -62,6 +67,7 @@
       nix-index-database,
       home-manager,
       impermanence,
+      nvidia-patch,
       font-sf-mono,
       src-vkcapture,
       src-distroav,

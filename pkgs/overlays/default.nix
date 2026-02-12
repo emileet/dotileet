@@ -1,6 +1,7 @@
 {
   nixpkgs-master,
   nixpkgs-pinned,
+  nvidia-patch,
   font-sf-mono,
   src-vkcapture,
   src-distroav,
@@ -23,5 +24,6 @@
         inherit (final) config;
       };
     })
+    nvidia-patch.overlays.default
   ];
 }

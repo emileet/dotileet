@@ -5,6 +5,7 @@
   nix-index-database,
   home-manager,
   impermanence,
+  nvidia-patch,
   font-sf-mono,
   src-vkcapture,
   src-distroav,
@@ -19,6 +20,7 @@ let
       inherit
         nixpkgs-master
         nixpkgs-pinned
+        nvidia-patch
         font-sf-mono
         src-vkcapture
         src-distroav

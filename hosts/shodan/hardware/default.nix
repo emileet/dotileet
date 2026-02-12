@@ -12,9 +12,14 @@
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
     graphics.enable = true;
-    nvidia.open = true;
     xone.enable = true;
     i2c.enable = true;
+    nvidia = {
+      package = pkgs.nvidia-patch.patch-nvenc (
+        pkgs.nvidia-patch.patch-fbc config.boot.kernelPackages.nvidiaPackages.stable
+      );
+      open = true;
+    };
   };
 
   services = {
