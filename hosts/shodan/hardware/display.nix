@@ -10,7 +10,7 @@ in
       lightdm.background = "${wallpaper}";
       setupCommands = ''
         MONITOR='DP-2'
-        ${pkgs.xorg.xrandr}/bin/xrandr --output $MONITOR --primary --mode 5120x1440 --rate 240
+        ${pkgs.xrandr}/bin/xrandr --output $MONITOR --primary --mode 5120x1440 --rate 240
       '';
     };
 

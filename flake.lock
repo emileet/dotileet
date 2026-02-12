@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769638001,
-        "narHash": "sha256-hGwdJ/+oo+IRo2TiWV/V8BWWptQihcdFV/olTONaHqg=",
+        "lastModified": 1770818644,
+        "narHash": "sha256-DYS4jIRpRoKOzJjnR/QqEd/MlT4OZZpt8CrBLv+cjsE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bd9f031efc634be4b80c5090b9171cc3a9f8e49c",
+        "rev": "0acbd1180697de56724821184ad2c3e6e7202cd7",
         "type": "github"
       },
       "original": {
@@ -66,11 +66,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765267181,
-        "narHash": "sha256-d3NBA9zEtBu2JFMnTBqWj7Tmi7R5OikoU2ycrdhQEws=",
+        "lastModified": 1770315571,
+        "narHash": "sha256-hy0gcAgAcxrnSWKGuNO+Ob0x6jQ2xkR6hoaR0qJBHYs=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "82befcf7dc77c909b0f2a09f5da910ec95c5b78f",
+        "rev": "2684bb8080a6f2ca5f9d494de5ef875bc1c4ecdb",
         "type": "github"
       },
       "original": {
@@ -81,11 +81,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1769527094,
-        "narHash": "sha256-xV20Alb7ZGN7qujnsi5lG1NckSUmpIb05H2Xar73TDc=",
+        "lastModified": 1770812194,
+        "narHash": "sha256-OH+lkaIKAvPXR3nITO7iYZwew2nW9Y7Xxq0yfM/UcUU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "afce96367b2e37fc29afb5543573cd49db3357b7",
+        "rev": "8482c7ded03bae7550f3d69884f1e611e3bd19e8",
         "type": "github"
       },
       "original": {
@@ -97,11 +97,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1769683832,
-        "narHash": "sha256-ZtHTPa4pfznUowtTHIMWHkvh2qUC5sRuioS3lf7pk8M=",
+        "lastModified": 1770880421,
+        "narHash": "sha256-IoCvgLIZgqjm70L11pL0Cv2WVt8YA77HFv0CfRgqpy8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8f08a0e2d7b25aabe1c10b0dc5e3ecdcbd5f0b73",
+        "rev": "ee76116259d8b417d16286364c9ac48ef1eaee92",
         "type": "github"
       },
       "original": {
@@ -145,11 +145,11 @@
     "src-distroav": {
       "flake": false,
       "locked": {
-        "lastModified": 1764514714,
-        "narHash": "sha256-2d84NW0yRQPil2ETg6cSObjAY/xdsUEY8O1uLeXG2vg=",
+        "lastModified": 1770651247,
+        "narHash": "sha256-QxsgBeGqWV+TpoOwGqhO+XjAuhvq3LjVAmGbLxUGPaI=",
         "owner": "DistroAV",
         "repo": "DistroAV",
-        "rev": "c1e6894bba1d3eda3a6fab2db4aa1a7128037c40",
+        "rev": "a45a3fffdbf2cfd12e88ee667be7da7f3bc80320",
         "type": "github"
       },
       "original": {

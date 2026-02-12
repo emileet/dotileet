@@ -67,9 +67,7 @@ in
       shadow = false;
 
       glx-use-copysubbuffermesa = true;
-      glx-no-rebind-pixmap = true;
       glx-copy-from-front = false;
-      glx-no-stencil = true;
 
       detect-rounded-corners = true;
       detect-client-opacity = true;
