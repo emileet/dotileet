@@ -72,7 +72,7 @@
     ];
 
     kernelParams = [
-      "video=DisplayPort-0:3440x1440@100"
+      "video=DP-1:3440x1440@100"
       "vfio-pci.ids=10de:2486,10de:228b"
       "transparent_hugepage=never"
       "default_hugepagesz=1G"
