@@ -74,10 +74,6 @@ in
             }
           ];
 
-          assigns = {
-            #"${ws1}" = [{ class = "looking-glass-client"; }];
-          };
-
           window = {
             commands = [
               {
@@ -95,10 +91,6 @@ in
               {
                 command = "move container to workspace ${ws10}";
                 criteria.class = "conhost.exe"; # discord rich presence on wine
-              }
-              {
-                command = "floating enable";
-                criteria.class = "looking-glass-client";
               }
               {
                 command = "floating enable";
