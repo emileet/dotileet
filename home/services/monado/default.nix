@@ -27,7 +27,7 @@ in
             jsonid = "vrpathreg";
             version = 1;
             runtime = [
-              "${pkgs.opencomposite}/lib/opencomposite"
+              "${pkgs.xrizer}/lib/xrizer"
             ];
           };
       };
