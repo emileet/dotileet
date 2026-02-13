@@ -14,9 +14,9 @@
     graphics.enable = true;
     xone.enable = true;
     i2c.enable = true;
-    nvidia = {
-      package = pkgs.nvidia-patch.patch-nvenc (
-        pkgs.nvidia-patch.patch-fbc config.boot.kernelPackages.nvidiaPackages.stable
+    nvidia = with pkgs; {
+      package = nvidia-patch.patch-nvenc (
+        nvidia-patch.patch-fbc config.boot.kernelPackages.nvidiaPackages.stable
       );
       open = true;
     };
