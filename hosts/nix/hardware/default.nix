@@ -59,7 +59,7 @@
       enable = true;
     };
 
-    kernelPackages = pkgs.pinned.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelPatches = [
       {
         patch = /nix/patches/linux/linux-vmi-6.17.8.patch;
