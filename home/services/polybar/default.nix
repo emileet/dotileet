@@ -12,8 +12,8 @@ in
 {
   config = mkIf cfg.enable {
     services.polybar.script = ''
-      polybar bottom -c ~/.config/polybar/bottom.dp-2 &
-      polybar top -c ~/.config/polybar/top.dp-2 &
+      polybar bottom -c ~/.config/polybar/bottom.1 &
+      polybar top -c ~/.config/polybar/top.1 &
     '';
 
     # have our window manager start the polybar service
