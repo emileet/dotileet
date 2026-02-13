@@ -25,10 +25,13 @@
     hostName = "nixsrv";
   };
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    trusted-users = [ "emileet" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
 
   time.timeZone = "Australia/Melbourne";
   system.stateVersion = "26.05";
