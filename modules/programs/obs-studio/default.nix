@@ -12,19 +12,23 @@ let
 in
 {
   config = mkIf cfg.enable {
-    programs.obs-studio = with pkgs; {
-      package = mkIf cfgNvidia.enabled (
-        obs-studio.override {
-          cudaSupport = true;
-        }
-      );
-      plugins = [
-        obs-vkcapture-kms
-        obs-distroav
-      ]
-      ++ optional cfgLibvirt.enable [
-        obs-kvmfr
-      ];
-    };
+    programs.obs-studio =
+      with pkgs;
+      {
+        plugins = [
+          obs-vkcapture-kms
+          obs-distroav
+        ]
+        ++ optional cfgLibvirt.enable [
+          obs-kvmfr
+        ];
+      }
+      // mkIf cfgNvidia.enabled {
+        package = (
+          obs-studio.override {
+            cudaSupport = true;
+          }
+        );
+      };
   };
 }
