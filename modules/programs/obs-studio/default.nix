@@ -13,11 +13,9 @@ in
 {
   config = mkIf cfg.enable {
     programs.obs-studio = with pkgs; {
-      package = (
-        obs-studio.override {
-          cudaSupport = cfgNvidia.enabled;
-        }
-      );
+      package = obs-studio.override {
+        cudaSupport = cfgNvidia.enabled;
+      };
       plugins = mkMerge [
         (mkIf cfgLibvirt.enable [ obs-kvmfr ])
         [
