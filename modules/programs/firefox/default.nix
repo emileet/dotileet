@@ -44,6 +44,12 @@ in
           };
         };
 
+        GenerativeAI = {
+          Enabled = false;
+          Chatbot = true;
+          Locked = true;
+        };
+
         DownloadDirectory = "/storage/downloads/downloaded";
         DisableFirefoxStudies = true;
         DisableTelemetry = true;
