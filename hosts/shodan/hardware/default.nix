@@ -15,9 +15,7 @@
     xone.enable = true;
     i2c.enable = true;
     nvidia = with pkgs; {
-      package = nvidia-patch.patch-nvenc (
-        nvidia-patch.patch-fbc config.boot.kernelPackages.nvidiaPackages.stable
-      );
+      package = nvidia-patch.auto-patch config.boot.kernelPackages.nvidiaPackages.stable;
       open = true;
     };
   };
