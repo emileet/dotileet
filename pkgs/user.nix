@@ -13,7 +13,6 @@ mkMerge [
     deskflow
     wezterm
     dunst
-    slack
     vlc
     master.spicetify-cli
     master.vscode.fhs
