@@ -6,7 +6,6 @@
       isNormalUser = true;
       shell = pkgs.zsh;
       extraGroups = [
-        "libvirtd"
         "realtime"
         "gamemode"
         "docker"

@@ -1,4 +1,10 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
 {
   imports = [
     ./display.nix
@@ -71,6 +77,8 @@
         "sd_mod"
         "sr_mod"
       ];
+    }
+    // optionalAttrs (config.specialisation != { }) {
       kernelModules = [ "nvidia" ];
     };
 
@@ -79,10 +87,11 @@
       "nouveau"
     ];
     kernelModules = [
-      "nvidia"
-      "kvm-amd"
       "i2c-dev"
       "i2c-piix4"
+    ]
+    ++ optionals (config.specialisation != { }) [
+      "nvidia"
     ];
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 

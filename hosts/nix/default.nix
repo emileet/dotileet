@@ -21,10 +21,8 @@
       qemu = {
         verbatimConfig = ''
           cgroup_device_acl = [
-            "/dev/null", "/dev/full", "/dev/zero", 
-            "/dev/random", "/dev/urandom",
-            "/dev/ptmx", "/dev/kvm", "/dev/kqemu",
-            "/dev/rtc","/dev/hpet", "/dev/kvmfr0",
+            "/dev/null", "/dev/full", "/dev/zero", "/dev/random", "/dev/urandom", "/dev/ptmx",
+            "/dev/kvm", "/dev/kqemu", "/dev/rtc","/dev/hpet", "/dev/kvmfr0",
             "/dev/input/by-id/uinput-persist-keyboard0",
             "/dev/input/by-id/uinput-persist-mouse0"
           ]
@@ -32,7 +30,9 @@
       };
       enable = true;
     };
+    memflow.enable = true;
     docker.enable = true;
+    kvmfr.enable = true;
   };
 
   services = {

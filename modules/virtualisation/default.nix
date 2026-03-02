@@ -1,7 +1,7 @@
 {
-  lib,
-  pkgs,
   config,
+  pkgs,
+  lib,
   ...
 }:
 with lib;
@@ -11,33 +11,43 @@ in
 {
   config = mkIf cfg.libvirtd.enable {
     virtualisation = {
-      libvirtd.qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+      libvirtd = {
+        qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+        dbus.enable = true;
+      };
       kvmfr = {
         shm = {
           group = "libvirtd";
           mode = "0660";
           enable = true;
         };
-        enable = true;
+        enable = false;
       };
       memflow = {
         group = "libvirtd";
         mode = "0660";
-        enable = true;
+        enable = false;
       };
     };
     boot = {
+      kernelParams = [
+        "kvm_amd.avic=1"
+        "kvm_amd.npt=1"
+        "iommu=pt"
+      ];
       initrd.kernelModules = [
         "vfio"
         "vfio_pci"
         "vfio_iommu_type1"
       ];
       kernelModules = [
+        "kvm-amd"
         "vfio"
         "vfio_pci"
         "vfio_iommu_type1"
       ];
     };
+    users.users.emileet.extraGroups = [ "libvirtd" ];
     environment = {
       systemPackages = with pkgs; [ virt-manager ];
       persistence."/nix/persist/virt" = {
