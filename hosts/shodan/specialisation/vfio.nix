@@ -6,6 +6,7 @@
 }:
 {
   specialisation = {
+    # dual boot windows without running it on bare metal (hot swapping the gpu between host and vm is possible but a pain)
     vfio.configuration = with lib; {
       services = {
         cockpit = {
@@ -35,13 +36,35 @@
         libvirtd.enable = true;
       };
 
+      systemd = {
+        timers.host-auto-reboot = {
+          wantedBy = [ "timers.target" ];
+          timerConfig = {
+            OnBootSec = "2m";
+            OnUnitActiveSec = "2s";
+            Unit = "host-auto-reboot.service";
+          };
+        };
+        services.host-auto-reboot = {
+          description = "reboot host if all vms are offline";
+          script = ''
+            if [ -z $(${pkgs.libvirt}/bin/virsh list --name) ]; then
+              systemctl reboot
+            fi
+          '';
+          serviceConfig = {
+            Type = "oneshot";
+          };
+        };
+      };
+
       boot = {
         kernelParams = [
           "vfio-pci.ids=10de:2c02,10de:22e9"
           "transparent_hugepage=never"
           "default_hugepagesz=1G"
           "hugepagesz=1G"
-          "hugepages=16"
+          "hugepages=24"
         ];
         blacklistedKernelModules = [
           "nvidia"
