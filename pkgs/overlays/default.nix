@@ -1,4 +1,4 @@
-{
+args@{
   nixpkgs-master,
   nixpkgs-pinned,
   nvidia-patch,
@@ -14,7 +14,7 @@
   nixpkgs.overlays = [
     (import ./include.nix font-sf-mono src-vban src-vkcapture src-distroav)
     (import ./modify.nix src-kvmfr src-ndi)
-    (import ./secret.nix)
+    (import ./secret.nix args)
     (final: prev: {
       master = import nixpkgs-master {
         localSystem = final.stdenv.hostPlatform;
