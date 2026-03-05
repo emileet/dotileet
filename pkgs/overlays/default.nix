@@ -14,6 +14,7 @@
   nixpkgs.overlays = [
     (import ./include.nix font-sf-mono src-vban src-vkcapture src-distroav)
     (import ./modify.nix src-kvmfr src-ndi)
+    (import ./secret.nix)
     (final: prev: {
       master = import nixpkgs-master {
         localSystem = final.stdenv.hostPlatform;
