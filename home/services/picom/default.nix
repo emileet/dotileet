@@ -39,7 +39,11 @@ in
         "class_g *= 'Lunar Client*'"
         "class_g = 'ffxiv_dx11.exe'"
         "class_g = 'looking-glass-client'"
+        "window_type = 'dropdown_menu'"
+        "window_type = 'popup_menu'"
+        "window_type = 'tooltip'"
         "window_type = 'desktop'"
+        "window_type = 'menu'"
       ];
 
       fading = true;
