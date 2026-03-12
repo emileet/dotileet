@@ -27,7 +27,6 @@ in
           mangohud
           usbutils
         ];
-        protontricks.enable = true;
       };
       gamemode = {
         settings.general.inhibit_screensaver = 0;
