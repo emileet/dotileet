@@ -10,6 +10,7 @@ with pkgs;
   ];
 
   environment.systemPackages = [
+    gpu-screen-recorder-gtk
     pavucontrol
     cifs-utils
     qjackctl

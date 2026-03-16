@@ -9,6 +9,7 @@
   ];
 
   programs = {
+    gpu-screen-recorder.enable = true;
     obs-studio.enable = true;
     steam.enable = true;
     zsh.shellAliases = {
