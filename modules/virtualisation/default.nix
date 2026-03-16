@@ -21,12 +21,10 @@ in
           mode = "0660";
           enable = true;
         };
-        enable = false;
       };
       memflow = {
         group = "libvirtd";
         mode = "0660";
-        enable = false;
       };
     };
     boot = {
@@ -47,7 +45,10 @@ in
         "vfio_iommu_type1"
       ];
     };
-    users.users.emileet.extraGroups = [ "libvirtd" ];
+    users.users.emileet.extraGroups = [
+      "libvirtd"
+      "kvm"
+    ];
     environment = {
       systemPackages = with pkgs; [ virt-manager ];
       persistence."/nix/persist/virt" = {
