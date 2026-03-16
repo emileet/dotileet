@@ -9,7 +9,7 @@ in
     displayManager = {
       lightdm.background = "${wallpaper}";
       setupCommands = ''
-        MONITOR='DP-2'
+        MONITOR='HDMI-0'
         ${pkgs.xrandr}/bin/xrandr --output $MONITOR --primary --mode 5120x1440 --rate 240
       '';
     };
