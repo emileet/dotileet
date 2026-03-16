@@ -13,12 +13,6 @@ src-kvmfr: src-ndi:
     themeVariants = [ "purple" ];
     sizeVariants = [ "compact" ];
   };
-  libvirt-dbus = prev.libvirt-dbus.overrideAttrs (oldAttrs: {
-    postPatch = oldAttrs.postPatch + ''
-      substituteInPlace "data/system/org.libvirt.conf.in" \
-        --replace-fail 'group="libvirt"' 'group="libvirtd"'
-    '';
-  });
   looking-glass-client = prev.looking-glass-client.overrideAttrs {
     src = src-kvmfr;
     version = "dev";
