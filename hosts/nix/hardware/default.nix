@@ -31,19 +31,6 @@
     };
   };
 
-  systemd.services.init-liquidctl = {
-    description = "initialise liquidctl";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      ExecStart = [
-        "${pkgs.liquidctl}/bin/liquidctl -m kraken initialize"
-        "${pkgs.liquidctl}/bin/liquidctl -m kraken set pump speed 20 80 30 80 40 90 50 100"
-        "${pkgs.liquidctl}/bin/liquidctl -m kraken set fan speed 20 40 30 40 35 60 40 60 50 80 60 100"
-      ];
-      Type = "oneshot"; # like all banger yuris :')
-    };
-  };
-
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
@@ -67,6 +54,7 @@
         extraConfig = ''
           EVDEV_MIRROR m
           LIVEPATCH y
+          PREEMPT y
         '';
       }
     ];
@@ -80,9 +68,6 @@
       "hugepages=16"
       "kvm_amd.intercept_rdtsc=0"
       "kvm.spoof_msr_tsc=0"
-      "kvm_amd.avic=1"
-      "kvm_amd.npt=1"
-      "iommu=pt"
       "mitigations=off" # ohnoe :>
     ];
 
@@ -105,7 +90,6 @@
     ];
     kernelModules = [
       "amdgpu"
-      "kvm-amd"
     ];
     extraModulePackages = [ ];
 

@@ -7,7 +7,6 @@ with pkgs;
 
   environment.systemPackages = [
     pavucontrol
-    liquidctl
     qjackctl
     openrgb
     mdadm

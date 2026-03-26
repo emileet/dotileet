@@ -11,10 +11,21 @@ let
 in
 {
   config = mkIf cfg.enable {
-    services.polybar.script = ''
-      polybar bottom -c ~/.config/polybar/bottom.1 &
-      polybar top -c ~/.config/polybar/top.1 &
-    '';
+    services.polybar.script =
+      if (hostName == "shodan") then
+        ''
+          polybar bottom -c ~/.config/polybar/bottom.1 &
+          polybar top -c ~/.config/polybar/top.1 &
+        ''
+      else if (hostName == "nix") then
+        ''
+          polybar bottom -c ~/.config/polybar/bottom.1 &
+          polybar bottom -c ~/.config/polybar/bottom.2 &
+          polybar top -c ~/.config/polybar/top.1 &
+          polybar top -c ~/.config/polybar/top.2 &
+        ''
+      else
+        abort "missing polybar script for host: ${hostName}";
 
     # have our window manager start the polybar service
     systemd.user.services.polybar = {
