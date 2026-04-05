@@ -202,9 +202,10 @@ in
             };
             sizes = {
               "1" = "mode default, floating enable, resize set 5120 1390, move position center";
-              "2" = "mode default, floating enable, resize set 1920 1080, move position center";
-              "3" = "mode default, floating enable, resize set 1600 900, move position center";
-              "4" = "mode default, floating enable, resize set 1280 720, move position center";
+              "2" = "mode default, floating enable, resize set 2560 1440, move position center";
+              "3" = "mode default, floating enable, resize set 1920 1080, move position center";
+              "4" = "mode default, floating enable, resize set 1600 900, move position center";
+              "5" = "mode default, floating enable, resize set 1280 720, move position center";
               "Escape" = "mode default";
               "Return" = "mode default";
             };

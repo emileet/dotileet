@@ -1,4 +1,10 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
 {
   imports = [
     ./display.nix
@@ -27,6 +33,22 @@
       devices = {
         persist-mouse0 = "usb-Glorious_Model_O_Wireless_000000000000-event-mouse";
         persist-keyboard0 = "usb-Qwertykeys_QK65_Hotswap-if02-event-kbd";
+      };
+    };
+  };
+
+  systemd = {
+    services.cpu-affinity = {
+      description = "set cpu affinity for vfio";
+      wantedBy = [ "multi-user.target" ];
+      after = [ "multi-user.target" ];
+      script = ''
+        systemctl set-property --runtime -- user.slice AllowedCPUs=0-23,32-55
+        systemctl set-property --runtime -- system.slice AllowedCPUs=0-23,32-55
+        systemctl set-property --runtime -- init.scope AllowedCPUs=0-23,32-55
+      '';
+      serviceConfig = {
+        Type = "oneshot";
       };
     };
   };
@@ -61,14 +83,18 @@
 
     kernelParams = [
       "video=DisplayPort-0:3440x1440@100"
-      "vfio-pci.ids=10de:2486,10de:228b"
       "transparent_hugepage=never"
       "default_hugepagesz=1G"
       "hugepagesz=1G"
       "hugepages=16"
+      "nohz_full=24-31,56-63"
+      "isolcpus=24-31,56-63"
       "kvm_amd.intercept_rdtsc=0"
       "kvm.spoof_msr_tsc=0"
       "mitigations=off" # ohnoe :>
+    ]
+    ++ optionals (config.specialisation != { }) [
+      "vfio-pci.ids=10de:2486,10de:228b"
     ];
 
     initrd = {
@@ -81,16 +107,16 @@
         "sd_mod"
         "sr_mod"
       ];
+    }
+    // optionalAttrs (config.specialisation != { }) {
       kernelModules = [ "amdgpu" ];
     };
 
-    blacklistedKernelModules = [
+    blacklistedKernelModules = optionals (config.specialisation != { }) [
       "nvidia"
       "nouveau"
     ];
-    kernelModules = [
-      "amdgpu"
-    ];
+    kernelModules = optionals (config.specialisation != { }) [ "amdgpu" ];
     extraModulePackages = [ ];
 
     binfmt.registrations.appimage = {

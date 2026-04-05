@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./specialisation
     ./packages.nix
     ./persist.nix
     ./users.nix

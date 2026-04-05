@@ -10,9 +10,7 @@ in
       lightdm.background = "${wallpaper}";
       setupCommands = ''
         MONITOR1='DisplayPort-0'
-        MONITOR2='DisplayPort-1'
         ${pkgs.xrandr}/bin/xrandr --output $MONITOR1 --mode 3440x1440 --rate 100 --primary
-        ${pkgs.xrandr}/bin/xrandr --output $MONITOR2 --mode 5120x1440 --rate 240
       '';
     };
 
