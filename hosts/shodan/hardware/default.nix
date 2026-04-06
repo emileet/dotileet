@@ -20,6 +20,8 @@ with lib;
     graphics.enable = true;
     xone.enable = true;
     i2c.enable = true;
+  }
+  // optionalAttrs (config.specialisation != { }) {
     nvidia = with pkgs; {
       package = nvidia-patch.auto-patch config.boot.kernelPackages.nvidiaPackages.beta;
       open = true;
@@ -62,9 +64,22 @@ with lib;
     };
 
     kernelPackages = pkgs.linuxPackages_zen;
+    kernelPatches = [
+      {
+        patch = /nix/patches/linux/linux-vmi-6.17.8.patch;
+        name = "virtual machine introspection";
+        extraConfig = ''
+          EVDEV_MIRROR m
+          LIVEPATCH y
+          PREEMPT y
+        '';
+      }
+    ];
     kernelParams = [
-      "video=HDMI-0:5120x1440@240"
       "mitigations=off" # ohnoe :>
+    ]
+    ++ optionals (config.specialisation != { }) [
+      "video=HDMI-1:5120x1440@240"
     ];
 
     initrd = {
@@ -82,9 +97,9 @@ with lib;
       kernelModules = [ "nvidia" ];
     };
 
-    blacklistedKernelModules = [
-      "amdgpu"
+    blacklistedKernelModules = optionals (config.specialisation != { }) [
       "nouveau"
+      "amdgpu"
     ];
     kernelModules = [
       "i2c-dev"

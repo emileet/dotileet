@@ -17,6 +17,8 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
+  patches = [ /nix/patches/memflow/memflow-kmod.patch ];
+
   hardeningDisable = [
     "pic"
     "format"
