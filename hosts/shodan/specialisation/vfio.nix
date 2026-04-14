@@ -70,6 +70,13 @@
           "nvidia"
         ];
       };
+
+      swapDevices = [
+        {
+          device = "/nix/swapfile";
+          size = 16384;
+        }
+      ];
     };
   };
 }
