@@ -30,6 +30,7 @@ with lib;
 
   services = {
     udev.extraRules = ''
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4f53", ATTRS{idProduct}=="514b", OWNER="1000", GROUP="100", MODE="0666"
       SUBSYSTEM=="input", ATTRS{idVendor}=="4f53", ATTRS{idProduct}=="514b", ENV{ID_INPUT_JOYSTICK}="" 
       KERNEL=="ntsync" MODE="0644"
     '';

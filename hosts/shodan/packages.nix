@@ -7,6 +7,7 @@ with pkgs;
     master.fflogs
     pcsx2
     rpcs3
+    via
   ];
 
   environment.systemPackages = [
