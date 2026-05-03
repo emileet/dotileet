@@ -41,6 +41,6 @@ src-kvmfr: src-ndi:
     '';
   });
   openldap = prev.openldap.overrideAttrs (_: {
-    doCheck = false;
+    doCheck = !prev.stdenv.hostPlatform.isi686;
   });
 })
