@@ -11,7 +11,7 @@ in
 {
   config = mkIf cfg.enable {
     services = {
-      open-webui.enable = false;
+      open-webui.enable = true;
       ollama = {
         package = pkgs.ollama-cuda;
         home = "/storage/var/lib/ollama";
