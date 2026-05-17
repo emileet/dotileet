@@ -154,4 +154,11 @@ with lib;
       fsType = "ext4";
     };
   };
+
+  swapDevices = [
+    {
+      device = "/nix/swapfile";
+      size = 16384;
+    }
+  ];
 }
