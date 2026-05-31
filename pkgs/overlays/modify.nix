@@ -40,7 +40,4 @@ src-kvmfr: src-ndi:
       mv documentation/* $out/share/doc/${oldAttrs.pname}-${version}/
     '';
   });
-  openldap = prev.openldap.overrideAttrs (_: {
-    doCheck = !prev.stdenv.hostPlatform.isi686;
-  });
 })
