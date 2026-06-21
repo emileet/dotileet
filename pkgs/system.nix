@@ -14,6 +14,7 @@ in
     lm_sensors
     nix-diff
     pciutils
+    nixd
     htop
     wget
     vim
