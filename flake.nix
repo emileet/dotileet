@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs";
-    nixpkgs-pinned.url = "github:nixos/nixpkgs/ac055f38c798b0d87695240c7b761b82fc7e5bc2";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -63,7 +62,6 @@
       self,
       nixpkgs,
       nixpkgs-master,
-      nixpkgs-pinned,
       nix-index-database,
       home-manager,
       impermanence,

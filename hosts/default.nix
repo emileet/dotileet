@@ -1,7 +1,6 @@
 {
   nixpkgs,
   nixpkgs-master,
-  nixpkgs-pinned,
   nix-index-database,
   home-manager,
   impermanence,
@@ -19,7 +18,6 @@ let
     import ../pkgs {
       inherit
         nixpkgs-master
-        nixpkgs-pinned
         nvidia-patch
         font-sf-mono
         src-vkcapture

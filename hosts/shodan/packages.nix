@@ -6,7 +6,6 @@ with pkgs;
     master.xivlauncher
     master.fflogs
     pcsx2
-    rpcs3
     via
   ];
 

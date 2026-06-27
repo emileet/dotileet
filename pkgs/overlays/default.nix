@@ -1,6 +1,5 @@
 args@{
   nixpkgs-master,
-  nixpkgs-pinned,
   nvidia-patch,
   font-sf-mono,
   src-vkcapture,
@@ -17,11 +16,7 @@ args@{
     (import ./secret.nix args)
     (final: prev: {
       master = import nixpkgs-master {
-        localSystem = final.stdenv.hostPlatform;
-        inherit (final) config;
-      };
-      pinned = import nixpkgs-pinned {
-        localSystem = final.stdenv.hostPlatform;
+        system = final.stdenv.hostPlatform.system;
         inherit (final) config;
       };
     })
