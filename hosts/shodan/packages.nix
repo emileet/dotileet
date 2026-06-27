@@ -3,6 +3,7 @@ with pkgs;
 {
   home-manager.users.emileet.home.packages = [
     davinci-resolve-studio
+    master.protonup-qt
     master.xivlauncher
     master.fflogs
     pcsx2
