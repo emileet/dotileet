@@ -80,7 +80,7 @@ in
         after = [ "graphical-session-pre.target" ];
         serviceConfig = {
           Type = "simple";
-          ExecStart = "${pkgs.vban}/bin/vban_receptor -i ${cfg.emitter.ip} -p ${toString cfg.emitter.port} -s ${cfg.receptor.stream} -q 2";
+          ExecStart = "${pkgs.vban}/bin/vban_receptor -i ${cfg.emitter.ip} -p ${toString cfg.receptor.port} -s ${cfg.receptor.stream} -q 2";
           Restart = "on-failure";
           TimeoutStopSec = 10;
           RestartSec = 1;
