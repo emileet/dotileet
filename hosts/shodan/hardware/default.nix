@@ -81,7 +81,7 @@ with lib;
       "mitigations=off" # ohnoe :>
     ]
     ++ optionals (config.specialisation != { }) [
-      "video=HDMI-1:5120x1440@240"
+      "video=HDMI-0:5120x1440@240"
     ];
 
     initrd = {
