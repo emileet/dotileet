@@ -23,7 +23,7 @@ with lib;
   }
   // optionalAttrs (config.specialisation != { }) {
     nvidia = with pkgs; {
-      package = nvidia-patch.auto-patch config.boot.kernelPackages.nvidiaPackages.beta;
+      package = nvidia-patch.auto-patch config.boot.kernelPackages.nvidiaPackages.bleeding_edge;
       open = true;
     };
   };
