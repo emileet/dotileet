@@ -23,6 +23,7 @@ in
         name = "catppuccin-mocha-light-cursors";
         gtk.enable = true;
         x11.enable = true;
+        enable = true;
       };
     };
     gtk = {

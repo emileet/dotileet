@@ -5,7 +5,7 @@ with pkgs;
     davinci-resolve-studio
     master.protonup-qt
     master.xivlauncher
-    master.fflogs
+    master.archon-lite
     pcsx2
     via
   ];

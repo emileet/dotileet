@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782522538,
-        "narHash": "sha256-CvOaUvJ+mXlxU3m2cPWKcOAhtKETsPUYhq+Xa5ewBp4=",
+        "lastModified": 1784407317,
+        "narHash": "sha256-iZrxHToDJWnvt+5LGAtvuQMTy1NZYlNEKbKaVtBJNcc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8d8a6cc50ddc60748791a14ee1163c865ec57635",
+        "rev": "39411a8e12a5526d992e65bc7e3dc9a4414d6713",
         "type": "github"
       },
       "original": {
@@ -66,11 +66,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782030356,
-        "narHash": "sha256-h4WpMr455AfRub0FXBaon6Vcpe0waUyJ4GivIW6oyd4=",
+        "lastModified": 1784440659,
+        "narHash": "sha256-Q5kNLlWngt7TaIIZoxDKWMHjiSaNRVqr70FqWCRRfr4=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "3017088b49efd404f78e3b104f553b97e4af786b",
+        "rev": "4f8d52a3598b0dc7db7a5e7b419e3edd9d1ecfdb",
         "type": "github"
       },
       "original": {
@@ -81,11 +81,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1782175435,
-        "narHash": "sha256-EMzXKmnOtBQ2MnvpiNOm7E+kOMvdPrIKaeg52Tip2Uk=",
+        "lastModified": 1784453100,
+        "narHash": "sha256-zpGZb8FYui+i8KLtC0nlcmb0voR2zB80Qn8pe7lzIbk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "89570f24e97e614aa34aa9ab1c927b6578a43775",
+        "rev": "b471514bed69eff5255c8e63c1f80e5fe56c616f",
         "type": "github"
       },
       "original": {
@@ -97,11 +97,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1782597413,
-        "narHash": "sha256-B+KtiSaTr++PaOuSG9EFNho50HZVyRprmbJMqUiwqYM=",
+        "lastModified": 1784483429,
+        "narHash": "sha256-FjmwsqsLmligtF0kPMZE8+HBNIlA4sdrnC0sYeBm9RQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "10dd8aa1ecce33da6b584bc7be0914bccf57146b",
+        "rev": "2e30d8dec5b125998fbe5d89542992f5cb8300b5",
         "type": "github"
       },
       "original": {
@@ -118,11 +118,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1781504820,
-        "narHash": "sha256-XLzxiGQFb5r9gKFFeDBr6JnNKTzmtxBB+qu+5A+fbdc=",
+        "lastModified": 1783833086,
+        "narHash": "sha256-RjtedNjAhoJIWFE6L5j6WAbkOgY04rFIhO6aSCl44Mc=",
         "owner": "icewind1991",
         "repo": "nvidia-patch-nixos",
-        "rev": "1f6486498b897c5ae0ef1cbe2d3a1e5e8c95cfe4",
+        "rev": "cbffa63f052249bfa1eef746c833c65ed5014343",
         "type": "github"
       },
       "original": {
@@ -150,11 +150,11 @@
     "src-distroav": {
       "flake": false,
       "locked": {
-        "lastModified": 1782378619,
-        "narHash": "sha256-f+Kigntjr/l2/5SRqMwpqhXaqApdL/Ht342rNxzUc5Q=",
+        "lastModified": 1782726605,
+        "narHash": "sha256-4IO+vawHIjSgGGmoMd7XxowAdH6+YkQ/1LJqal2MX9A=",
         "owner": "DistroAV",
         "repo": "DistroAV",
-        "rev": "12e59cdd878e805f209869aa9553c6ed9f52a632",
+        "rev": "6e6960794ae27c1e733043782c1ff7ff1729b5a8",
         "type": "github"
       },
       "original": {
@@ -166,11 +166,11 @@
     "src-kvmfr": {
       "flake": false,
       "locked": {
-        "lastModified": 1781696599,
-        "narHash": "sha256-zEES6XHBOGHxdBLmgFgCdFd7301J445wTMWRxwcGS04=",
+        "lastModified": 1784182404,
+        "narHash": "sha256-/r8tIJLKWq44Q++vuwu2tLhkKsUjxoOeleL1IaCSc4M=",
         "ref": "refs/heads/master",
-        "rev": "1f3051e81ab2ed7418079ea671fc09248bb5e1c6",
-        "revCount": 3663,
+        "rev": "b97a0b79f1b946df187f546b0c61bf63753081b3",
+        "revCount": 3683,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/gnif/LookingGlass"
