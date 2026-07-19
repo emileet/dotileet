@@ -15,7 +15,9 @@ in
       if (hostName == "shodan") then
         ''
           polybar bottom -c ~/.config/polybar/bottom.1 &
+          polybar bottom -c ~/.config/polybar/bottom.2 &
           polybar top -c ~/.config/polybar/top.1 &
+          polybar top -c ~/.config/polybar/top.2 &
         ''
       else if (hostName == "nix") then
         ''

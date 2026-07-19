@@ -15,8 +15,10 @@ with lib;
     displayManager = {
       lightdm.background = "${wallpaper}";
       setupCommands = ''
-        MONITOR='HDMI-0'
-        ${pkgs.xrandr}/bin/xrandr --output $MONITOR --primary --mode 5120x1440 --rate 240
+        MONITOR1='HDMI-0'
+        MONITOR2='DP-0'
+        ${pkgs.xrandr}/bin/xrandr --output $MONITOR1 --mode 5120x1440 --rate 240 --primary
+        ${pkgs.xrandr}/bin/xrandr --output $MONITOR2 --mode 2560x1440 --rate 165 --rotate left --right-of $MONITOR1
       '';
     };
 
