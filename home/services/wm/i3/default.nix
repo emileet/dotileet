@@ -277,6 +277,11 @@ in
           bars = [ ];
         };
         extraConfig = ''
+          ${optionalString (hostName == "shodan") ''
+            workspace ${ws1} output HDMI-0
+            workspace ${ws10} output DP-0
+          ''}
+
           workspace ${ws1} gaps inner 0
           workspace ${ws1} gaps outer 0
           workspace ${ws1} gaps bottom 25
