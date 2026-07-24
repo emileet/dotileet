@@ -5,7 +5,7 @@
   ...
 }:
 let
-  wallpaper = "/storage/pictures/wallpapers/sunset.jpg";
+  wallpaper = "/storage/pictures/wallpapers/mountain.jpg";
 in
 with lib;
 {
