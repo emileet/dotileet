@@ -84,7 +84,7 @@ in
       use-damage = true;
 
       backend = "glx";
-      vsync = true;
+      vsync = false;
     };
   };
 }
