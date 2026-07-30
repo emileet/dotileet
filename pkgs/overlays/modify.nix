@@ -13,10 +13,14 @@ src-kvmfr: src-ndi:
     themeVariants = [ "purple" ];
     sizeVariants = [ "compact" ];
   };
-  looking-glass-client = prev.looking-glass-client.overrideAttrs {
+  looking-glass-client = prev.looking-glass-client.overrideAttrs (oldAttrs: {
     src = src-kvmfr;
     version = "dev";
-  };
+    buildInputs = oldAttrs.buildInputs ++ [
+      prev.libunwind
+      prev.elfutils
+    ];
+  });
   ndi = prev.ndi.overrideAttrs (oldAttrs: rec {
     version = "dev";
     src = src-ndi;

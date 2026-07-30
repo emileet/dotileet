@@ -2,9 +2,12 @@
   lib,
   stdenv,
   obs-studio,
+  pkg-config,
   cmake,
   libbfd,
   libGL,
+  libunwind,
+  elfutils,
   looking-glass-client,
   ...
 }:
@@ -12,9 +15,14 @@ stdenv.mkDerivation {
   pname = "obs-kvmfr";
   version = looking-glass-client.version;
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    pkg-config
+    cmake
+  ];
   buildInputs = [
     obs-studio
+    libunwind
+    elfutils
     libbfd
     libGL
   ];
