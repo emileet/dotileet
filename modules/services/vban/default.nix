@@ -15,6 +15,16 @@ in
     emitter = {
       enable = mkEnableOption "emitter";
 
+      backend = mkOption {
+        type = types.enum [
+          "pulseaudio"
+          "jack"
+          "alsa"
+        ];
+        default = "alsa";
+        description = "audio backend to use";
+      };
+
       stream = mkOption {
         type = types.str;
         default = "Audio";
@@ -36,6 +46,16 @@ in
 
     receptor = {
       enable = mkEnableOption "receptor";
+
+      backend = mkOption {
+        type = types.enum [
+          "pulseaudio"
+          "jack"
+          "alsa"
+        ];
+        default = "alsa";
+        description = "audio backend to use";
+      };
 
       stream = mkOption {
         type = types.str;
@@ -66,7 +86,7 @@ in
         after = [ "graphical-session-pre.target" ];
         serviceConfig = {
           Type = "simple";
-          ExecStart = "${pkgs.vban}/bin/vban_emitter -i ${cfg.emitter.ip} -p ${toString cfg.emitter.port} -s ${cfg.emitter.stream} -r 48000";
+          ExecStart = "${pkgs.vban}/bin/vban_emitter -i ${cfg.emitter.ip} -p ${toString cfg.emitter.port} -s ${cfg.emitter.stream} -b ${cfg.emitter.backend} -r 48000";
           Restart = "on-failure";
           TimeoutStopSec = 10;
           RestartSec = 1;
@@ -80,7 +100,7 @@ in
         after = [ "graphical-session-pre.target" ];
         serviceConfig = {
           Type = "simple";
-          ExecStart = "${pkgs.vban}/bin/vban_receptor -i ${cfg.emitter.ip} -p ${toString cfg.receptor.port} -s ${cfg.receptor.stream} -q 2";
+          ExecStart = "${pkgs.vban}/bin/vban_receptor -i ${cfg.emitter.ip} -p ${toString cfg.receptor.port} -s ${cfg.receptor.stream} -b ${cfg.receptor.backend}";
           Restart = "on-failure";
           TimeoutStopSec = 10;
           RestartSec = 1;

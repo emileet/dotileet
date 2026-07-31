@@ -21,9 +21,10 @@
         enable = true;
       };
       receptor = {
+        backend = "pulseaudio";
         stream = "Microphone";
         ip = "10.0.0.5";
-        port = 6981;
+        port = 6980;
         enable = true;
       };
       enable = true;
