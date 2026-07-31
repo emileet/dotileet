@@ -1,7 +1,12 @@
 {
   pkgs,
+  lib,
   ...
 }:
+with lib;
+let
+  monitor = "DP-1";
+in
 {
   specialisation = {
     # dual boot windows without running it on bare metal (hot swapping the gpu between host and vm is possible but a pain)
@@ -40,15 +45,14 @@
       services.xserver = {
         displayManager = {
           setupCommands = ''
-            MONITOR='DP-1'
-            ${pkgs.xrandr}/bin/xrandr --output $MONITOR --primary --mode 5120x1440 --rate 240
+            ${pkgs.xrandr}/bin/xrandr --output ${monitor} --primary --mode 5120x1440 --rate 240
           '';
         };
       };
 
       boot = {
         kernelParams = [
-          "video=DP-1:5120x1440@240"
+          "video=${monitor}:5120x1440@240"
           "vfio-pci.ids=10de:2c02,10de:22e9"
           "transparent_hugepage=never"
           "default_hugepagesz=1G"
@@ -70,6 +74,8 @@
           "nvidia"
         ];
       };
+
+      environment.sessionVariables.MONITOR2 = mkForce monitor;
     };
   };
 }

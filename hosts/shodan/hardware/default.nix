@@ -79,9 +79,6 @@ with lib;
     kernelParams = [
       "kvm_amd.intercept_rdtsc=1"
       "mitigations=off" # ohnoe :>
-    ]
-    ++ optionals (config.specialisation != { }) [
-      "video=HDMI-0:5120x1440@240"
     ];
 
     initrd = {
