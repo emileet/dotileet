@@ -1,18 +1,7 @@
 { ... }:
 {
   services = {
-    pulseaudio.enable = false;
-
-    pipewire = {
-      alsa = {
-        support32Bit = true;
-        enable = true;
-      };
-      pulse.enable = true;
-      jack.enable = true;
-      enable = true;
-    };
-
+    pipewire.enable = true;
     vban = {
       emitter = {
         stream = "Audio";

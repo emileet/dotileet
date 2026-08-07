@@ -1,4 +1,5 @@
 [
+  ./pipewire
   ./openssh
   ./ollama
   ./vban
