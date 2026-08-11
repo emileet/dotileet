@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   osConfig,
   ...
@@ -13,7 +14,12 @@ in
   config = mkIf cfg.enable {
     services.polybar.script =
       if (hostName == "shodan") then
+        with pkgs;
+        let
+          HWMON_PATH = "/sys/bus/pci/drivers/k10temp/0000:*/hwmon/hwmon*/temp1_input";
+        in
         ''
+          export HWMON_PATH=$(${coreutils}/bin/ls ${HWMON_PATH} 2>/dev/null | ${coreutils}/bin/head -n 1)
           polybar bottom -c ~/.config/polybar/bottom.1 &
           polybar bottom -c ~/.config/polybar/bottom.2 &
           polybar top -c ~/.config/polybar/top.1 &

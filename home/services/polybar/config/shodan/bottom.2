@@ -69,7 +69,7 @@ format-prefix = " "
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-hwmon-path = /sys/class/hwmon/hwmon3/temp1_input
+hwmon-path = ${env:HWMON_PATH}
 warn-temperature = 85
 
 format = <ramp> <label>
