@@ -26,6 +26,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    silent-sddm = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     font-sf-mono = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
@@ -66,6 +71,7 @@
       home-manager,
       impermanence,
       nvidia-patch,
+      silent-sddm,
       font-sf-mono,
       src-vkcapture,
       src-distroav,

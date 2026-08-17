@@ -5,6 +5,7 @@
   home-manager,
   impermanence,
   nvidia-patch,
+  silent-sddm,
   font-sf-mono,
   src-vkcapture,
   src-distroav,
@@ -38,6 +39,7 @@ let
     nix-index-database.nixosModules.nix-index
     impermanence.nixosModules.impermanence
     home-manager.nixosModules.home-manager
+    silent-sddm.nixosModules.default
     home
     pkgs
   ];
