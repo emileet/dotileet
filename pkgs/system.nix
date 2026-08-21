@@ -7,7 +7,7 @@
 with pkgs;
 with lib;
 let
-  graphical = config.services.xserver.enable;
+  graphical = config.programs.hyprland.enable || config.services.xserver.enable;
 in
 {
   environment.systemPackages = [
@@ -34,7 +34,7 @@ in
       thunar.enable = true;
       dconf.enable = true;
     })
-    ({
+    {
       gnupg.agent = {
         enableSSHSupport = true;
         enable = true;
@@ -53,6 +53,6 @@ in
 
       nix-index-database.comma.enable = true;
       zsh.enable = true;
-    })
+    }
   ];
 }

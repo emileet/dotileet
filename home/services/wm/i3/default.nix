@@ -42,16 +42,6 @@ in
               notification = false;
               always = true;
             })
-            (mkIf (hostName == "nix") {
-              command = "deskflow-core client 10.0.0.10 &";
-              notification = false;
-              always = false;
-            })
-            (mkIf (hostName == "shodan") {
-              command = "deskflow-core server &";
-              notification = false;
-              always = false;
-            })
             (mkIf (config.theme.wallpaper != "") {
               command = "${pkgs.feh}/bin/feh --bg-fill ${config.theme.wallpaper}";
               notification = false;

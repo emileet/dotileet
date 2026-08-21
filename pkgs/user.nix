@@ -2,23 +2,25 @@ lib: pkgs: osConfig:
 with lib;
 with pkgs;
 let
-  graphical = osConfig.services.xserver.enable;
+  graphical = osConfig.programs.hyprland.enable || osConfig.services.xserver.enable;
 in
 mkMerge [
   (mkIf graphical [
     qt6Packages.qt6ct
+    easyeffects
     libnotify
     flameshot
     shotwell
-    deskflow
     wezterm
     dunst
+    rofi
     vlc
     master.spicetify-cli
     master.vscode.fhs
     master.vesktop
   ])
-  ([
+  [
+    ripgrep
     hyfetch
     bottom
     nixfmt
@@ -30,5 +32,5 @@ mkMerge [
     eza
     git
     nil
-  ])
+  ]
 ]

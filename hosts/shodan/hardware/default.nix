@@ -15,17 +15,15 @@ with lib;
   nixpkgs.hostPlatform = "x86_64-linux";
 
   hardware = {
+    nvidia = with pkgs; {
+      package = nvidia-patch.auto-patch config.boot.kernelPackages.nvidiaPackages.bleeding_edge;
+      open = true;
+    };
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
     graphics.enable = true;
     xone.enable = true;
     i2c.enable = true;
-  }
-  // optionalAttrs (config.specialisation != { }) {
-    nvidia = with pkgs; {
-      package = nvidia-patch.auto-patch config.boot.kernelPackages.nvidiaPackages.bleeding_edge;
-      open = true;
-    };
   };
 
   services = {
@@ -42,6 +40,8 @@ with lib;
       };
       enable = true;
     };
+
+    xserver.videoDrivers = [ "nvidia" ];
   };
 
   systemd.user.services.openrgb-profile = {
@@ -92,11 +92,11 @@ with lib;
         "sr_mod"
       ];
     }
-    // optionalAttrs (config.specialisation != { }) {
+    // optionalAttrs config.hardware.nvidia.enabled {
       kernelModules = [ "nvidia" ];
     };
 
-    blacklistedKernelModules = optionals (config.specialisation != { }) [
+    blacklistedKernelModules = optionals config.hardware.nvidia.enabled [
       "nouveau"
       "amdgpu"
     ];
@@ -104,7 +104,7 @@ with lib;
       "i2c-dev"
       "i2c-piix4"
     ]
-    ++ optionals (config.specialisation != { }) [
+    ++ optionals config.hardware.nvidia.enabled [
       "nvidia"
     ];
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];

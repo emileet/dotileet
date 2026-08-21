@@ -6,7 +6,9 @@
 }:
 with lib;
 let
-  graphical = osConfig.services.xserver.enable;
+  hyprlandEnabled = osConfig.programs.hyprland.enable;
+  x11Enabled = osConfig.services.xserver.enable;
+  graphical = hyprlandEnabled || x11Enabled;
 in
 {
   options.theme = {
@@ -21,8 +23,9 @@ in
       pointerCursor = {
         package = pkgs.catppuccin-cursors.mochaLight;
         name = "catppuccin-mocha-light-cursors";
+        hyprcursor.enable = hyprlandEnabled;
+        x11.enable = x11Enabled;
         gtk.enable = true;
-        x11.enable = true;
         enable = true;
       };
     };

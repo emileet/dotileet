@@ -18,8 +18,6 @@ in
           extraEnv = {
             PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES = "1"; # enables monado support
             GDK_PIXBUF_MODULE_FILE = ""; # fixes tray icon when launched from rofi
-            OBS_VKCAPTURE = "1";
-            MANGOHUD = "1";
           };
         };
         extraPackages = with pkgs; [

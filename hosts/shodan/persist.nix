@@ -13,7 +13,6 @@
         "/tmp"
       ];
       files = [
-        "/etc/deskflow-server.conf"
         "/etc/machine-id"
       ];
     };

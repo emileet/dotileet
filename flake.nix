@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    waybar = {
+      url = "github:Alexays/Waybar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     font-sf-mono = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
@@ -72,6 +77,7 @@
       impermanence,
       nvidia-patch,
       silent-sddm,
+      waybar,
       font-sf-mono,
       src-vkcapture,
       src-distroav,

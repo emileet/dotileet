@@ -16,9 +16,11 @@ src-kvmfr: src-ndi:
   looking-glass-client = prev.looking-glass-client.overrideAttrs (oldAttrs: {
     src = src-kvmfr;
     version = "dev";
+    patches = [ /nix/patches/looking-glass/nanosvg-unvendor.patch ];
     buildInputs = oldAttrs.buildInputs ++ [
       prev.libunwind
       prev.elfutils
+      prev.fuse3
     ];
   });
   ndi = prev.ndi.overrideAttrs (oldAttrs: rec {

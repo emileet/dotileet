@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "font-sf-mono": {
       "flake": false,
       "locked": {
@@ -145,7 +161,8 @@
         "src-kvmfr": "src-kvmfr",
         "src-ndi": "src-ndi",
         "src-vban": "src-vban",
-        "src-vkcapture": "src-vkcapture"
+        "src-vkcapture": "src-vkcapture",
+        "waybar": "waybar"
       }
     },
     "silent-sddm": {
@@ -187,11 +204,11 @@
     "src-kvmfr": {
       "flake": false,
       "locked": {
-        "lastModified": 1786437079,
-        "narHash": "sha256-u1vII6MQc8r27DRh1P6pDRx2jRMGH459tDukzwm+EVg=",
+        "lastModified": 1787308596,
+        "narHash": "sha256-CRQURnhraZO6sI2/1CPDJELKUA5yuquIg1KxiU5EbxM=",
         "ref": "refs/heads/master",
-        "rev": "45429681a0cfd6edad185e1cc71d395e8f5b6271",
-        "revCount": 4017,
+        "rev": "7476e56ded94b7cadebdb12529636a30a66cb3fa",
+        "revCount": 4212,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/gnif/LookingGlass"
@@ -279,6 +296,27 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "waybar": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787226111,
+        "narHash": "sha256-1JFW1v/v539cS0M3KwCf3NAo9ulNawyaOTxDe1naPe4=",
+        "owner": "Alexays",
+        "repo": "Waybar",
+        "rev": "d561b9d6a11d34f459aab3986507d6907ff319c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Alexays",
+        "repo": "Waybar",
         "type": "github"
       }
     }

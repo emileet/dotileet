@@ -6,6 +6,7 @@
   impermanence,
   nvidia-patch,
   silent-sddm,
+  waybar,
   font-sf-mono,
   src-vkcapture,
   src-distroav,
@@ -20,6 +21,7 @@ let
       inherit
         nixpkgs-master
         nvidia-patch
+        waybar
         font-sf-mono
         src-vkcapture
         src-distroav

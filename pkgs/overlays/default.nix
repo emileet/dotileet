@@ -1,6 +1,7 @@
 args@{
   nixpkgs-master,
   nvidia-patch,
+  waybar,
   font-sf-mono,
   src-vkcapture,
   src-distroav,
@@ -21,5 +22,6 @@ args@{
       };
     })
     nvidia-patch.overlays.default
+    waybar.overlays.default
   ];
 }

@@ -48,6 +48,7 @@ in
             ${pkgs.xrandr}/bin/xrandr --output ${monitor} --primary --mode 5120x1440 --rate 240
           '';
         };
+        videoDrivers = mkForce [ "amdgpu" ];
       };
 
       boot = {

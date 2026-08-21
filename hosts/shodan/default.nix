@@ -7,6 +7,7 @@
     ./specialisation
     ./packages.nix
     ./persist.nix
+    ./secret.nix
     ./users.nix
     ./hardware
   ];
@@ -14,6 +15,7 @@
   programs = {
     gpu-screen-recorder.enable = true;
     obs-studio.enable = true;
+    hyprland.enable = true;
     steam.enable = true;
     zsh.shellAliases = {
       update = "nh os switch -j 3 --cores 12";
@@ -31,11 +33,11 @@
       };
     };
 
+    xserver.windowManager.i3.enable = false;
     openssh.enable = true;
     flatpak.enable = true;
     tumbler.enable = true;
     monado.enable = true;
-    ollama.enable = true;
     gvfs.enable = true;
   };
 
@@ -46,12 +48,7 @@
       br0.useDHCP = true;
     };
 
-    extraHosts = ''
-      10.0.0.11 plsnobully.me git.plsnobully.me
-    '';
-
     networkmanager.enable = true;
-    firewall.enable = false;
     hostName = "shodan";
   };
 
