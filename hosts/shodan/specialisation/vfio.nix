@@ -76,7 +76,7 @@ in
         ];
       };
 
-      environment.sessionVariables.MONITOR2 = mkForce monitor;
+      environment.sessionVariables.XMONITOR2 = mkForce monitor;
     };
   };
 }

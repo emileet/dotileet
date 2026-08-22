@@ -23,8 +23,8 @@
       services.xserver = {
         displayManager = {
           setupCommands = lib.mkForce ''
-            MONITOR1='DP-2'
-            ${pkgs.xrandr}/bin/xrandr --output $MONITOR1 --mode 3440x1440 --rate 100 --primary
+            XMONITOR1='DP-2'
+            ${pkgs.xrandr}/bin/xrandr --output $XMONITOR1 --mode 3440x1440 --rate 100 --primary
           '';
         };
         videoDrivers = [ "nvidia" ];

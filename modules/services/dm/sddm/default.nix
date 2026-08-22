@@ -9,8 +9,19 @@ let
   hyprland = config.programs.hyprland;
 in
 {
+  options.services.displayManager.sddm.hyprlandConfig = mkOption {
+    type = types.lines;
+    default = "";
+    description = "lua configuration for hyprland under sddm";
+  };
+
   config = mkIf hyprland.enable {
-    environment.systemPackages = with pkgs; [ catppuccin-cursors.mochaLight ];
+    environment = {
+      systemPackages = with pkgs; [ catppuccin-cursors.mochaLight ];
+      etc."sddm-hyprland.lua" = mkIf config.programs.hyprland.enable {
+        text = config.services.displayManager.sddm.hyprlandConfig;
+      };
+    };
 
     services.displayManager.sddm = {
       settings = {
