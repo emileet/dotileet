@@ -29,12 +29,12 @@ in
       };
       extraConfig.pipewire-pulse."99-pulse-latency" = {
         "pulse.properties" = {
-          "pulse.min.quantum" = "128/48000";
-          "pulse.min.frag" = "128/48000";
-          "pulse.min.req" = "128/48000";
+          "pulse.min.quantum" = "1024/48000";
+          "pulse.min.frag" = "1024/48000";
+          "pulse.min.req" = "1024/48000";
         };
         "stream.properties" = {
-          "node.latency" = "128/48000";
+          "node.latency" = "1024/48000";
         };
       };
     };
