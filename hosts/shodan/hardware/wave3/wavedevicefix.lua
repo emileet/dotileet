@@ -1,274 +1,214 @@
--- Fix for Wave XLR / Wave 3 / Wave 1 / XLR Dock microphone not working while playback is active.
--- https://github.com/jmansar/wavexlr-on-linux-cfg
+-- source: https://github.com/LukasParke/wave3-research/blob/main/native-linux/wireplumber/scripts/elgato-wave3.lua
 --
--- This script creates a link between Wave device source (mirophone input) and a virtual null sink (output)
--- in order to force the device to start a microphone capture before the playback is activated.
--- After the link is estabilished it creates Wave device sink (playback output).
+-- Creates:
+--   * wave3-null-sink  - keeps the Wave:3 microphone source awake
+--   * wave3-sink       - playback sink for the Wave:3 headphone output
+--
 
--- BEGIN USER CONFIGURATION
-
--- If you need to customize the sink node that is created by the script
--- you can add the additional properties below
-CONFIG_SINK_ADDITIONAL_PROPERTIES = {
-    -- disables session suspend on idle for the sink playback
-    -- helps with potential audio playback delays and audio popping
-    ["session.suspend-timeout-seconds"] = "0"
-}
-
--- END USER CONFIGURATION
 log = Log.open_topic("s-wavedevicefix")
 
--- read arguments passed to the script from the wireplumber config file
-local scriptArgs = ...
-if scriptArgs ~= nil then
-    scriptArgs = scriptArgs:parse(1)
-else
-    scriptArgs = {}
-end
-
-CONFIG_WAVE_DEVICE_SOURCE_NAME = "wavexlr-source"
-CONFIG_WAVE_DEVICE_SINK_NAME = "wavexlr-sink"
-CONFIG_WAVE_DEVICE_DISPLAY_NAME = "WaveXLR"
-
-if scriptArgs["device"] == "wave3" then
-    CONFIG_WAVE_DEVICE_SOURCE_NAME = "wave3-source"
-    CONFIG_WAVE_DEVICE_SINK_NAME = "wave3-sink"
-    CONFIG_WAVE_DEVICE_DISPLAY_NAME = "Wave3"
-
-    log.notice("Use configuration for Wave3 device")
-elseif scriptArgs["device"] == "wave1" then
-    CONFIG_WAVE_DEVICE_SOURCE_NAME = "wave1-source"
-    CONFIG_WAVE_DEVICE_SINK_NAME = "wave1-sink"
-    CONFIG_WAVE_DEVICE_DISPLAY_NAME = "Wave1"
-
-    log.notice("Use configuration for Wave1 device")
-elseif scriptArgs["device"] == "xlrdock" then
-    CONFIG_WAVE_DEVICE_SOURCE_NAME = "xlrdock-source"
-    CONFIG_WAVE_DEVICE_SINK_NAME = "xlrdock-sink"
-    CONFIG_WAVE_DEVICE_DISPLAY_NAME = "XLRDock"
-
-    log.notice("Use configuration for XLRDock device")
-else
-    log.notice("Use configuration for WaveXLR device")
-end
-
-
-waveDeviceSourceOm = ObjectManager {
-    Interest {
+-- Object managers
+sourceOM = ObjectManager({
+    Interest({
         type = "node",
-        Constraint { "node.name", "matches", CONFIG_WAVE_DEVICE_SOURCE_NAME },
-    }
-}
+        Constraint({ "node.name", "matches", "wave3-source" }),
+    })
+})
 
-linkOm = ObjectManager {
-    Interest {
-        type = "link",
-    }
-}
+linkOM = ObjectManager({
+    Interest({
+        type = "link"
+    })
+})
 
-devicesOm = ObjectManager {
-    Interest {
-        type = "device",
-    }
-}
+deviceOM = ObjectManager({
+    Interest({
+        type = "device"
+    })
+})
 
-waveDeviceSinkNode = nil
-nullSinkForWaveDeviceSource = nil
-nullSinkLink = nil
+portOM = ObjectManager({
+    Interest({
+        type = "port"
+    })
+})
 
-function createLinkForWaveDeviceSource(waveDeviceSourceNode)
-    local outPort = nil
-    local inPort = nil
+-- Globals
+waveSinkNode = nil
+nullSinkNode = nil
+waveLink = nil
 
-    local outInterest = Interest {
-        type = "port",
-        Constraint { "node.id", "equals", waveDeviceSourceNode.properties["object.id"] },
-        Constraint { "port.direction", "equals", "out" }
-    }
-
-    local inInterest = Interest {
-        type = "port",
-        Constraint { "node.id", "equals", nullSinkForWaveDeviceSource.properties["object.id"] },
-        Constraint { "port.direction", "equals", "in" }
-    }
-
-    local portOm = ObjectManager {
-        Interest {
-            type = "port",
-        }
-    }
-
-    function onPortAdded()
-        if not nullSinkLink then
-            for port in portOm:iterate(outInterest) do
-                outPort = port
-            end
-
-            for port in portOm:iterate(inInterest) do
-                inPort = port
-            end
-
-            if inPort and outPort and inPort.properties["object.id"] and outPort.properties["object.id"] then
-                local args = {
-                    ["link.input.node"] = nullSinkForWaveDeviceSource.properties["object.id"],
-                    ["link.input.port"] = inPort.properties["object.id"],
-
-                    ["link.output.node"] = waveDeviceSourceNode.properties["object.id"],
-                    ["link.output.port"] = outPort.properties["object.id"],
-                }
-
-                log:notice("Creating link between null sink and " ..
-                    CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " source. Ports: " ..
-                    args["link.input.node"] ..
-                    "-" ..
-                    args["link.input.port"] .. " -> " .. args["link.output.node"] .. "-" .. args["link.output.port"])
-
-                nullSinkLink = Link("link-factory", args)
-
-                nullSinkLink:activate(Feature.Proxy.BOUND, function(n, err)
-                    if err then
-                        log:warning("Failed to create link between null sink and " ..
-                            CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " source"
-                            .. ": " .. tostring(err))
-                        node = nil
-                    else
-                        log:notice("Created link between null sink and " .. CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " source")
-                    end
-                end)
-            end
-        end
-    end
-
-    portOm:connect("object-added", onPortAdded)
-    portOm:activate()
-end
-
-function onLinkCreated(_, link)
-    if nullSinkLink and link.properties["object.id"] == nullSinkLink.properties["object.id"] then
-        for node in waveDeviceSourceOm:iterate() do
-            createWaveDeviceSink(node)
-        end
-    end
-end
-
-function createWaveDeviceSink(sourceNode)
-    local deviceInterest = Interest {
-        type = "device",
-        Constraint { "object.id", "equals", sourceNode.properties["device.id"] }
-    }
-
-    for device in devicesOm:iterate(deviceInterest) do
-        local sinkNodeProperties = {
-            ["device.id"] = sourceNode.properties["device.id"],
-            ["factory.name"] = "api.alsa.pcm.sink",
-            ["node.name"] = CONFIG_WAVE_DEVICE_SINK_NAME,
-            ["node.description"] = CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " Sink",
-            ["node.nick"] = CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " Sink",
-            ["media.class"] = "Audio/Sink",
-            ["api.alsa.path"] = sourceNode.properties["api.alsa.path"],
-            ["api.alsa.pcm.card"] = sourceNode.properties["api.alsa.pcm.card"],
-            ["api.alsa.pcm.stream"] = "playback",
-            ["alsa.resolution_bits"] = "24",
-            ["audio.channels"] = "2",
-            ["audio.position"] = "FL,FR",
-            ["priority.driver"] = "1000",
-            ["priority.session"] = "1000",
-            ["node.pause-on-idle"] = "false",
-            ["card.profile.device"] = "3",
-            ["device.profile.description"] = "Analog Stereo",
-            ["device.profile.name"] = "analog-stereo",
-            ["port.group"] = "playback",
-        }
-
-        for k, v in pairs(device.properties) do
-            if k:find("^api%.alsa%.card%..*") then
-                sinkNodeProperties[k] = v
-            end
-        end
-
-        for k, v in pairs(CONFIG_SINK_ADDITIONAL_PROPERTIES) do
-            sinkNodeProperties[k] = v
-        end
-
-        log:notice("Creating custom " ..
-            CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " sink. api.alsa.path: " .. sourceNode.properties["api.alsa.path"])
-
-        waveDeviceSinkNode = Node("adapter", sinkNodeProperties)
-        waveDeviceSinkNode:activate(Feature.Proxy.BOUND, function(n, err)
-            if err then
-                log:warning("Failed to create " .. sinkNodeProperties["node.name"]
-                    .. ": " .. tostring(err))
-                waveDeviceSinkNode = nil
-            else
-                log:notice("Created custom " ..
-                    CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " sink. object.id: " .. n.properties["object.id"])
-            end
-        end)
-    end
-end
-
-function onWaveDeviceSourceAdded(_, node)
-    createLinkForWaveDeviceSource(node)
-end
-
-function createNullSink()
-    local properties = {
+local function create_null_sink()
+    local props = {
         ["factory.name"] = "support.null-audio-sink",
-        ["node.name"] = "null-sink-for-" .. CONFIG_WAVE_DEVICE_SOURCE_NAME,
-        ["node.description"] = "Null Sink For " .. CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " Source - do not use",
-        ["node.nick"] = "Null Sink For " .. CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " Source - do not use",
+        ["node.name"] = "wave3-null-sink",
+        ["node.description"] = "Wave:3 Null Sink (internal)",
+        ["node.nick"] = "Wave:3 Keepalive",
         ["media.class"] = "Audio/Sink",
-        ["monitor.channel-volumes"] = "true",
-        ["monitor.passthrough"] = "true",
         ["audio.channels"] = "1",
         ["audio.position"] = "MONO",
-        ["node.passive"] = "false"
+        ["audio.rate"] = "48000",
+        ["monitor.channel-volumes"] = "true",
+        ["monitor.passthrough"] = "true",
+        ["node.passive"] = "false",
+        ["node.pause-on-idle"] = "false",
+        ["session.suspend-timeout-seconds"] = "0",
     }
 
-    log:notice("Creating custom null sink for " .. CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " Source")
-
-    local node = Node("adapter", properties)
-
+    log:notice("Creating Wave:3 null sink")
+    local node = Node("adapter", props)
     node:activate(Feature.Proxy.BOUND, function(n, err)
         if err then
-            log:warning("Failed to create " .. properties["node.name"]
-                .. ": " .. tostring(err))
-            node = nil
+            log:warning("Failed to create null sink: " .. tostring(err))
+            nullSinkNode = nil
         else
-            log:notice("Created null sink for " .. CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " source. object.id: " ..
-                n.properties["object.id"])
-            onNullSinkCreated();
+            log:notice("Created Wave:3 null sink, id=" .. n.properties["object.id"])
         end
     end)
 
     return node
 end
 
-function onWaveDeviceSourceRemoved()
-    if waveDeviceSinkNode then
-        log:notice("Removing custom " .. CONFIG_WAVE_DEVICE_DISPLAY_NAME .. " sink");
-        waveDeviceSinkNode:request_destroy()
-        waveDeviceSinkNode = nil
-    end
+local function create_wave_sink(source)
+    local devInterest = Interest({
+        type = "device",
+        Constraint({ "object.id", "equals", source.properties["device.id"] }),
+    })
 
-    if nullSinkLink then
-        log:notice("Removing null sink link");
-        nullSinkLink:request_destroy()
-        nullSinkLink = nil
+    for dev in deviceOM:iterate(devInterest) do
+        local props = {
+            ["device.id"] = source.properties["device.id"],
+            ["factory.name"] = "api.alsa.pcm.sink",
+            ["node.name"] = "wave3-sink",
+            ["node.description"] = "Wave:3 Headphones",
+            ["node.nick"] = "Wave:3 HP",
+            ["media.class"] = "Audio/Sink",
+            ["api.alsa.path"] = source.properties["api.alsa.path"],
+            ["api.alsa.pcm.card"] = source.properties["api.alsa.pcm.card"],
+            ["api.alsa.pcm.stream"] = "playback",
+            ["alsa.resolution_bits"] = "24",
+            ["audio.channels"] = "2",
+            ["audio.position"] = "FL,FR",
+            ["audio.rate"] = "48000",
+            ["priority.driver"] = "1000",
+            ["priority.session"] = "1000",
+            ["node.pause-on-idle"] = "false",
+            ["node.autoconnect"] = "false",
+            ["session.suspend-timeout-seconds"] = "0",
+        }
+
+        for k, v in pairs(dev.properties) do
+            if k:find("^api%.alsa%.card%..*") then
+                props[k] = v
+            end
+        end
+
+        log:notice("Creating Wave:3 playback sink for " .. source.properties["api.alsa.path"])
+        waveSinkNode = Node("adapter", props)
+        waveSinkNode:activate(Feature.Proxy.BOUND, function(n, err)
+            if err then
+                log:warning("Failed to create Wave:3 sink: " .. tostring(err))
+                waveSinkNode = nil
+            else
+                log:notice("Created Wave:3 sink, id=" .. n.properties["object.id"])
+            end
+        end)
     end
 end
 
-function onNullSinkCreated()
-    log:notice("Activate event listeners");
+local function try_link_source_to_null(source)
+    if waveLink or not nullSinkNode then
+        return
+    end
 
-    linkOm:activate()
-    linkOm:connect("object-added", onLinkCreated)
-    waveDeviceSourceOm:connect("object-added", onWaveDeviceSourceAdded)
-    waveDeviceSourceOm:connect("object-removed", onWaveDeviceSourceRemoved)
-    waveDeviceSourceOm:activate()
+    local outPort, inPort
+    local outInterest = Interest({
+        type = "port",
+        Constraint({ "node.id", "equals", source.properties["object.id"] }),
+        Constraint({ "port.direction", "equals", "out" }),
+    })
+    local inInterest = Interest({
+        type = "port",
+        Constraint({ "node.id", "equals", nullSinkNode.properties["object.id"] }),
+        Constraint({ "port.direction", "equals", "in" }),
+    })
+
+    for p in portOM:iterate(outInterest) do
+        outPort = p
+    end
+    for p in portOM:iterate(inInterest) do
+        inPort = p
+    end
+
+    if not (outPort and inPort) then
+        return
+    end
+
+    local args = {
+        ["link.input.node"] = nullSinkNode.properties["object.id"],
+        ["link.input.port"] = inPort.properties["object.id"],
+        ["link.output.node"] = source.properties["object.id"],
+        ["link.output.port"] = outPort.properties["object.id"],
+    }
+
+    log:notice("Linking Wave:3 source -> null sink")
+    waveLink = Link("link-factory", args)
+    waveLink:activate(Feature.Proxy.BOUND, function(n, err)
+        if err then
+            log:warning("Failed to link Wave:3 source: " .. tostring(err))
+            waveLink = nil
+        else
+            log:notice("Created link Wave:3 source -> null sink")
+        end
+    end)
 end
 
-nullSinkForWaveDeviceSource = createNullSink();
-devicesOm:activate()
+local function on_source_added(_, node)
+    try_link_source_to_null(node)
+end
 
-log:notice("script initialized")
+local function on_source_removed()
+    if waveSinkNode then
+        log:notice("Removing Wave:3 sink")
+        waveSinkNode:request_destroy()
+        waveSinkNode = nil
+    end
+    if waveLink then
+        log:notice("Removing Wave:3 source link")
+        waveLink:request_destroy()
+        waveLink = nil
+    end
+end
+
+local function on_link_added(_, link)
+    if waveLink and link.properties["object.id"] == waveLink.properties["object.id"] then
+        for node in sourceOM:iterate() do
+            create_wave_sink(node)
+        end
+    end
+end
+
+local function on_port_added(_, port)
+    if not waveLink then
+        for node in sourceOM:iterate() do
+            try_link_source_to_null(node)
+        end
+    end
+end
+
+-- Activation
+nullSinkNode = create_null_sink()
+
+portOM:activate()
+portOM:connect("object-added", on_port_added)
+
+linkOM:activate()
+linkOM:connect("object-added", on_link_added)
+
+sourceOM:connect("object-added", on_source_added)
+sourceOM:connect("object-removed", on_source_removed)
+sourceOM:activate()
+
+deviceOM:activate()
+
+log:notice("Elgato Wave:3 WirePlumber script initialized")

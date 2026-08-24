@@ -15,5 +15,10 @@
       };
       enable = true;
     };
+    wave3-daemon = {
+      startMuted = true;
+      startGain = 46;
+      enable = true;
+    };
   };
 }
