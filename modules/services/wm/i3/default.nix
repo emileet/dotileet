@@ -25,8 +25,6 @@ in
         enable = true;
       };
 
-      displayManager.defaultSession = "none+i3";
-      gnome.gnome-keyring.enable = true;
       libinput.enable = false;
     };
 

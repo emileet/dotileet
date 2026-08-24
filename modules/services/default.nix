@@ -3,6 +3,6 @@
   ./openssh
   ./ollama
   ./vban
+  ./wm
 ]
 ++ (import ./dm)
-++ (import ./wm)

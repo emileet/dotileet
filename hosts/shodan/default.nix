@@ -33,7 +33,6 @@
       };
     };
 
-    xserver.windowManager.i3.enable = false;
     openssh.enable = true;
     flatpak.enable = true;
     tumbler.enable = true;

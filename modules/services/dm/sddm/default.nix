@@ -1,11 +1,11 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }:
 with lib;
 let
+  homeCfg = config.home-manager.users.emileet;
   hyprland = config.programs.hyprland;
 in
 {
@@ -16,18 +16,15 @@ in
   };
 
   config = mkIf hyprland.enable {
-    environment = {
-      systemPackages = with pkgs; [ catppuccin-cursors.mochaLight ];
-      etc."sddm-hyprland.lua" = mkIf config.programs.hyprland.enable {
-        text = config.services.displayManager.sddm.hyprlandConfig;
-      };
+    environment.etc."sddm-hyprland.lua" = mkIf config.programs.hyprland.enable {
+      text = config.services.displayManager.sddm.hyprlandConfig;
     };
 
     services.displayManager.sddm = {
       settings = {
         Wayland.CompositorCommand = "start-hyprland -- -c /etc/sddm-hyprland.lua";
         Theme = {
-          CursorTheme = "catppuccin-mocha-light-cursors"; # Replace with your exact cursor name
+          CursorTheme = homeCfg.home.pointerCursor.name;
           CursorSize = "24";
         };
       };

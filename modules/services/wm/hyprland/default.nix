@@ -11,7 +11,6 @@ let
 in
 {
   config = mkIf cfg.enable {
-    services.gnome.gnome-keyring.enable = true;
     programs.hyprland = {
       xwayland.enable = true;
       withUWSM = true;
