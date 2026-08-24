@@ -8,17 +8,11 @@
       };
       enable = true;
     };
-    pipewire = {
-      wireplumber = {
-        extraScripts."wavedevicefix.lua" = builtins.readFile ./wave3/wavedevicefix.lua;
-        extraConfig."51-wave3" = import ./wave3;
-      };
-      enable = true;
-    };
-    wave3-daemon = {
-      startMuted = true;
-      startGain = 46;
-      enable = true;
-    };
+    pipewire.enable = true;
+  };
+  hardware.wave3 = {
+    startMuted = true;
+    startGain = 46;
+    enable = true;
   };
 }

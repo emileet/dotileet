@@ -1,7 +1,7 @@
 {
   "wireplumber.components" = [
     {
-      name = "wavedevicefix.lua";
+      name = "wave3fix.lua";
       type = "script/lua";
       provides = "custom.wave3fix";
     }

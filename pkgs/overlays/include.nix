@@ -1,6 +1,6 @@
 font-sf-mono: src-vban: src-vkcapture: src-distroav:
 (final: prev: {
-  wave3-daemon = prev.callPackage ../include/wave3-daemon/pkg { };
+  wave3-daemon = prev.callPackage ../include/wave3-daemon { };
   vban = prev.callPackage ../include/vban { inherit src-vban; };
   obs-vkcapture-kms = prev.callPackage ../include/vkcapture { inherit src-vkcapture; };
   obs-distroav = prev.callPackage ../include/distroav { inherit src-distroav; };

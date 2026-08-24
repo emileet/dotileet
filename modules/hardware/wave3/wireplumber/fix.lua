@@ -5,7 +5,7 @@
 --   * wave3-sink       - playback sink for the Wave:3 headphone output
 --
 
-log = Log.open_topic("s-wavedevicefix")
+log = Log.open_topic("s-wave3fix")
 
 -- Object managers
 sourceOM = ObjectManager({
