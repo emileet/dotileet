@@ -6,6 +6,7 @@
   impermanence,
   nvidia-patch,
   silent-sddm,
+  quickshell,
   waybar,
   font-sf-mono,
   src-vkcapture,
@@ -21,6 +22,7 @@ let
       inherit
         nixpkgs-master
         nvidia-patch
+        quickshell
         waybar
         font-sf-mono
         src-vkcapture

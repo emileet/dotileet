@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quickshell = {
+      url = "github:quickshell-mirror/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     waybar = {
       url = "github:Alexays/Waybar";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,6 +82,7 @@
       impermanence,
       nvidia-patch,
       silent-sddm,
+      quickshell,
       waybar,
       font-sf-mono,
       src-vkcapture,

@@ -11,6 +11,7 @@ in
 {
   config = mkIf hyprlandEnabled {
     home.packages = with pkgs; [
+      quickshell
       hyprls
     ];
     systemd.user.services = {

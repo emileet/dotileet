@@ -147,6 +147,26 @@
         "type": "github"
       }
     },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787703747,
+        "narHash": "sha256-mSKjFcYgjfiXXzMYKIFec1t8Cl+bGOgAjobLNz7FHns=",
+        "owner": "quickshell-mirror",
+        "repo": "quickshell",
+        "rev": "9f59d0a05dff3865cf5bdff19309627214e18363",
+        "type": "github"
+      },
+      "original": {
+        "owner": "quickshell-mirror",
+        "repo": "quickshell",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "font-sf-mono": "font-sf-mono",
@@ -156,6 +176,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
         "nvidia-patch": "nvidia-patch",
+        "quickshell": "quickshell",
         "silent-sddm": "silent-sddm",
         "src-distroav": "src-distroav",
         "src-kvmfr": "src-kvmfr",
