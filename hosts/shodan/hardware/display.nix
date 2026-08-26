@@ -5,14 +5,12 @@
   ...
 }:
 let
-  wallpaper = "/storage/pictures/wallpapers/mountain.jpg";
+  wallpaper = config.home-manager.users.emileet.theme.wallpaper;
   monitor1 = "HDMI-0";
   monitor2 = "DP-0";
 in
 with lib;
 {
-  home-manager.users.emileet.theme.wallpaper = "${wallpaper}";
-
   services = {
     xserver = {
       displayManager = {

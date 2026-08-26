@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
-  wallpaper = "/storage/pictures/wallpapers/sunset.jpg";
+  wallpaper = config.home-manager.users.emileet.theme.wallpaper;
 in
 {
-  home-manager.users.emileet.theme.wallpaper = "${wallpaper}";
 
   services.xserver = {
     displayManager = {

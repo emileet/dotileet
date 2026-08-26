@@ -32,11 +32,18 @@ in
     };
 
     programs.silentSDDM = {
-      profileIcons = {
-        emileet = "/storage/pictures/avatars/emileet.jpg";
-      };
-      theme = "catppuccin-mocha";
+      backgrounds.wallpaper = /. + homeCfg.theme.wallpaper;
+      profileIcons.emileet = homeCfg.theme.profileIcon;
+      theme = "default";
       enable = true;
+      settings =
+        let
+          wallpaperFileName = baseNameOf homeCfg.theme.wallpaper;
+        in
+        {
+          "LoginScreen".background = wallpaperFileName;
+          "LockScreen".background = wallpaperFileName;
+        };
     };
   };
 }
