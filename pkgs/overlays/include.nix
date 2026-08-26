@@ -1,14 +1,16 @@
-font-sf-mono: src-vban: src-vkcapture: src-distroav:
+{ inputs, ... }:
 (final: prev: {
-  wave3-daemon = prev.callPackage ../include/wave3-daemon { };
-  vban = prev.callPackage ../include/vban { inherit src-vban; };
-  obs-vkcapture-kms = prev.callPackage ../include/vkcapture { inherit src-vkcapture; };
-  obs-distroav = prev.callPackage ../include/distroav { inherit src-distroav; };
+  obs-vkcapture-kms = prev.callPackage ../include/vkcapture { inherit (inputs) src-vkcapture; };
+  obs-distroav = prev.callPackage ../include/distroav { inherit (inputs) src-distroav; };
   obs-kvmfr = prev.callPackage ../include/kvmfr/obs { };
+
+  vban = prev.callPackage ../include/vban { inherit (inputs) src-vban; };
+  wave3-daemon = prev.callPackage ../include/wave3-daemon { };
+
   sf-mono-liga = prev.stdenvNoCC.mkDerivation {
     pname = "sf-mono-liga";
     version = "dev";
-    src = font-sf-mono;
+    src = inputs.font-sf-mono;
     dontConfigure = true;
     installPhase = ''
       mkdir -p $out/share/fonts/opentype

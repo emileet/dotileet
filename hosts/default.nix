@@ -1,63 +1,29 @@
-{
-  nixpkgs,
-  nixpkgs-master,
-  nix-index-database,
-  home-manager,
-  impermanence,
-  nvidia-patch,
-  silent-sddm,
-  quickshell,
-  waybar,
-  font-sf-mono,
-  src-vkcapture,
-  src-distroav,
-  src-kvmfr,
-  src-vban,
-  src-ndi,
-  ...
-}:
+{ inputs, ... }:
 let
-  pkgs = (
-    import ../pkgs {
-      inherit
-        nixpkgs-master
-        nvidia-patch
-        quickshell
-        waybar
-        font-sf-mono
-        src-vkcapture
-        src-distroav
-        src-kvmfr
-        src-vban
-        src-ndi
-        ;
-    }
-  );
-
   home = {
     home-manager.users.emileet = import ../home;
     home-manager.useGlobalPkgs = true;
   };
 
+  pkgs = (import ../pkgs { inherit inputs; });
+
   sharedModules = (import ../modules) ++ [
-    nix-index-database.nixosModules.nix-index
-    impermanence.nixosModules.impermanence
-    home-manager.nixosModules.home-manager
-    silent-sddm.nixosModules.default
+    inputs.nix-index-database.nixosModules.nix-index
+    inputs.impermanence.nixosModules.impermanence
+    inputs.home-manager.nixosModules.home-manager
+    inputs.silent-sddm.nixosModules.default
     home
     pkgs
   ];
 
-  lib = nixpkgs.lib;
+  mkHost =
+    hostPath:
+    inputs.nixpkgs.lib.nixosSystem {
+      modules = sharedModules ++ [ hostPath ];
+    };
 in
 {
-  nix = lib.nixosSystem {
-    modules = sharedModules ++ [ ./nix ];
-  };
-  nixsrv = lib.nixosSystem {
-    modules = sharedModules ++ [ ./nixsrv ];
-  };
-  shodan = lib.nixosSystem {
-    modules = sharedModules ++ [ ./shodan ];
-  };
+  nix = mkHost ./nix;
+  nixsrv = mkHost ./nixsrv;
+  shodan = mkHost ./shodan;
 }

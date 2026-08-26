@@ -1,4 +1,4 @@
-src-kvmfr: src-ndi:
+{ inputs, ... }:
 (final: prev: {
   polybar = prev.polybar.override {
     githubSupport = true;
@@ -14,7 +14,7 @@ src-kvmfr: src-ndi:
     sizeVariants = [ "compact" ];
   };
   looking-glass-client = prev.looking-glass-client.overrideAttrs (oldAttrs: {
-    src = src-kvmfr;
+    src = inputs.src-kvmfr;
     version = "dev";
     patches = [ /nix/patches/looking-glass/nanosvg-unvendor.patch ];
     buildInputs = oldAttrs.buildInputs ++ [
@@ -25,7 +25,7 @@ src-kvmfr: src-ndi:
   });
   ndi = prev.ndi.overrideAttrs (oldAttrs: rec {
     version = "dev";
-    src = src-ndi;
+    src = inputs.src-ndi;
     unpackPhase = ''
       echo y | $src/Install_NDI_SDK_v6_Linux.sh
       sourceRoot="NDI SDK for Linux";

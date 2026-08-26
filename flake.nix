@@ -72,26 +72,7 @@
     };
   };
 
-  outputs =
-    args@{
-      self,
-      nixpkgs,
-      nixpkgs-master,
-      nix-index-database,
-      home-manager,
-      impermanence,
-      nvidia-patch,
-      silent-sddm,
-      quickshell,
-      waybar,
-      font-sf-mono,
-      src-vkcapture,
-      src-distroav,
-      src-kvmfr,
-      src-vban,
-      src-ndi,
-    }:
-    {
-      nixosConfigurations = (import ./hosts args);
-    };
+  outputs = inputs: {
+    nixosConfigurations = import ./hosts { inherit inputs; };
+  };
 }
