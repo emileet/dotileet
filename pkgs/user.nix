@@ -7,6 +7,7 @@ in
 mkMerge [
   (mkIf graphical [
     qt6Packages.qt6ct
+    moonlight-qt
     easyeffects
     libnotify
     flameshot
