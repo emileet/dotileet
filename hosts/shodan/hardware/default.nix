@@ -126,7 +126,7 @@ with lib;
       device = "none";
       fsType = "tmpfs";
       options = [
-        "size=3G"
+        "size=12G"
         "mode=755"
       ];
     };
@@ -155,7 +155,15 @@ with lib;
   swapDevices = [
     {
       device = "/nix/swapfile";
+      priority = 10;
       size = 16384;
     }
   ];
+
+  zramSwap = {
+    algorithm = "zstd";
+    memoryPercent = 50;
+    priority = 100;
+    enable = true;
+  };
 }
