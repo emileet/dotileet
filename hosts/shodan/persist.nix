@@ -7,6 +7,7 @@
         "/etc/NetworkManager"
         "/etc/nixos"
         "/var/lib/flatpak"
+        "/var/lib/docker"
         "/var/lib/nixos"
         "/var/log"
         "/var/tmp"
