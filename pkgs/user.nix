@@ -9,6 +9,7 @@ mkMerge [
     qt6Packages.qt6ct
     moonlight-qt
     easyeffects
+    qbittorrent
     libnotify
     flameshot
     shotwell
