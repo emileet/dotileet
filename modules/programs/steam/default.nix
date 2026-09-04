@@ -42,12 +42,23 @@ in
     };
 
     home-manager.users.emileet.home.packages = with pkgs; [
-      (lutris.override {
-        extraPkgs = pkgs: [
-          wineWow64Packages.stable
-          gamemode
-          mangohud
+      (symlinkJoin {
+        name = "lutris-wrapped";
+        paths = [
+          (lutris.override {
+            extraPkgs = pkgs: [
+              wineWow64Packages.stable
+              vulkan-tools
+              gamemode
+              mangohud
+            ];
+          })
         ];
+        nativeBuildInputs = [ makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/lutris \
+            --prefix GI_TYPELIB_PATH : "${libayatana-appindicator}/lib/girepository-1.0"
+        '';
       })
     ];
   };
