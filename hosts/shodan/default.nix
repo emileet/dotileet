@@ -32,6 +32,7 @@
       };
     };
 
+    llama-cpp.enable = true;
     openssh.enable = true;
     flatpak.enable = true;
     tumbler.enable = true;

@@ -8,7 +8,6 @@
       extraGroups = [
         "realtime"
         "gamemode"
-        "ollama"
         "docker"
         "audio"
         "wheel"

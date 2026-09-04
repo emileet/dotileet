@@ -1,7 +1,7 @@
 [
+  ./llama-cpp
   ./pipewire
   ./openssh
-  ./ollama
   ./vban
   ./wm
 ]
