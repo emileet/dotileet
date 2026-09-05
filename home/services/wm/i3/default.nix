@@ -296,7 +296,6 @@ in
       };
 
       Service = {
-        Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
         TimeoutStopSec = 10;

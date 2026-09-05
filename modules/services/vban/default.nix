@@ -85,7 +85,6 @@ in
         partOf = [ "graphical-session.target" ];
         after = [ "graphical-session-pre.target" ];
         serviceConfig = {
-          Type = "simple";
           ExecStart = "${pkgs.vban}/bin/vban_emitter -i ${cfg.emitter.ip} -p ${toString cfg.emitter.port} -s ${cfg.emitter.stream} -b ${cfg.emitter.backend} -r 48000";
           Restart = "on-failure";
           TimeoutStopSec = 10;
@@ -99,7 +98,6 @@ in
         partOf = [ "graphical-session.target" ];
         after = [ "graphical-session-pre.target" ];
         serviceConfig = {
-          Type = "simple";
           ExecStart = "${pkgs.vban}/bin/vban_receptor -i ${cfg.receptor.ip} -p ${toString cfg.receptor.port} -s ${cfg.receptor.stream} -b ${cfg.receptor.backend}";
           Restart = "on-failure";
           TimeoutStopSec = 10;
