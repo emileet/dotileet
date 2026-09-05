@@ -18,7 +18,7 @@ mkMerge [
     rofi
     vlc
     master.spicetify-cli
-    master.vscode.fhs
+    vscode.fhs
     master.vesktop
   ])
   [

@@ -1,5 +1,9 @@
 { inputs, ... }:
 let
+  registry = {
+    nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  };
+
   home = {
     home-manager.users.emileet = import ../home;
     home-manager.useGlobalPkgs = true;
@@ -12,6 +16,7 @@ let
     inputs.impermanence.nixosModules.impermanence
     inputs.home-manager.nixosModules.home-manager
     inputs.silent-sddm.nixosModules.default
+    registry
     home
     pkgs
   ];
