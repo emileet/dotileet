@@ -50,12 +50,4 @@
     networkmanager.enable = true;
     hostName = "shodan";
   };
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  time.timeZone = "Australia/Melbourne";
-  system.stateVersion = "26.11";
 }
