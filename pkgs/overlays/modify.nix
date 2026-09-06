@@ -46,4 +46,12 @@
       mv documentation/* $out/share/doc/${oldAttrs.pname}-${version}/
     '';
   });
+  vscode = prev.vscode // {
+    fhs =
+      (prev.vscode.overrideAttrs (oldAttrs: {
+        postPatch =
+          builtins.replaceStrings [ ''rm -rf "resources/app/node_modules.asar.unpacked"'' ] [ "" ]
+            oldAttrs.postPatch;
+      })).fhs;
+  };
 })
