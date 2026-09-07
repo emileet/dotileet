@@ -7,13 +7,11 @@
 }:
 with lib;
 let
-  cfgNvidia = osConfig.hardware.nvidia;
-  cfgHyprland = osConfig.programs.hyprland;
+  cfg = osConfig.programs.hyprland;
   cfgQuickshell = "${config.xdg.configHome}/quickshell/classic";
-  idleMonitor = if cfgNvidia.enabled then "HDMI-A-1" else "DP-1";
 in
 {
-  config = mkIf cfgHyprland.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       quickshell
       hyprls
@@ -23,8 +21,8 @@ in
         settings = {
           listener = [
             {
-              on-timeout = "hyprctl dispatch 'hl.dsp.dpms({ action = \"disable\", monitor = \"${idleMonitor}\" })'";
-              on-resume = "hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\", monitor = \"${idleMonitor}\" })'";
+              on-timeout = "sh -c 'hyprctl dispatch \"hl.dsp.dpms({ action = \\\"disable\\\", monitor = \\\"$WMONITOR1\\\" })\"'";
+              on-resume = "sh -c 'hyprctl dispatch \"hl.dsp.dpms({ action = \\\"enable\\\", monitor = \\\"$WMONITOR1\\\" })\"'";
               ignore_inhibit = true;
               timeout = 600;
             }

@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -76,7 +77,14 @@ in
         ];
       };
 
-      environment.sessionVariables.XMONITOR2 = mkForce monitor;
+      environment.sessionVariables = mkMerge [
+        (mkIf config.programs.hyprland.enable {
+          WMONITOR1 = mkForce monitor;
+        })
+        (mkIf config.services.xserver.windowManager.i3.enable {
+          XMONITOR2 = mkForce monitor;
+        })
+      ];
     };
   };
 }

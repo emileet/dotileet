@@ -5,19 +5,23 @@
   ...
 }:
 let
-  wallpaper = config.home-manager.users.emileet.theme.wallpaper;
-  monitor1 = "HDMI-0";
-  monitor2 = "DP-0";
+  cfgNvidia = config.hardware.nvidia;
+
+  wmonitor1 = if cfgNvidia.enabled then "HDMI-A-1" else "DP-1";
+  wmonitor2 = if cfgNvidia.enabled then "DP-1" else "";
+
+  xmonitor1 = "HDMI-0";
+  xmonitor2 = "DP-0";
 in
 with lib;
 {
   services = {
     xserver = {
       displayManager = {
-        lightdm.background = "${wallpaper}";
+        lightdm.background = "${config.home-manager.users.emileet.theme.wallpaper}";
         setupCommands = ''
-          ${pkgs.xrandr}/bin/xrandr --output ${monitor1} --mode 5120x1440 --rate 240 --primary
-          ${pkgs.xrandr}/bin/xrandr --output ${monitor2} --mode 2560x1440 --rate 165 --rotate left --right-of ${monitor1}
+          ${pkgs.xrandr}/bin/xrandr --output ${xmonitor1} --mode 5120x1440 --rate 240 --primary
+          ${pkgs.xrandr}/bin/xrandr --output ${xmonitor2} --mode 2560x1440 --rate 165 --rotate left --right-of ${xmonitor1}
         '';
       };
 
@@ -34,28 +38,20 @@ with lib;
     };
     displayManager.sddm.hyprlandConfig = ''
       ${
-        if config.hardware.nvidia.enabled then
-          ''
-            hl.monitor({
-                output = "HDMI-A-1",
-                mode = "5120x1440@240",
-                position = "0x0",
-                scale = 1,
-            })
-            hl.monitor({
-                output = "DP-1",
-                disabled = true,
-            })
-          ''
-        else
-          ''
-            hl.monitor({
-                output = "DP-1",
-                mode = "5120x1440@240",
-                position = "0x0",
-                scale = 1,
-            })
-          ''
+        ''
+          hl.monitor({
+            output = "${wmonitor1}",
+            mode = "5120x1440@240",
+            position = "auto-left",
+            scale = 1,
+          })
+        ''
+        + optionalString cfgNvidia.enabled ''
+          hl.monitor({
+              output = "${wmonitor2}",
+              disabled = true,
+          })
+        ''
       }
       hl.config({
           misc = {
@@ -67,12 +63,18 @@ with lib;
     '';
   };
 
-  boot.kernelParams = optionals config.hardware.nvidia.enabled [
-    "video=${monitor1}:5120x1440@240"
+  boot.kernelParams = optionals cfgNvidia.enabled [
+    "video=${wmonitor1}:5120x1440@240"
   ];
 
-  environment.sessionVariables = mkIf config.services.xserver.windowManager.i3.enable {
-    XMONITOR1 = monitor1;
-    XMONITOR2 = monitor2;
-  };
+  environment.sessionVariables = mkMerge [
+    (mkIf config.programs.hyprland.enable {
+      WMONITOR1 = wmonitor1;
+      WMONITOR2 = wmonitor2;
+    })
+    (mkIf config.services.xserver.windowManager.i3.enable {
+      XMONITOR1 = xmonitor1;
+      XMONITOR2 = xmonitor2;
+    })
+  ];
 }
