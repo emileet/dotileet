@@ -1,11 +1,5 @@
+{ ... }:
 {
-  lib,
-  pkgs,
-  osConfig,
-  ...
-}:
-{
-  imports = (import ./programs) ++ (import ./services);
-  home.packages = import ../pkgs/user.nix lib pkgs osConfig;
+  imports = [ ../pkgs/user.nix ] ++ (import ./programs) ++ (import ./services);
   home.stateVersion = "26.11";
 }
