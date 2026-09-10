@@ -15,7 +15,6 @@ in
     })
     inputs.nvidia-patch.overlays.default
     inputs.quickshell.overlays.default
-    inputs.waybar.overlays.default
     packagesInclude
     packagesModify
     packagesSecret

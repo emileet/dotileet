@@ -51,10 +51,6 @@ in
         Unit.Description = "Flexible toolkit for making desktop shells with QtQuick";
         Service.ExecStart = "${pkgs.quickshell}/bin/qs -p ${cfgQuickshell}";
       };
-      waybar = {
-        Unit.Description = "Highly customizable Wayland bar";
-        Service.ExecStart = "${pkgs.waybar}/bin/waybar";
-      };
     };
   };
 }

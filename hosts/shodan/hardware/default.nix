@@ -67,7 +67,7 @@ with lib;
     kernelPackages = pkgs.linuxPackages_zen;
     kernelPatches = [
       {
-        patch = /nix/patches/linux/linux-vmi-7.0.3.patch;
+        patch = /nix/patches/linux/linux-vmi-7.2.3.patch;
         name = "virtual machine introspection";
         extraConfig = ''
           EVDEV_MIRROR m
