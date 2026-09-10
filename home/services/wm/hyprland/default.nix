@@ -23,7 +23,7 @@ in
             {
               on-timeout = "sh -c 'hyprctl dispatch \"hl.dsp.dpms({ action = \\\"disable\\\", monitor = \\\"$WMONITOR1\\\" })\"'";
               on-resume = "sh -c 'hyprctl dispatch \"hl.dsp.dpms({ action = \\\"enable\\\", monitor = \\\"$WMONITOR1\\\" })\"'";
-              ignore_inhibit = true;
+              ignore_inhibit = false;
               timeout = 600;
             }
           ];
