@@ -1,12 +1,11 @@
 { inputs, ... }:
 let
-  registry = {
-    nix.registry.nixpkgs.flake = inputs.nixpkgs;
-  };
+  registry.nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
-  home = {
-    home-manager.users.emileet = import ../home;
-    home-manager.useGlobalPkgs = true;
+  home.home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users.emileet = import ../home;
+    useGlobalPkgs = true;
   };
 
   pkgs = (import ../pkgs { inherit inputs; });

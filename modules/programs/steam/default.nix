@@ -41,25 +41,29 @@ in
       WMR_HANDTRACKING = "0";
     };
 
-    home-manager.users.emileet.home.packages = with pkgs; [
-      (symlinkJoin {
-        name = "lutris-wrapped";
-        paths = [
-          (lutris.override {
-            extraPkgs = pkgs: [
-              wineWow64Packages.stable
-              vulkan-tools
-              gamemode
-              mangohud
-            ];
-          })
-        ];
-        nativeBuildInputs = [ makeWrapper ];
-        postBuild = ''
-          wrapProgram $out/bin/lutris \
-            --prefix GI_TYPELIB_PATH : "${libayatana-appindicator}/lib/girepository-1.0"
-        '';
-      })
-    ];
+    home-manager.users.emileet.home = {
+      sessionVariables.STEAM_EXTRA_COMPAT_TOOL_PATHS = "$HOME/.local/share/Steam/compatibilitytools.d";
+      packages = with pkgs; [
+        master.protonup-qt
+        (symlinkJoin {
+          name = "lutris-wrapped";
+          paths = [
+            (lutris.override {
+              extraPkgs = pkgs: [
+                wineWow64Packages.stable
+                vulkan-tools
+                gamemode
+                mangohud
+              ];
+            })
+          ];
+          nativeBuildInputs = [ makeWrapper ];
+          postBuild = ''
+            wrapProgram $out/bin/lutris \
+              --prefix GI_TYPELIB_PATH : "${libayatana-appindicator}/lib/girepository-1.0"
+          '';
+        })
+      ];
+    };
   };
 }
