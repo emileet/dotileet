@@ -1,5 +1,4 @@
 [
-  ./theme
   ./picom
   ./polybar
   ./monado
