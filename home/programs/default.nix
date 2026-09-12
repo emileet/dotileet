@@ -1,4 +1,3 @@
 [
-  ./steamtinkerlaunch
 ]
 ++ (import ./shell)
