@@ -38,7 +38,6 @@ in
         unzip
         file
         tldr
-        git
         nil
         jq
       ]
@@ -47,5 +46,6 @@ in
   programs = {
     direnv.enable = true;
     eza.enable = true;
+    git.enable = true;
   };
 }
