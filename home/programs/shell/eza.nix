@@ -8,9 +8,9 @@ let
   cfg = config.programs;
 in
 {
-  config = mkIf cfg.zsh.enable {
+  config = mkIf cfg.eza.enable {
     programs.eza = {
-      enableZshIntegration = true;
+      enableZshIntegration = cfg.zsh.enable;
       extraOptions = [
         "--group-directories-first"
         "--header"
@@ -19,7 +19,6 @@ in
       ];
       colors = "auto";
       icons = "auto";
-      enable = true;
     };
   };
 }

@@ -10,9 +10,6 @@ let
   graphical = osConfig.programs.hyprland.enable || osConfig.services.xserver.enable;
 in
 {
-  programs = {
-    direnv.enable = true;
-  };
   home = {
     sessionVariables.NIXPKGS_ALLOW_UNFREE = 1;
     packages = mkMerge [
@@ -46,5 +43,9 @@ in
         jq
       ]
     ];
+  };
+  programs = {
+    direnv.enable = true;
+    eza.enable = true;
   };
 }
