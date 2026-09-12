@@ -10,6 +10,9 @@ let
   graphical = osConfig.programs.hyprland.enable || osConfig.services.xserver.enable;
 in
 {
+  programs = {
+    direnv.enable = true;
+  };
   home = {
     sessionVariables.NIXPKGS_ALLOW_UNFREE = 1;
     packages = mkMerge [
@@ -34,7 +37,6 @@ in
         hyfetch
         bottom
         nixfmt
-        direnv
         p7zip
         unzip
         file
