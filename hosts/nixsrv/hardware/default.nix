@@ -4,15 +4,6 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   boot = {
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        consoleMode = "2";
-        editor = false;
-        enable = true;
-      };
-    };
-
     initrd = {
       availableKernelModules = [
         "virtio_pci"

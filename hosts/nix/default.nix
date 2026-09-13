@@ -9,12 +9,12 @@
   ];
 
   programs = {
+    zsh.shellAliases = {
+      bupdate = "nh os boot -j 3 --cores 18"; # pronounced boop-date
+      update = "nh os switch -j 3 --cores 18";
+    };
     obs-studio.enable = true;
     steam.enable = true;
-    zsh.shellAliases = {
-      update = "nh os switch -j 3 --cores 18";
-      bupdate = "nh os boot -j 3 --cores 18"; # pronounced boop-date
-    };
   };
 
   virtualisation = {
@@ -44,7 +44,6 @@
         userServices = true;
       };
     };
-
     openssh.enable = true;
     flatpak.enable = true;
     tumbler.enable = true;
@@ -63,16 +62,13 @@
   };
 
   networking = {
-    bridges."br0".interfaces = [ "enp69s0" ];
-    interfaces = {
-      enp69s0.useDHCP = true;
-      br0.useDHCP = true;
-    };
-
     extraHosts = ''
       10.0.0.11 plsnobully.me git.plsnobully.me
     '';
-
+    hostBridge = {
+      interface = "enp69s0";
+      enable = true;
+    };
     networkmanager.enable = true;
     firewall.enable = false;
     hostName = "nix";

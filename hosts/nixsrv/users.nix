@@ -1,16 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  users = {
-    users.emileet = {
-      hashedPasswordFile = "/nix/secrets/passwd/emileet";
-      isNormalUser = true;
-      shell = pkgs.zsh;
-      extraGroups = [
-        "realtime"
-        "docker"
-        "wheel"
-      ];
-    };
-    mutableUsers = false;
-  };
+  users.users.emileet.extraGroups = [
+    "realtime"
+    "docker"
+    "wheel"
+  ];
 }

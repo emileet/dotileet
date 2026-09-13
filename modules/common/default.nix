@@ -13,4 +13,9 @@
       ];
     };
   };
+
+  imports = [
+    ./users.nix
+    ./host.nix
+  ];
 }

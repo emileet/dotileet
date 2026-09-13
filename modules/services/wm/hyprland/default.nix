@@ -10,6 +10,11 @@ let
   cfg = config.programs.hyprland;
 in
 {
+  options.programs.hyprland.drmDevice = mkOption {
+    description = "DRM device used by Hyprland.";
+    default = "/dev/dri/card0";
+    type = types.str;
+  };
   config = mkIf cfg.enable {
     programs.hyprland = {
       xwayland.enable = true;
@@ -18,7 +23,7 @@ in
     environment = with pkgs; {
       systemPackages = optionals cfgNvidia.enabled [ nvidia-vaapi-driver ];
       sessionVariables = {
-        AQ_DRM_DEVICES = "/dev/dri/card1";
+        AQ_DRM_DEVICES = cfg.drmDevice;
         QT_QPA_PLATFORMTHEME = "qt6ct";
         NIXOS_OZONE_WL = "1";
       }

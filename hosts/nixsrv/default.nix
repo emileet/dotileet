@@ -10,8 +10,8 @@
 
   programs = {
     zsh.shellAliases = {
-      update = "nh os switch -j 3 --cores 8";
       bupdate = "nh os boot -j 3 --cores 8"; # pronounced boop-date
+      update = "nh os switch -j 3 --cores 8";
     };
   };
 

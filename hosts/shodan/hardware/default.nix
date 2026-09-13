@@ -14,6 +14,7 @@ with lib;
   powerManagement.cpuFreqGovernor = "performance";
   nixpkgs.hostPlatform = "x86_64-linux";
 
+  programs.hyprland.drmDevice = "/dev/dri/card1";
   hardware = {
     nvidia = with pkgs; {
       package = nvidia-patch.auto-patch config.boot.kernelPackages.nvidiaPackages.bleeding_edge;
@@ -55,15 +56,6 @@ with lib;
   };
 
   boot = {
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        consoleMode = "2";
-        editor = false;
-        enable = true;
-      };
-    };
-
     kernelPackages = pkgs.linuxPackages_zen;
     kernelPatches = [
       {

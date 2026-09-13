@@ -54,15 +54,6 @@ with lib;
   };
 
   boot = {
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        consoleMode = "2";
-        editor = false;
-        enable = true;
-      };
-    };
-
     swraid = {
       mdadmConf = "MAILADDR hi@emi.gay";
       enable = true;

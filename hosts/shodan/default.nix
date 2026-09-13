@@ -12,14 +12,14 @@
   ];
 
   programs = {
+    zsh.shellAliases = {
+      bupdate = "nh os boot -j 3 --cores 12"; # pronounced boop-date
+      update = "nh os switch -j 3 --cores 12";
+    };
     gpu-screen-recorder.enable = true;
     obs-studio.enable = true;
     hyprland.enable = true;
     steam.enable = true;
-    zsh.shellAliases = {
-      update = "nh os switch -j 3 --cores 12";
-      bupdate = "nh os boot -j 3 --cores 12"; # pronounced boop-date
-    };
   };
 
   virtualisation.docker.enable = true;
@@ -31,7 +31,6 @@
         userServices = true;
       };
     };
-
     llama-cpp.enable = true;
     openssh.enable = true;
     flatpak.enable = true;
@@ -41,12 +40,10 @@
   };
 
   networking = {
-    bridges."br0".interfaces = [ "enp11s0" ];
-    interfaces = {
-      enp11s0.useDHCP = true;
-      br0.useDHCP = true;
+    hostBridge = {
+      interface = "enp11s0";
+      enable = true;
     };
-
     networkmanager.enable = true;
     hostName = "shodan";
   };
