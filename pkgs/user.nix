@@ -45,6 +45,7 @@ in
   };
   programs = {
     direnv.enable = true;
+    aria2.enable = true;
     eza.enable = true;
     git.enable = true;
   };

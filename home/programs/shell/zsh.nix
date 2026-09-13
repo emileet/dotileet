@@ -37,18 +37,6 @@ in
         mkMerge [
           general
         ];
-      shellAliases = {
-        a2c = ''
-          , aria2c \
-            --max-connection-per-server=16 \
-            --max-concurrent-downloads=5 \
-            --min-split-size=1M \
-            --file-allocation=falloc \
-            --human-readable=true \
-            --summary-interval=1 \
-            --split=16
-        '';
-      };
       autosuggestion.enable = true;
       enableCompletion = false;
       enable = true;
