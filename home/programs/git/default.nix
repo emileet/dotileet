@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }:
@@ -11,6 +12,7 @@ in
   config = mkIf cfg.git.enable {
     home.file."${config.xdg.configHome}/git/template/HEAD".text = "ref: refs/heads/main";
     programs.git = {
+      package = pkgs.gitFull;
       settings = {
         init = {
           templateDir = "${config.xdg.configHome}/git/template";
@@ -20,9 +22,9 @@ in
           name = "Emily Maré (emileet)";
           email = "dev@emi.gay";
         };
-        protocol.file.allow = "always";
+        credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
         tag.forceSignAnnotated = true;
-        credential.helper = "store";
+        protocol.file.allow = "user";
         commit.gpgSign = true;
         gpg.program = "gpg";
       };
