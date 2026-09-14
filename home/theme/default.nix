@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   osConfig,
   ...
 }:
@@ -24,12 +23,12 @@ in
     };
   };
   config = mkIf graphical {
-    theme.wallpaper = "/storage/pictures/wallpapers/mountain.jpg";
     theme.profileIcon = "/storage/pictures/avatars/emileet.jpg";
+    theme.wallpaper = osConfig.theme.wallpaper;
     home = {
       pointerCursor = {
-        package = pkgs.catppuccin-cursors.mochaLight;
-        name = "catppuccin-mocha-light-cursors";
+        package = osConfig.theme.pointerCursor.package;
+        name = osConfig.theme.pointerCursor.name;
         hyprcursor.enable = hyprlandEnabled;
         x11.enable = x11Enabled;
         gtk.enable = true;
@@ -38,16 +37,16 @@ in
     };
     gtk = {
       cursorTheme = {
-        package = pkgs.catppuccin-cursors.mochaLight;
-        name = "catppuccin-mocha-light-cursors";
+        package = osConfig.theme.pointerCursor.package;
+        name = osConfig.theme.pointerCursor.name;
       };
       iconTheme = {
-        package = pkgs.papirus-icon-theme;
-        name = "Papirus-Dark";
+        package = osConfig.theme.gtk.iconTheme.package;
+        name = osConfig.theme.gtk.iconTheme.name;
       };
       theme = {
-        package = pkgs.colloid-gtk-theme;
-        name = "Colloid-Purple-Dark-Compact-Dracula";
+        package = osConfig.theme.gtk.theme.package;
+        name = osConfig.theme.gtk.theme.name;
       };
       colorScheme = "dark";
       enable = true;

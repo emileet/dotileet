@@ -7,7 +7,6 @@ with lib;
 let
   i3Enabled = config.services.xserver.windowManager.i3.enable;
   hyprlandEnabled = config.programs.hyprland.enable;
-  homeCfg = config.home-manager.users.emileet;
   graphical = i3Enabled || hyprlandEnabled;
   cfg = config.services.wm.common;
 in
@@ -34,9 +33,9 @@ in
   config = mkIf (graphical && cfg.enable) {
     services.gnome.gnome-keyring.enable = cfg.enableKeyring;
     environment.systemPackages = [
-      homeCfg.home.pointerCursor.package
-      homeCfg.gtk.iconTheme.package
-      homeCfg.gtk.theme.package
+      config.theme.pointerCursor.package
+      config.theme.gtk.iconTheme.package
+      config.theme.gtk.theme.package
     ];
   };
 }

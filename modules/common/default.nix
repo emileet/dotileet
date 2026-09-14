@@ -15,6 +15,7 @@
   };
 
   imports = [
+    ./theme.nix
     ./users.nix
     ./host.nix
   ];

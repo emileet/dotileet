@@ -18,7 +18,7 @@ with lib;
   services = {
     xserver = {
       displayManager = {
-        lightdm.background = "${config.home-manager.users.emileet.theme.wallpaper}";
+        lightdm.background = config.theme.wallpaper;
         setupCommands = ''
           ${pkgs.xrandr}/bin/xrandr --output ${xmonitor1} --mode 5120x1440 --rate 240 --primary
           ${pkgs.xrandr}/bin/xrandr --output ${xmonitor2} --mode 2560x1440 --rate 165 --rotate left --right-of ${xmonitor1}

@@ -6,6 +6,7 @@
 }:
 with lib;
 let
+  cfgNvidia = config.hardware.nvidia;
   cfg = config.services.llama-cpp;
 in
 {
@@ -23,7 +24,7 @@ in
         enable = true;
       };
       llama-cpp = {
-        package = (pkgs.llama-cpp.override { cudaSupport = true; });
+        package = pkgs.llama-cpp.override { cudaSupport = cfgNvidia.enabled; };
         settings.port = 8881;
       };
       searx = {

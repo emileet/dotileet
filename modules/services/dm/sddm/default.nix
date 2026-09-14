@@ -7,6 +7,7 @@ with lib;
 let
   homeCfg = config.home-manager.users.emileet;
   hyprland = config.programs.hyprland;
+  theme = config.theme;
 in
 {
   options.services.displayManager.sddm.hyprlandConfig = mkOption {
@@ -24,21 +25,21 @@ in
       settings = {
         Wayland.CompositorCommand = "start-hyprland -- -c /etc/sddm-hyprland.lua";
         Theme = {
-          CursorTheme = homeCfg.home.pointerCursor.name;
-          CursorSize = "24";
+          CursorSize = toString theme.pointerCursor.size;
+          CursorTheme = theme.pointerCursor.name;
         };
       };
       wayland.enable = true;
     };
 
     programs.silentSDDM = {
-      backgrounds.wallpaper = /. + homeCfg.theme.wallpaper;
       profileIcons.emileet = homeCfg.theme.profileIcon;
+      backgrounds.wallpaper = /. + theme.wallpaper;
       theme = "default";
       enable = true;
       settings =
         let
-          wallpaperFileName = baseNameOf homeCfg.theme.wallpaper;
+          wallpaperFileName = baseNameOf theme.wallpaper;
         in
         {
           "LoginScreen".background = wallpaperFileName;
