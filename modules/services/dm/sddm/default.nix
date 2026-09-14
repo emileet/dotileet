@@ -5,6 +5,7 @@
 }:
 with lib;
 let
+  enabledKeyring = config.services.wm.common.enableKeyring;
   homeCfg = config.home-manager.users.emileet;
   hyprland = config.programs.hyprland;
   theme = config.theme;
@@ -46,5 +47,7 @@ in
           "LockScreen".background = wallpaperFileName;
         };
     };
+
+    security.pam.services.sddm.enableGnomeKeyring = enabledKeyring;
   };
 }

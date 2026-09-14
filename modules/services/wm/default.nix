@@ -32,6 +32,10 @@ in
 
   config = mkIf (graphical && cfg.enable) {
     services.gnome.gnome-keyring.enable = cfg.enableKeyring;
+    programs = mkIf cfg.enableKeyring {
+      ssh.enableAskPassword = true;
+      seahorse.enable = true;
+    };
     environment.systemPackages = [
       config.theme.pointerCursor.package
       config.theme.gtk.iconTheme.package
