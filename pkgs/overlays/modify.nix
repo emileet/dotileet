@@ -1,4 +1,7 @@
 { inputs, ... }:
+let
+  revVersion = input: "rev-${input.shortRev or (builtins.substring 0 7 input.rev)}";
+in
 (final: prev: {
   polybar = prev.polybar.override {
     githubSupport = true;
@@ -14,8 +17,8 @@
     sizeVariants = [ "compact" ];
   };
   looking-glass-client = prev.looking-glass-client.overrideAttrs (oldAttrs: {
+    version = revVersion inputs.src-kvmfr;
     src = inputs.src-kvmfr;
-    version = "dev";
     patches = [ /nix/patches/looking-glass/nanosvg-unvendor.patch ];
     buildInputs = oldAttrs.buildInputs ++ [
       prev.libunwind
@@ -24,7 +27,7 @@
     ];
   });
   ndi = prev.ndi.overrideAttrs (oldAttrs: rec {
-    version = "dev";
+    version = "6";
     src = inputs.src-ndi;
     unpackPhase = ''
       echo y | $src/Install_NDI_SDK_v6_Linux.sh

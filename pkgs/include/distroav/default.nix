@@ -7,11 +7,12 @@
   ndi,
   curl,
   src-distroav,
+  version ? "dev",
 }:
 
 stdenv.mkDerivation {
+  inherit version;
   pname = "obs-distroav";
-  version = "dev";
 
   nativeBuildInputs = [
     qt6.qtbase

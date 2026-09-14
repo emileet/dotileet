@@ -8,11 +8,13 @@
   libpulseaudio,
   libjack2,
   src-vban,
+  version ? "dev",
   ...
 }:
 stdenv.mkDerivation {
+  inherit version;
   pname = "vban";
-  version = "dev";
+
   src = src-vban;
 
   nativeBuildInputs = [

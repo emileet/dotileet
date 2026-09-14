@@ -9,11 +9,12 @@
   vulkan-headers,
   vulkan-loader,
   src-vkcapture,
+  version ? "dev",
   ...
 }:
 stdenv.mkDerivation rec {
+  inherit version;
   pname = "obs-vkcapture-kms";
-  version = "dev";
 
   src = src-vkcapture;
   patches = [ ./vkle-drm.patch ];
