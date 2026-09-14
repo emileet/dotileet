@@ -28,6 +28,13 @@ sudo nixos-rebuild switch --flake .#HOSTNAME
 | nixsrv   | vm server           |
 | shodan   | primary desktop     |
 
-## todo
+## configuration structure
 
-- completely migrate my dots here
+- `flake.nix`: entrypoint containing the inputs used to construct defined `nixosConfigurations`
+- `modules/`: reusable nixpkgs modules
+- `hosts/`: host-specific configurations
+- `home/`: reusable home manager modules and shared settings
+- `pkgs/system.nix`: system packages/programs
+- `pkgs/user.nix`: home manager packages/programs
+- `pkgs/overlays/include.nix`: adds non-upstream packages
+- `pkgs/overlays/modify.nix`: overrides upstream packages
