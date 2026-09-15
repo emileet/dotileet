@@ -4,8 +4,10 @@
   config,
   ...
 }:
+with pkgs;
 with lib;
 let
+  hyprlandEnabled = config.programs.hyprland.enable;
   cfg = config.services.xserver.windowManager.i3;
 in
 {
@@ -29,8 +31,10 @@ in
     };
 
     xdg.portal = mkIf config.services.flatpak.enable {
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-      config.common.default = "*";
+      extraPortals = optionals hyprlandEnabled [ xdg-desktop-portal-hyprland ] ++ [
+        xdg-desktop-portal-gtk
+      ];
+      config.common.default = optionals hyprlandEnabled [ "hyprland" ] ++ [ "gtk" ];
       enable = true;
     };
   };
