@@ -16,12 +16,9 @@ in
       package = obs-studio.override {
         cudaSupport = cfgNvidia.enabled;
       };
-      plugins = mkMerge [
-        (mkIf cfgLibvirt.enable [ obs-kvmfr ])
-        [
-          obs-vkcapture-kms
-          obs-distroav
-        ]
+      plugins = optionals cfgLibvirt.enable [ obs-kvmfr ] ++ [
+        obs-vkcapture-kms
+        obs-distroav
       ];
     };
   };

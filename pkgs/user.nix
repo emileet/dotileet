@@ -12,8 +12,8 @@ in
 {
   home = {
     sessionVariables.NIXPKGS_ALLOW_UNFREE = 1;
-    packages = mkMerge [
-      (mkIf graphical [
+    packages =
+      (optionals graphical [
         qt6Packages.qt6ct
         moonlight-qt
         easyeffects
@@ -29,7 +29,7 @@ in
         master.vscode.fhs
         master.vesktop
       ])
-      [
+      ++ [
         ripgrep
         hyfetch
         bottom
@@ -40,8 +40,7 @@ in
         tldr
         nil
         jq
-      ]
-    ];
+      ];
   };
   programs = {
     direnv.enable = true;
