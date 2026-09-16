@@ -14,9 +14,9 @@ in
     programs = {
       steam = {
         package = pkgs.steam.override {
-          extraProfile = "unset TZ";
           extraEnv = {
             PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES = "1"; # enables monado support
+            PRESSURE_VESSEL_FILESYSTEMS_RW = "/storage/games";
             GDK_PIXBUF_MODULE_FILE = ""; # fixes tray icon when launched from rofi
           };
         };
