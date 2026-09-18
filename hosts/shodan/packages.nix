@@ -2,7 +2,7 @@
 with pkgs;
 {
   home-manager.users.emileet.home.packages = [
-    davinci-resolve-studio
+    master.davinci-resolve-studio
     master.xivlauncher
     master.archon-lite
     pcsx2
