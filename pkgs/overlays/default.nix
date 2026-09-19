@@ -9,8 +9,11 @@ in
     (final: prev: {
       master = import inputs.nixpkgs-master {
         system = final.stdenv.hostPlatform.system;
-        overlays = [ packagesModify ];
         inherit (final) config;
+        overlays = [
+          packagesModify
+          packagesSecret
+        ];
       };
     })
     inputs.nvidia-patch.overlays.default
