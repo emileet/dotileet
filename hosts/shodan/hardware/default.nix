@@ -50,7 +50,7 @@ with lib;
     wantedBy = [ "default.target" ];
     enable = true;
     serviceConfig = {
-      ExecStart = "${pkgs.openrgb}/bin/openrgb -p ${config.networking.hostName}.orp";
+      ExecStart = "${pkgs.openrgb}/bin/openrgb -p ${config.networking.hostName}";
       Type = "oneshot"; # like all banger yuris :')
     };
   };
