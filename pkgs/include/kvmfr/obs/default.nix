@@ -12,8 +12,8 @@
   ...
 }:
 stdenv.mkDerivation {
-  pname = "obs-kvmfr";
   version = looking-glass-client.version;
+  pname = "obs-kvmfr";
 
   nativeBuildInputs = [
     pkg-config

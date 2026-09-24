@@ -41,11 +41,6 @@
       flake = false;
     };
 
-    src-vkcapture = {
-      url = "github:scaledteam/obs-vkcapture";
-      flake = false;
-    };
-
     src-distroav = {
       url = "github:DistroAV/DistroAV";
       flake = false;
@@ -57,7 +52,7 @@
     };
 
     src-vban = {
-      url = "git+https://github.com/quiniouben/vban?submodules=1";
+      url = "github:quiniouben/vban";
       flake = false;
     };
 

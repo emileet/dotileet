@@ -17,7 +17,7 @@ in
         cudaSupport = cfgNvidia.enabled;
       };
       plugins = optionals cfgLibvirt.enable [ obs-kvmfr ] ++ [
-        obs-vkcapture-kms
+        obs-studio-plugins.obs-vkcapture
         obs-distroav
       ];
     };
