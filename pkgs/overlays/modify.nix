@@ -49,10 +49,4 @@ in
       mv documentation/* $out/share/doc/${oldAttrs.pname}-${version}/
     '';
   });
-  nodejs-slim_26 = prev.nodejs-slim_26.overrideAttrs (oldAttrs: {
-    checkFlags = map (
-      flag:
-      if prev.lib.hasPrefix "CI_SKIP_TESTS=" flag then "${flag},test-fs-cp-async-file-modes" else flag
-    ) oldAttrs.checkFlags;
-  });
 })
