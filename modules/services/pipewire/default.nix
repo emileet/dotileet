@@ -25,7 +25,7 @@ in
               matches = [ { "node.name" = "~alsa_output.*"; } ];
               actions = {
                 update-props = {
-                  "session.suspend-on-idle" = false;
+                  "session.suspend-timeout-seconds" = 0;
                 };
               };
             }
