@@ -7,8 +7,8 @@
 }:
 with lib;
 let
+  cfgQuickshell = "${config.xdg.configHome}/quickshell/island";
   cfg = osConfig.programs.hyprland;
-  cfgQuickshell = "${config.xdg.configHome}/quickshell/classic";
 in
 {
   config = mkIf cfg.enable {
