@@ -8,7 +8,7 @@ with lib;
   options.theme = {
     wallpaper = mkOption {
       type = types.str;
-      default = "/storage/pictures/wallpapers/mountain.jpg";
+      default = "/storage/pictures/wallpapers/lifeline.png";
       description = "System wallpaper path.";
     };
 
