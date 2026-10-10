@@ -10,14 +10,9 @@ let
 in
 {
   config = mkIf cfg.git.enable {
-    home.file."${config.xdg.configHome}/git/template/HEAD".text = "ref: refs/heads/main";
     programs.git = {
       package = pkgs.gitFull;
       settings = {
-        init = {
-          templateDir = "${config.xdg.configHome}/git/template";
-          defaultBranch = "main";
-        };
         user = {
           name = "Emily Maré (emileet)";
           email = "dev@emi.gay";
@@ -25,6 +20,7 @@ in
         credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
         tag.forceSignAnnotated = true;
         protocol.file.allow = "user";
+        init.defaultBranch = "main";
         commit.gpgSign = true;
         gpg.program = "gpg";
       };
