@@ -21,7 +21,6 @@ in
         libnotify
         flameshot
         shotwell
-        wezterm
         dunst
         rofi
         vlc
@@ -43,6 +42,7 @@ in
       ];
   };
   programs = {
+    ghostty.enable = true;
     direnv.enable = true;
     aria2.enable = true;
     eza.enable = true;

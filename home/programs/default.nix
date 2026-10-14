@@ -1,4 +1,5 @@
 [
+  ./ghostty
   ./direnv
   ./aria2
   ./git
