@@ -7,6 +7,7 @@
 }:
 with lib;
 let
+  wallpaper = if config.theme.wallpaper == [ ] then "" else head config.theme.wallpaper;
   i3Enabled = osConfig.services.xserver.windowManager.i3.enable;
   hostName = osConfig.networking.hostName;
   cfg = config.xsession.windowManager.i3;
@@ -42,8 +43,8 @@ in
               notification = false;
               always = true;
             })
-            (mkIf (config.theme.wallpaper != "") {
-              command = "${pkgs.feh}/bin/feh --bg-fill ${config.theme.wallpaper}";
+            (mkIf (wallpaper.path != "") {
+              command = "${pkgs.feh}/bin/feh --bg-fill ${escapeShellArg wallpaper.path}";
               notification = false;
               always = false;
             })

@@ -33,13 +33,7 @@ in
       };
       hyprpaper = {
         settings = {
-          wallpaper = [
-            {
-              path = "${config.theme.wallpaper}";
-              fit_mode = "cover";
-              monitor = "";
-            }
-          ];
+          wallpaper = config.theme.wallpaper;
           splash = false;
         };
         systemdTarget = "graphical-session.target";
