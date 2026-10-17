@@ -102,7 +102,7 @@ in
             {
               "${modifier}+d" =
                 ''exec --no-startup-id ${pkgs.rofi}/bin/rofi -modi drun -show drun -display-drun "run" -config ~/.config/rofi/config'';
-              "${modifier}+Shift+p" = "exec --no-startup-id sh ~/.config/i3/scripts/toggle-service.sh picom";
+              "${modifier}+Shift+p" = "exec --no-startup-id sh ~/.local/scripts/toggle-service.sh picom";
               "${modifier}+Return" = "exec --no-startup-id ghostty +new-window";
 
               "${modifier}+Shift+e" =

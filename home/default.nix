@@ -4,6 +4,7 @@
   xdg.enable = true;
   imports = [
     ../pkgs/user.nix
+    ./scripts
     ./theme
   ]
   ++ (import ./programs)
