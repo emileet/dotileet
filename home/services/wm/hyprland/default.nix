@@ -31,29 +31,12 @@ in
         systemdTarget = "graphical-session.target";
         enable = true;
       };
-      awww.enable = true;
     };
     systemd.user.services = {
       quickshell = {
         Unit.Description = "Flexible toolkit for making desktop shells with QtQuick";
         Service.ExecStart = "${pkgs.quickshell}/bin/qs -p ${cfgQuickshell}";
       };
-      awww.Service.ExecStartPost = map (
-        wallpaper:
-        escapeShellArgs (
-          [
-            (getExe config.services.awww.package)
-            "img"
-            "--resize"
-            "crop"
-          ]
-          ++ optionals (wallpaper.monitor != "") [
-            "--outputs"
-            wallpaper.monitor
-          ]
-          ++ [ wallpaper.path ]
-        )
-      ) config.theme.wallpaper;
     };
   };
 }
