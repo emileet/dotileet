@@ -1,6 +1,7 @@
-{
-  ...
-}:
+{ config, ... }:
+let
+  nvidiaEnabled = config.hardware.nvidia.enabled;
+in
 {
   imports = [
     ./specialisation
@@ -31,11 +32,11 @@
         userServices = true;
       };
     };
-    llama-cpp.enable = true;
+    llama-cpp.enable = nvidiaEnabled;
+    monado.enable = nvidiaEnabled;
     openssh.enable = true;
     flatpak.enable = true;
     tumbler.enable = true;
-    monado.enable = true;
     gvfs.enable = true;
   };
 
