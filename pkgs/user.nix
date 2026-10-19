@@ -21,6 +21,7 @@ in
         libnotify
         flameshot
         shotwell
+        matugen
         dunst
         rofi
         vlc
