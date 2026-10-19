@@ -8,6 +8,7 @@ in
     ./packages.nix
     ./persist.nix
     ./secret.nix
+    ./theme.nix
     ./users.nix
     ./hardware
   ];
