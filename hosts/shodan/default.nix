@@ -15,7 +15,7 @@ in
 
   programs = {
     zsh.shellAliases = {
-      bupdate = "nh os boot -j 3 --cores 12"; # pronounced boop-date
+      bupdate = "nh os boot -j 3 --cores 12 --keep-going"; # pronounced boop-date
       update = "nh os switch -j 3 --cores 12";
     };
     gpu-screen-recorder.enable = true;
