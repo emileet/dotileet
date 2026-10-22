@@ -27,11 +27,12 @@ in
   virtualisation.docker.enable = true;
   services = {
     avahi = {
-      enable = true;
-      publish = {
-        enable = true;
-        userServices = true;
+      settings.publish = {
+        disable-user-service-publishing = false;
+        disable-publishing = false;
+        publish-addresses = true;
       };
+      enable = true;
     };
     llama-cpp.enable = nvidiaEnabled;
     monado.enable = nvidiaEnabled;

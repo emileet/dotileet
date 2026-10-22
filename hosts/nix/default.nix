@@ -38,11 +38,12 @@
 
   services = {
     avahi = {
-      enable = true;
-      publish = {
-        enable = true;
-        userServices = true;
+      settings.publish = {
+        disable-user-service-publishing = false;
+        disable-publishing = false;
+        publish-addresses = true;
       };
+      enable = true;
     };
     openssh.enable = true;
     flatpak.enable = true;

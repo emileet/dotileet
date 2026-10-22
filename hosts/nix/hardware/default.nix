@@ -67,7 +67,6 @@ with lib;
         extraConfig = ''
           EVDEV_MIRROR m
           LIVEPATCH y
-          PREEMPT y
         '';
       }
     ];

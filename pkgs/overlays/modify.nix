@@ -49,4 +49,31 @@ in
       mv documentation/* $out/share/doc/${oldAttrs.pname}-${version}/
     '';
   });
+  # refer to: https://github.com/NixOS/nixpkgs/issues/573021
+  vscode = prev.vscode.overrideAttrs (oldAttrs: {
+    postFixup = (oldAttrs.postFixup or "") + ''
+      chmod +x "$out"/lib/vscode/resources/app/node_modules/@github/copilot-sdk-linux-*/prebuilds/linux-*/copilot-runtime
+    '';
+  });
+  # refer to: https://github.com/NixOS/nixpkgs/pull/575801
+  open-webui = prev.open-webui.overridePythonAttrs (oldAttrs: {
+    makeWrapperArgs = prev.lib.concatMap (prev.lib.splitString " ") (oldAttrs.makeWrapperArgs or [ ]);
+  });
+  # refer to: https://github.com/NixOS/nixpkgs/issues/575192
+  kernelPackagesExtensions = prev.kernelPackagesExtensions ++ [
+    (kfinal: kprev: {
+      xpad-noone = kprev.xpad-noone.overrideAttrs (oldAttrs: {
+        makeFlags = oldAttrs.makeFlags ++ [
+          "-C"
+          "${kfinal.kernel.dev}/lib/modules/${kfinal.kernel.modDirVersion}/build"
+          "M=$(PWD)"
+          "INSTALL_MOD_PATH=${placeholder "out"}"
+          "INSTALL_MOD_DIR=kernel/drivers/xpad-noone"
+        ];
+        buildFlags = [ "modules" ];
+        installTargets = [ "modules_install" ];
+        installPhase = null;
+      });
+    })
+  ];
 })

@@ -25,14 +25,16 @@ stdenv.mkDerivation rec {
   ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
-  makeFlags = [
-    "KBUILD_OUTPUT=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
-    "KERNELDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+  makeFlags = kernel.commonMakeFlags ++ [
+    "-C"
+    "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+    "M=$(PWD)/memflow-kmod"
+    "INSTALL_MOD_PATH=${placeholder "out"}"
+    "INSTALL_MOD_DIR=extra"
   ];
 
-  installPhase = ''
-    install -D ./memflow-kmod/memflow.ko -t $out/lib/modules/${kernel.modDirVersion}/misc/
-  '';
+  buildFlags = [ "modules" ];
+  installTargets = [ "modules_install" ];
 
   meta = with lib; {
     description = "Linux kernel module for memflow's KVM connector";

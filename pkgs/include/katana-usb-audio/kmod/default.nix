@@ -22,13 +22,16 @@ stdenv.mkDerivation rec {
   ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
-  makeFlags = [
-    "KDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+  makeFlags = kernel.commonMakeFlags ++ [
+    "-C"
+    "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+    "M=$(PWD)"
+    "INSTALL_MOD_PATH=${placeholder "out"}"
+    "INSTALL_MOD_DIR=extra"
   ];
 
-  installPhase = ''
-    install -D ./katana_usb_audio.ko -t $out/lib/modules/${kernel.modDirVersion}/extra/
-  '';
+  buildFlags = [ "modules" ];
+  installTargets = [ "modules_install" ];
 
   meta = with lib; {
     description = "Linux kernel module for the SoundBlaster X Katana USB Audio Device";

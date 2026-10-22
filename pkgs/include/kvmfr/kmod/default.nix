@@ -17,14 +17,16 @@ stdenv.mkDerivation rec {
   ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
-  makeFlags = [
-    "KVER=${kernel.modDirVersion}"
-    "KDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+  makeFlags = kernel.commonMakeFlags ++ [
+    "-C"
+    "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+    "M=$(PWD)"
+    "INSTALL_MOD_PATH=${placeholder "out"}"
+    "INSTALL_MOD_DIR=extra"
   ];
 
-  installPhase = ''
-    install -D kvmfr.ko -t "$out/lib/modules/${kernel.modDirVersion}/kernel/drivers/misc/"
-  '';
+  buildFlags = [ "modules" ];
+  installTargets = [ "modules_install" ];
 
   meta = with lib; {
     description = "This kernel module implements a basic interface to the IVSHMEM device for LookingGlass";
