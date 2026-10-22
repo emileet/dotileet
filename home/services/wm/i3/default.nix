@@ -284,11 +284,6 @@ in
         '';
       };
 
-    home.file."${config.xdg.configHome}/i3/scripts" = {
-      source = ./scripts;
-      recursive = true;
-    };
-
     systemd.user.services.polkit-gnome-authentication-agent-1 = {
       Unit = {
         Description = "polkit-gnome-authentication-agent-1";
