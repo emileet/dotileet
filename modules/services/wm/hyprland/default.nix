@@ -30,6 +30,7 @@ in
       // optionalAttrs cfgNvidia.enabled {
         __GLX_VENDOR_LIBRARY_NAME = "nvidia";
         LIBVA_DRIVER_NAME = "nvidia";
+        GBM_BACKEND = "nvidia-drm";
         NVD_BACKEND = "direct";
       };
     };
