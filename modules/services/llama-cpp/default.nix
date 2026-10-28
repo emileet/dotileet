@@ -21,7 +21,7 @@ in
           SCARF_NO_ANALYTICS = "True";
           DO_NOT_TRACK = "True";
         };
-        enable = true;
+        enable = false;
       };
       llama-cpp = {
         package = pkgs.llama-cpp.override { cudaSupport = cfgNvidia.enabled; };
