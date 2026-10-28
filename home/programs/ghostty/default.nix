@@ -15,7 +15,7 @@ in
       enableZshIntegration = true;
       systemd.enable = true;
       settings = {
-        shell-integration-features = "no-cursor";
+        shell-integration-features = "no-cursor,ssh-terminfo";
         cursor-style-blink = false;
         cursor-style = "block";
 
