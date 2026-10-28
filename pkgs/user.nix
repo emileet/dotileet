@@ -22,7 +22,6 @@ in
         flameshot
         shotwell
         matugen
-        dunst
         rofi
         vlc
         master.spicetify-cli
