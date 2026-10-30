@@ -21,7 +21,6 @@ in
         libnotify
         shotwell
         matugen
-        rofi
         vlc
         master.spicetify-cli
         master.vscode.fhs
