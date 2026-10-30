@@ -19,7 +19,6 @@ in
         easyeffects
         qbittorrent
         libnotify
-        flameshot
         shotwell
         matugen
         rofi

@@ -13,8 +13,12 @@ in
 {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      wl-clipboard
       quickshell
       hyprls
+      satty
+      slurp
+      grim
     ];
     services = {
       hypridle = {

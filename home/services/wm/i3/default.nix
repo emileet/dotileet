@@ -14,7 +14,10 @@ let
 in
 {
   config = mkIf i3Enabled {
-    home.packages = with pkgs; [ autotiling ];
+    home.packages = with pkgs; [
+      autotiling
+      flameshot
+    ];
 
     services = {
       polybar.enable = true;
