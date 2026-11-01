@@ -67,6 +67,8 @@ with lib;
     "video=${wmonitor1}:5120x1440@240"
   ];
 
+  home-manager.users.emileet.services.hypridle.autoStart = false;
+
   environment.sessionVariables = mkMerge [
     (mkIf config.programs.hyprland.enable {
       WMONITOR1 = wmonitor1;

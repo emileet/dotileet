@@ -11,6 +11,11 @@ let
   cfg = osConfig.programs.hyprland;
 in
 {
+  options.services.hypridle.autoStart = mkOption {
+    type = types.bool;
+    default = true;
+    description = "Whether hypridle should start automatically with the graphical session.";
+  };
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       wl-clipboard
@@ -37,6 +42,7 @@ in
       };
     };
     systemd.user.services = {
+      hypridle.Install.WantedBy = mkIf (!config.services.hypridle.autoStart) (mkForce [ ]);
       quickshell = {
         Unit.Description = "Flexible toolkit for making desktop shells with QtQuick";
         Service.ExecStart = "${pkgs.quickshell}/bin/qs -p ${cfgQuickshell}";
