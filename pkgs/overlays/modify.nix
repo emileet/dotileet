@@ -49,10 +49,4 @@ in
       mv documentation/* $out/share/doc/${oldAttrs.pname}-${version}/
     '';
   });
-  # refer to: https://github.com/NixOS/nixpkgs/issues/573021
-  vscode = prev.vscode.overrideAttrs (oldAttrs: {
-    postFixup = (oldAttrs.postFixup or "") + ''
-      chmod +x "$out"/lib/vscode/resources/app/node_modules/@github/copilot-sdk-linux-*/prebuilds/linux-*/copilot-runtime
-    '';
-  });
 })

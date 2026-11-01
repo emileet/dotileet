@@ -27,6 +27,7 @@ in
         foreground = "#eeffff";
         background = "#100d1f";
         background-opacity = 0.6;
+        background-blur = true;
         bold-color = "bright";
         palette = [
           "0=#1d1f2b"
@@ -60,16 +61,6 @@ in
       mkIf cfg.systemd.enable
         {
           source = "${cfg.package}/share/systemd/user/app-com.mitchellh.ghostty.service";
-        };
-    # refer to: https://github.com/ghostty-org/ghostty/issues/14398.
-    xdg.configFile."systemd/user/app-com.mitchellh.ghostty.service.d/override.conf" =
-      mkIf cfg.systemd.enable
-        {
-          text = ''
-            [Service]
-            Type=simple
-            ReloadSignal=
-          '';
         };
   };
 }
