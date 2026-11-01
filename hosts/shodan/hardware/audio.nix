@@ -14,7 +14,7 @@
     katana.enable = true;
     wave3 = {
       startMuted = true;
-      startGain = 31;
+      startGain = 15;
       enable = true;
     };
   };
